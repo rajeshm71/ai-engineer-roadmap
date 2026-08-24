@@ -1,0 +1,27 @@
+name: Dead link
+description: Report a link in README.md that no longer resolves
+labels: ["dead-link"]
+body:
+  - type: input
+    id: url
+    attributes:
+      label: URL
+      description: The link that's broken
+      placeholder: "https://..."
+    validations:
+      required: true
+  - type: input
+    id: topic
+    attributes:
+      label: Topic / phase
+      description: Which phase and topic heading this link is under
+      placeholder: "Phase 3: Deep Learning > PyTorch"
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Anything else useful (e.g. a suggested replacement)
+    validations:
+      required: false
