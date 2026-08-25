@@ -215,7 +215,13 @@ Prereqs: [Neural network basics](#neural-network-basics), [Embeddings](#embeddin
 
 ### Classical NLP tasks
 
-_TBD, targeted for v1.2_
+Named entity recognition, part-of-speech tagging, sentiment analysis, text classification: the tasks NLP meant before LLMs made "just prompt it" an option. Still the faster and cheaper choice when a task is narrow and well defined.
+
+- **[Advanced NLP with spaCy](https://course.spacy.io/en/)**: free, interactive course. Builds rule-based and statistical pipelines for these exact tasks, in the browser, no setup.
+- **[Speech and Language Processing, 3rd ed. draft](https://web.stanford.edu/~jurafsky/slp3/)** (Jurafsky, Martin): free, book draft. `[underrated]` The standard academic text for the field, free and continuously updated; most people jump straight to a course and never discover it covers the same ground more rigorously.
+- **[spaCy 101](https://spacy.io/usage/spacy-101)**: free, official docs. Reach for this once you know what task you want and just need the API.
+
+Prereqs: [Python](#python), [Embeddings](#embeddings).
 
 ---
 
@@ -329,11 +335,23 @@ Build a production RAG pipeline. See sibling project [rag-recipes](https://githu
 
 ### Vector embeddings
 
-_TBD, targeted for v1.2_
+The representation a RAG system actually searches over: text turned into vectors so that "relevant to this query" becomes "close in vector space." Builds directly on [Embeddings](#embeddings) from Phase 4, applied to retrieval instead of general similarity.
+
+- **[Pinecone: Learning Center](https://www.pinecone.io/learn/)**: free, guides. The practical, RAG-focused walkthrough of what embeddings are and how they get used in a retrieval pipeline, from a team that builds a vector database for a living.
+- **[What are embeddings?](https://vickiboykis.com/what_are_embeddings/)** (Boykis): free, long-form write-up. `[underrated]` Goes further than any vendor guide into the engineering tradeoffs (dimensionality, storage, drift) that show up once a RAG system is in production.
+- **[Cohere: Embeddings documentation](https://docs.cohere.com/docs/embeddings)**: free, official docs. A second provider's take on the same API shape as OpenAI's, useful for seeing what's provider-specific versus universal.
+
+Prereqs: [Embeddings](#embeddings).
 
 ### Retrieval basics
 
-_TBD, targeted for v1.2_
+How a query actually finds its matches: similarity search over the vectors above, and the approximate nearest neighbor algorithms that make it fast at scale.
+
+- **[LlamaIndex: Introduction to RAG](https://developers.llamaindex.ai/python/framework/understanding/rag/)**: free, official docs. The clearest map of the moving parts (loading, indexing, retrieving, querying) from a framework built around exactly this problem.
+- **[Vector Search Explained](https://weaviate.io/blog/vector-search-explained)** (Weaviate): free, blog. Explains HNSW and the ANN speed/accuracy tradeoff without requiring a systems background.
+- **[Faiss](https://github.com/facebookresearch/faiss)** (Meta): free, repo + wiki. `[underrated]` The library actual similarity search under the hood usually runs on; most people never open it because a managed vector database hides it, but the wiki's tutorial is short and worth the hour.
+
+Prereqs: [Vector embeddings](#vector-embeddings).
 
 ### Hybrid search + reranking
 
