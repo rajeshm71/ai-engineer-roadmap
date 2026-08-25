@@ -185,15 +185,33 @@ Explain attention and build a text classifier. Older techniques (tokenization, e
 
 ### Tokenization
 
-_TBD, targeted for v1.1_
+How text becomes the integers a model actually operates on. Every downstream LLM concept (context window, cost, prompt injection via odd tokens) traces back to this step.
+
+- **[Hugging Face LLM Course: tokenizers](https://huggingface.co/learn/llm-course/chapter6/1)**: free, course chapter. Covers BPE, WordPiece, and Unigram, and has you build a tokenizer block by block.
+- **[Let's build the GPT Tokenizer](https://www.youtube.com/watch?v=zduSFxRajkE)** (Karpathy): free, YouTube, ~2 hours. `[underrated depth]` Builds a byte-pair-encoding tokenizer from scratch in code; the one video that removes all the mystery around why LLMs are bad at spelling and arithmetic.
+- **[tiktoken](https://github.com/openai/tiktoken)** (OpenAI): free, repo. The tokenizer library used by OpenAI's models; the README and `playground` examples are enough to see tokenization happen on real text.
+
+Prereqs: [Python](#python).
 
 ### Embeddings
 
-_TBD, targeted for v1.1_
+Turning words, sentences, or documents into vectors so that similarity becomes a distance calculation. Word embeddings (word2vec era) and the sentence and document embeddings used in modern RAG systems are the same core idea applied at different granularity.
+
+- **[The Illustrated Word2vec](https://jalammar.github.io/illustrated-word2vec/)** (Alammar): free, blog. The standard visual introduction to how word embeddings are learned and what the resulting vector space actually encodes.
+- **[On word embeddings, Part 1](https://www.ruder.io/word-embeddings-1/)** (Ruder): free, blog. `[underrated]` Goes deeper than most tutorials into why the different word2vec and GloVe objectives produce different embeddings.
+- **[OpenAI: Vector embeddings guide](https://platform.openai.com/docs/guides/embeddings)**: free, official docs. The practical modern version: how to call an embeddings API and what to do with the vectors it returns.
+
+Prereqs: [Python](#python), [Math](#math).
 
 ### Transformer architecture
 
-_TBD, targeted for v1.1_
+Attention, self-attention, and the encoder-decoder (or decoder-only) stack that replaced RNNs for almost everything. This is the architecture every model in Phase 6 is built on.
+
+- **[Attention Is All You Need](https://arxiv.org/abs/1706.03762)** (Vaswani et al.): free, paper. The original. Worth reading once you already have an intuition for attention from elsewhere; dense on a first pass.
+- **[The Annotated Transformer](https://nlp.seas.harvard.edu/annotated-transformer/)** (Harvard NLP): free, code walkthrough. Puts the paper's equations next to a working PyTorch implementation, line by line.
+- **[Formal Algorithms for Transformers](https://arxiv.org/abs/2207.09238)** (Phuong, Hutter, DeepMind): free, paper. `[underrated]` A complete, precise pseudocode reference for every transformer variant in about ten pages; useful once prose explanations start feeling hand-wavy.
+
+Prereqs: [Neural network basics](#neural-network-basics), [Embeddings](#embeddings).
 
 ### Classical NLP tasks
 
