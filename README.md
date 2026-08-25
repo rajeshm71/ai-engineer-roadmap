@@ -31,7 +31,7 @@ The one language modern AI runs on. Get to the point where you can read someone 
 
 - **[Automate the Boring Stuff with Python](https://automatetheboringstuff.com/)** (Sweigart): free, book. Takes people who have never programmed to a productive level in Python.
 - **[Real Python: Python Basics learning path](https://realpython.com/learning-paths/python-basics/)**: free, articles + exercises. Good if you learn better in small pieces than a whole book.
-- **[Fluent Python, 2nd ed.](https://www.oreilly.com/library/view/fluent-python-2nd/9781492056348/)** (Ramalho): $50, book, 1000 pages. `[underrated]` The one book that will change how you write Python. Come back to it after a year of Python under your belt; skip on the first pass.
+- **[Fluent Python, 2nd ed.](https://www.oreilly.com/library/view/fluent-python-2nd/9781492056348/)** (Ramalho): $80, book, 1000 pages. `[underrated]` The one book that will change how you write Python. Come back to it after a year of Python under your belt; skip on the first pass.
 
 Prereqs: none.
 
@@ -95,7 +95,7 @@ Metrics, cross-validation, train/val/test splits. The most-skipped step and the 
 
 - **[scikit-learn: model evaluation user guide](https://scikit-learn.org/stable/modules/model_evaluation.html)**: free, official docs. Canonical reference for every metric name and when to use it.
 - **[Google's Machine Learning Crash Course: Classification](https://developers.google.com/machine-learning/crash-course/classification/video-lecture)**: free, course section. Best intro to precision/recall/AUC and why accuracy alone lies.
-- **[Designing Machine Learning Systems](https://www.oreilly.com/library/view/designing-machine-learning/9781098107956/)** (Huyen) chapter 6: $50, book. `[underrated]` The one book that treats evaluation as a production problem, not a homework problem.
+- **[Designing Machine Learning Systems](https://www.oreilly.com/library/view/designing-machine-learning/9781098107956/)** (Huyen) chapter 6: $65, book. `[underrated]` The one book that treats evaluation as a production problem, not a homework problem.
 
 Prereqs: [Supervised learning](#supervised-learning).
 
@@ -103,7 +103,7 @@ Prereqs: [Supervised learning](#supervised-learning).
 
 Turning raw data into what the model actually needs. Modern deep-learning talks less about this, but real production pipelines are half feature engineering.
 
-- **[Feature Engineering for Machine Learning](https://www.oreilly.com/library/view/feature-engineering-for/9781491953235/)** (Zheng, Casari): $40, book. Canonical practitioner text.
+- **[Feature Engineering for Machine Learning](https://www.oreilly.com/library/view/feature-engineering-for/9781491953235/)** (Zheng, Casari): $65, book. Canonical practitioner text.
 - **[Kaggle Learn: Feature Engineering](https://www.kaggle.com/learn/feature-engineering)**: free, short course. Fastest way to see the techniques applied to real tabular data.
 - **[Applied Predictive Modeling](http://appliedpredictivemodeling.com/)** (Kuhn, Johnson): $70, book. `[underrated by modern ML crowd]` Older and written in R, but the reasoning about feature construction still beats most newer books.
 
@@ -139,7 +139,7 @@ Prereqs: [Math](#math), [Python](#python).
 
 The deep-learning framework most modern research and a lot of production runs on. Learn it after neural-network basics; you'll use it through the rest of this roadmap.
 
-- **[Deep Learning with PyTorch](https://www.manning.com/books/deep-learning-with-pytorch)** (Stevens, Antiga, Viehmann): free, book, 500 pages, official PDF. Canonical textbook. Written by PyTorch core devs.
+- **[Deep Learning with PyTorch, 2nd ed.](https://www.manning.com/books/deep-learning-with-pytorch-second-edition)** (Antiga, Stevens, Huang, Viehmann): $60, book. Canonical textbook, written by PyTorch core devs and updated for transformers and generative models.
 - **[PyTorch: 60 Minute Blitz](https://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html)**: free, tutorial, ~2 hours. Fastest way to get a real training loop running.
 - **[Zero to Hero: makemore series](https://karpathy.ai/zero-to-hero.html)** (Karpathy): free, YouTube. `[underrated]` Continuation of the neural-network-basics pick above, now in PyTorch. Best "click" moment for autograd.
 - **[fast.ai Practical Deep Learning](https://course.fast.ai/)**: free, course, ~22 hours. Alternative starting point if you'd rather start from working projects than from theory.
