@@ -231,19 +231,42 @@ Fine-tune a vision model and run inference. Skippable if your target is pure LLM
 
 ### Image basics
 
-_TBD, targeted for v1.2_
+How an image becomes a tensor a model can read: pixels, channels, resizing, normalization, and the augmentations that make a small dataset behave like a larger one.
+
+- **[Practical Deep Learning for Coders](https://course.fast.ai/)**: free, course. Trains a real image classifier in lesson 1 before explaining any of the underlying theory.
+- **[Torchvision: transforms](https://docs.pytorch.org/vision/stable/transforms.html)**: free, official docs. The practical reference for resizing, cropping, and normalizing images before they reach a model.
+- **[But what is a convolution?](https://www.3blue1brown.com/lessons/convolutions/)** (3Blue1Brown): free, YouTube, ~23 minutes. `[underrated as a first pass]` Builds the intuition for what a convolution is doing before you meet it as a neural network layer.
+
+Prereqs: [PyTorch](#pytorch).
 
 ### Convnets
 
-_TBD, targeted for v1.2_
+Convolutional layers exploit the fact that nearby pixels are related; stacking them builds up from edges to textures to whole objects. The dominant architecture for vision before transformers arrived.
+
+- **[CS231n: Convolutional Neural Networks](https://cs231n.github.io/convolutional-networks/)** (Stanford): free, lecture notes. The canonical explanation of convolutional layers, pooling, and classic architectures.
+- **[A Guide to Convolution Arithmetic for Deep Learning](https://arxiv.org/abs/1603.07285)** (Dumoulin, Visin): free, paper. `[underrated]` Answers the "what output size do I actually get" question with diagrams, for every combination of padding, stride, and dilation.
+
+Prereqs: [Image basics](#image-basics), [Training loops](#training-loops).
 
 ### Object detection
 
-_TBD, targeted for v1.3_
+Locating objects in an image, not just classifying the whole picture: bounding boxes, confidence scores, and the metrics (IoU, mAP) used to judge them.
+
+- **[Ultralytics YOLO: Object Detection](https://docs.ultralytics.com/tasks/detect)**: free, official docs. The most widely deployed real-time detector family; the docs double as a practical primer on the task itself.
+- **[TorchVision Object Detection Finetuning Tutorial](https://docs.pytorch.org/tutorials/intermediate/torchvision_tutorial.html)**: free, official tutorial. Fine-tunes a pretrained Mask R-CNN on a small custom dataset end to end.
+- **[mAP (mean Average Precision) for Object Detection](https://naokishibuya.github.io/blog/2022-05-27-object-detection-mean-average-precision/)** (Shibuya): free, blog. `[underrated]` Works through precision, recall, and IoU by hand before computing mAP, rather than treating it as a black-box metric.
+
+Prereqs: [Convnets](#convnets).
 
 ### Vision transformers
 
-_TBD, targeted for v1.3_
+Applying the transformer architecture from Phase 3 to images by splitting them into patches and treating each patch as a token. Increasingly the default choice over convnets at large data scale.
+
+- **[An Image is Worth 16x16 Words](https://arxiv.org/abs/2010.11929)** (Dosovitskiy et al.): free, paper. The original ViT paper; shows a plain transformer competing with convnets once pretraining data is large enough.
+- **[Hugging Face: Vision Transformer (ViT)](https://huggingface.co/docs/transformers/model_doc/vit)**: free, official docs. The practical route: load a pretrained ViT and fine-tune it in a few lines.
+- **[Hugging Face Computer Vision Course: ViT for image classification](https://huggingface.co/learn/computer-vision-course/unit3/vision-transformers/vision-transformers-for-image-classification)**: free, course chapter. `[underrated as newer]` A newer, less-discovered course that walks the patch-embedding-to-classification pipeline step by step.
+
+Prereqs: [Transformer architecture](#transformer-architecture), [Convnets](#convnets).
 
 ---
 
@@ -415,19 +438,41 @@ Know when fine-tuning is the right call and can run one.
 
 ### When to fine-tune
 
-_TBD, targeted for v1.3_
+Prompting and RAG solve most problems more cheaply than fine-tuning does. Fine-tuning is worth the cost only once you have a specific, proven gap neither of those closes, and the labeled data to close it.
+
+- **[Patterns for Building LLM-based Systems & Products](https://eugeneyan.com/writing/llm-patterns/)** (Yan): free, blog post. Places fine-tuning alongside evals, RAG, caching, and guardrails, so you see it as one tool among several rather than the default.
+- **[PEFT documentation](https://huggingface.co/docs/peft/)**: free, official docs. The practical landing page for what parameter-efficient fine-tuning actually involves once you decide to do it.
+
+Prereqs: [Evaluation](#evaluation).
 
 ### LoRA and adapters
 
-_TBD, targeted for v1.4_
+Freezing the pretrained weights and training a small pair of low-rank matrices instead. Reduces trainable parameters and memory enough to fine-tune a large model on a single consumer GPU.
+
+- **[LoRA: Low-Rank Adaptation of Large Language Models](https://arxiv.org/abs/2106.09685)** (Hu et al.): free, paper. The original; the core idea fits in a page even though the paper covers more ground.
+- **[PEFT: LoRA](https://huggingface.co/docs/peft/en/package_reference/lora)**: free, official docs. The practical API for applying LoRA to a Hugging Face model in a few lines.
+- **[Practical Tips for Finetuning LLMs Using LoRA](https://magazine.sebastianraschka.com/p/practical-tips-for-finetuning-llms)** (Raschka): free, blog post. `[underrated]` Answers the questions the paper doesn't: what rank to pick, whether more epochs help, what actually moves the needle in practice.
+
+Prereqs: [When to fine-tune](#when-to-fine-tune).
 
 ### Data preparation
 
-_TBD, targeted for v1.4_
+Fine-tuning data quality matters more than quantity: a small, carefully curated set of examples regularly beats a large noisy one.
+
+- **[Preprocess](https://huggingface.co/docs/transformers/en/preprocessing)** (Hugging Face): free, official docs. The mechanical side: turning raw text into the tokenized, batched format training actually consumes.
+- **[LIMA: Less Is More for Alignment](https://arxiv.org/abs/2305.11206)** (Zhou et al.): free, paper. `[underrated]` Fine-tuned a 65B model on just 1,000 curated examples and matched much larger instruction-tuning efforts; the strongest evidence that curation beats volume.
+
+Prereqs: [When to fine-tune](#when-to-fine-tune).
 
 ### Open-model serving
 
-_TBD, targeted for v1.4_
+Running a fine-tuned or open-weight model yourself instead of calling a provider's API: the inference engine that actually serves requests.
+
+- **[vLLM documentation](https://docs.vllm.ai/en/latest/)**: free, official docs. The throughput-focused serving engine most production open-model deployments are built on.
+- **[Ollama documentation](https://docs.ollama.com/)**: free, official docs. The fastest path to running an open-weight model locally with no infrastructure setup.
+- **[llama.cpp](https://github.com/ggml-org/llama.cpp)**: free, repo. `[underrated]` The low-level inference engine underneath Ollama and many other tools; worth knowing it's there once you need something Ollama doesn't expose.
+
+Prereqs: [LoRA and adapters](#lora-and-adapters).
 
 ---
 
@@ -437,23 +482,50 @@ Deploy + monitor + iterate on a shipped AI system.
 
 ### Deployment (HF Spaces, Modal, Replicate)
 
-_TBD, targeted for v1.3_
+Getting a model or pipeline from a notebook into something other people can call. Three different tradeoffs: easiest demo, most control, least setup.
+
+- **[Hugging Face Spaces](https://huggingface.co/docs/hub/spaces)**: free tier, official docs. Fastest way to a public demo; a Gradio or Streamlit app deployed straight from a git repo.
+- **[Modal documentation](https://modal.com/docs)**: free tier, official docs. Serverless GPU functions with no Dockerfile or standing instance; pay per second of actual compute.
+- **[Replicate documentation](https://replicate.com/docs)**: free to browse, paid to run, official docs. `[underrated]` Run someone else's published model behind a stable API without hosting anything yourself; useful before you've decided your own deployment needs custom infrastructure at all.
+
+Prereqs: [Open-model serving](#open-model-serving).
 
 ### Monitoring: cost, latency
 
-_TBD, targeted for v1.4_
+Once a system is live, the questions change from "does it work" to "is it still working, and what is it costing." Token spend and response time are the two numbers that silently blow up first.
+
+- **[An Introduction to Observability for LLM-based applications using OpenTelemetry](https://opentelemetry.io/blog/2024/llm-observability/)**: free, official blog. The emerging standard (GenAI semantic conventions) for what to actually measure and how to attach cost to a span.
+- **[Data Distribution Shifts and Monitoring](https://huyenchip.com/2022/02/07/data-distribution-shifts-and-monitoring.html)** (Huyen): free, blog post. `[underrated]` Goes beyond cost and latency to the quieter failure mode: the data your system sees in production drifting away from what it was built on.
+
+Prereqs: [Deployment](#deployment-hf-spaces-modal-replicate).
 
 ### Model versioning
 
-_TBD, targeted for v1.4_
+Tracking which model (or prompt, or fine-tuned adapter) produced which result, so a regression can be traced back and rolled back.
+
+- **[W&B Registry](https://docs.wandb.ai/models/registry)**: free tier, official docs. Versioning, lineage, and promotion stages for models treated as first-class tracked artifacts.
+- **[DVC documentation](https://dvc.org/doc)**: free, official docs. `[underrated]` Git-style versioning for models and datasets together; less turnkey than a hosted registry but keeps everything in your own repo.
+
+Prereqs: [Deployment](#deployment-hf-spaces-modal-replicate).
 
 ### Observability (Langfuse, Helicone, Phoenix)
 
-_TBD, targeted for v1.4_
+Seeing what actually happened inside a request: the full prompt, the retrieved context, the tool calls, and the final output, not just an aggregate latency number.
+
+- **[Langfuse documentation](https://langfuse.com/docs)**: free, open source. Full tracing plus evaluation and prompt management in one open-source platform.
+- **[Helicone documentation](https://docs.helicone.ai/getting-started/quick-start)**: free, open source. A proxy-based alternative: point requests at Helicone's gateway and get logging with no SDK changes.
+- **[Arize Phoenix](https://arize.com/docs/phoenix)**: free, open source. `[underrated]` Runs locally with one `pip install`, no signup or API key required, built on OpenTelemetry; the lowest-friction way to see traces before committing to a hosted platform.
+
+Prereqs: [Evaluation and observability](#evaluation-and-observability).
 
 ### Safety and guardrails
 
-_TBD, targeted for v1.5_
+Checking inputs and outputs against policy before they reach a user or an action executes: jailbreak attempts, PII leakage, off-topic responses, unsafe tool calls.
+
+- **[OWASP Top 10 for LLM Applications](https://genai.owasp.org/)**: free, official project. The security-first framing of the same failure modes; treats prompt injection and data leakage as first-class vulnerabilities to defend against, not edge cases.
+- **[NeMo Guardrails](https://docs.nvidia.com/nemo/guardrails/latest/about/overview.html)** (NVIDIA): free, official docs. `[underrated]` Open-source, programmable guardrails with a dialog-flow language, rather than a single input/output filter.
+
+Prereqs: [Structured output](#structured-output).
 
 ---
 
@@ -463,19 +535,40 @@ Keep up + find work.
 
 ### Weekly newsletters
 
-_TBD, targeted for v1.4_
+A standing habit, not a topic to finish once. Pick one and actually read it every week rather than subscribing to five and reading none.
+
+- **[The Batch](https://www.deeplearning.ai/the-batch/)** (DeepLearning.AI): free, weekly. Turns the week's research and industry news into short, plainly explained items; the easiest one to actually keep up with.
+- **[Ahead of AI](https://magazine.sebastianraschka.com/)** (Raschka): free, with some paid deep-dive posts. `[underrated]` More technical than most news digests: architecture explainers and paper roundups instead of headline summaries.
+
+Prereqs: none.
 
 ### Communities
 
-_TBD, targeted for v1.4_
+Places where practitioners argue about what actually works, ahead of it showing up in a blog post.
+
+- **[r/MachineLearning](https://www.reddit.com/r/MachineLearning/)**: free. The largest general ML community; research discussion, paper threads, and hiring posts.
+- **[r/LocalLLaMA](https://www.reddit.com/r/LocalLLaMA/)**: free. The center of gravity for open-weight models, quantization, and local inference; moves faster than most blogs on this specific topic.
+- **[Latent Space](https://www.latent.space/)**: free. `[underrated]` Smaller and more focused than the subreddits; the podcast and newsletter both go deep on the AI engineer's specific concerns rather than ML research broadly.
+
+Prereqs: none.
 
 ### Papers to track
 
-_TBD, targeted for v1.5_
+Not "read everything." A lightweight habit for noticing what's actually worth reading.
+
+- **[Hugging Face Papers](https://huggingface.co/papers)**: free. Daily trending papers ranked by community attention, with discussion threads; the successor to what Papers with Code used to do.
+- **[arxiv-sanity-lite](https://github.com/karpathy/arxiv-sanity-lite)** (Karpathy): free, self-hosted tool. `[underrated]` Tag papers you like and get recommendations back, instead of scrolling an unranked firehose.
+
+Prereqs: none.
 
 ### Landing a job
 
-_TBD, targeted for v1.5_
+The role itself is new enough that the job title and the interview loop are both still settling.
+
+- **[The Rise of the AI Engineer](https://www.latent.space/p/ai-engineer)** (swyx): free, blog post. The essay that named the role; worth reading to understand what a hiring manager means by the title before walking into an interview for it.
+- **[Introduction to Machine Learning Interviews](https://huyenchip.com/ml-interviews-book/)** (Huyen): free, book. Covers the interview process itself: what roles exist, what each one screens for, and over 200 practice questions.
+
+Prereqs: none.
 
 ---
 
