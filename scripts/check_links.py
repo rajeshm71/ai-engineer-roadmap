@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import re
 import sys
+import time
 from pathlib import Path
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
@@ -17,6 +18,8 @@ from urllib.error import HTTPError, URLError
 README = Path(__file__).resolve().parent.parent / "README.md"
 LINK_PATTERN = re.compile(r"\[[^\]]+\]\((https?://[^)]+)\)")
 TIMEOUT = 10
+RATE_LIMIT_RETRIES = 2
+RATE_LIMIT_BACKOFF_SECONDS = 5
 
 # Hosts confirmed (via curl with a real browser TLS stack) to serve real
 # 200s to humans while blocking Python's urllib on fingerprint, not on
@@ -46,13 +49,17 @@ def check(url: str) -> tuple[str, int | str]:
             )
         },
     )
-    try:
-        with urlopen(request, timeout=TIMEOUT) as response:
-            return url, response.status
-    except HTTPError as exc:
-        return url, exc.code
-    except URLError as exc:
-        return url, str(exc.reason)
+    for attempt in range(RATE_LIMIT_RETRIES + 1):
+        try:
+            with urlopen(request, timeout=TIMEOUT) as response:
+                return url, response.status
+        except HTTPError as exc:
+            if exc.code == 429 and attempt < RATE_LIMIT_RETRIES:
+                time.sleep(RATE_LIMIT_BACKOFF_SECONDS)
+                continue
+            return url, exc.code
+        except URLError as exc:
+            return url, str(exc.reason)
 
 
 def main() -> int:
