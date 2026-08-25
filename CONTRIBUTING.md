@@ -10,8 +10,9 @@ around it (CI, templates).
   doesn't need discussion first.
 - **Propose a better pick.** Replace an existing resource with one you
   think is better. State why in the PR description.
-- **Fill in a `_TBD_` topic.** Pick a topic marked `_TBD, targeted for
-  vX.Y_` and populate it following the rules below.
+- **Fill in a missing topic.** If a heading is marked `_TBD, targeted for
+  vX.Y_`, populate it following the rules below. If none are currently
+  marked TBD, propose a new topic instead (open an issue first).
 - **Report an issue** with a topic's content: wrong info, outdated
   material, a resource that no longer fits.
 
