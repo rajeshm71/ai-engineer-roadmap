@@ -14,5 +14,3 @@
 - [ ] Link resolves (checked manually or CI is green)
 - [ ] No template stubs, no em dashes or en dashes (R5, style rules in
       CONTRIBUTING.md)
-- [ ] If this is a new pick, includes at least one `[underrated]` option
-      where the topic doesn't already have one (R6)

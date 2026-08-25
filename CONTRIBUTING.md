@@ -16,7 +16,7 @@ around it (CI, templates).
 - **Report an issue** with a topic's content: wrong info, outdated
   material, a resource that no longer fits.
 
-## The rules (R1-R6)
+## The rules (R1-R5)
 
 - **R1.** One canonical pick per resource type per topic: one course, one
   book, one video, at most one repo, at most one paper. Not five courses
@@ -31,9 +31,6 @@ around it (CI, templates).
 - **R5.** No template stubs. Never add "What it is / Why you need this /
   Estimated time / When you're done you can" style sections. Just a
   heading, context, the resource list, and a prereqs line.
-- **R6.** Popular AND underrated. Every topic should have at least one
-  pick that isn't the first thing that shows up in a search, tagged
-  `` `[underrated]` `` inline.
 
 ## Every new pick needs
 
