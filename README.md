@@ -355,15 +355,33 @@ Prereqs: [Vector embeddings](#vector-embeddings).
 
 ### Hybrid search + reranking
 
-_TBD, targeted for v1.3_
+Pure vector search misses exact keyword matches; pure keyword search misses paraphrases and synonyms. Hybrid search runs both and combines the scores; reranking then re-scores the combined candidates with a model that reads the query and each candidate together.
+
+- **[Getting Started with Hybrid Search](https://www.pinecone.io/learn/hybrid-search-intro/)** (Pinecone): free, guide. Explains the dense-plus-sparse combination and the tradeoff of weighting one against the other.
+- **[Cohere Rerank overview](https://docs.cohere.com/docs/rerank-overview)**: free, official docs. The most commonly reached-for reranking API; read this to see what a second-stage reranker actually buys you over retrieval alone.
+- **[Sentence Transformers: Retrieve & Rerank](https://sbert.net/examples/sentence_transformer/applications/retrieve_rerank/README.html)**: free, official docs. `[underrated]` A free, self-hosted cross-encoder reranker; most people reach for a paid API without realizing this ships in a library they likely already have installed.
+
+Prereqs: [Retrieval basics](#retrieval-basics).
 
 ### Chunking strategies
 
-_TBD, targeted for v1.3_
+How a document gets split before it's embedded. The chunking decision shapes what the retriever can find; too large and irrelevant text dilutes the match, too small and the model loses context it needed.
+
+- **[5 Levels of Text Splitting](https://github.com/FullStackRetrieval-com/RetrievalTutorials/blob/main/tutorials/LevelsOfTextSplitting/5_Levels_Of_Text_Splitting.ipynb)** (Kamradt): free, notebook. The reference nearly everyone in RAG eventually finds; walks character splitting through semantic and agent-driven chunking with runnable code.
+- **[LangChain: text splitters](https://docs.langchain.com/oss/python/integrations/splitters)**: free, official docs. Practical reference once you know which strategy you want and just need the class to call.
+- **[Is Semantic Chunking Worth the Computational Cost?](https://arxiv.org/abs/2410.13070)**: free, paper. `[underrated]` A rare counter-argument paper: tests whether the trendier semantic-chunking approach actually beats naive fixed-size chunks, and finds the answer is often no.
+
+Prereqs: [Vector embeddings](#vector-embeddings).
 
 ### Evaluation and observability
 
-_TBD, targeted for v1.3_
+How you know a RAG pipeline is actually retrieving the right context and answering from it honestly, and how you watch it in production once it's live.
+
+- **[Ragas documentation](https://docs.ragas.io/)**: free, docs. The canonical library for RAG-specific metrics (context precision, faithfulness, answer relevance); the concepts page is useful even without adopting the library.
+- **[Langfuse documentation](https://langfuse.com/docs)**: free, open source. Tracing and evaluation for a live pipeline: see the actual retrieved chunks and prompts behind any given answer.
+- **[Your AI Product Needs Evals](https://hamel.dev/blog/posts/evals/)** (Husain): free, blog post. `[underrated]` A more skeptical, practitioner-first take than most vendor docs on what a useful eval loop actually requires.
+
+Prereqs: [Retrieval basics](#retrieval-basics), [Evaluation](#evaluation).
 
 ---
 
