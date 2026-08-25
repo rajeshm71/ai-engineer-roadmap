@@ -313,19 +313,43 @@ Build agents in at least two frameworks. See sibling project [real-world-agents]
 
 ### Tool use
 
-_TBD, targeted for v1.2_
+Letting a model call functions you define, so it can look things up or take actions instead of only generating text. The mechanism underneath almost everything else in this phase.
+
+- **[Claude: Tool use overview](https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview)**: free, official docs. Explains client-side versus server-side tools and how Claude decides when to call one.
+- **[OpenAI: Function calling guide](https://platform.openai.com/docs/guides/function-calling)**: free, official docs. The equivalent mechanism on the other major provider; read both to see what's provider-specific.
+- **[PydanticAI: Tools](https://ai.pydantic.dev/tools/)**: free, official docs. `[underrated as newer]` Tool definitions as typed Python functions with automatic schema generation, instead of hand-written JSON schemas.
+
+Prereqs: [Structured output](#structured-output).
 
 ### ReAct pattern
 
-_TBD, targeted for v1.2_
+Interleaving reasoning ("what should I do next") with acting ("call this tool, observe the result") in a loop, instead of planning everything upfront. The pattern most agent frameworks build their default loop around.
+
+- **[ReAct: Synergizing Reasoning and Acting in Language Models](https://arxiv.org/abs/2210.03629)** (Yao et al.): free, paper. The original; short enough to read directly rather than only through summaries.
+- **[LLM Powered Autonomous Agents](https://lilianweng.github.io/posts/2023-06-23-agent/)** (Weng): free, blog post. `[underrated]` Places ReAct inside the larger design space (planning, memory, tool use); most people cite this post without having read past the ReAct section.
+
+Prereqs: [Tool use](#tool-use).
 
 ### Multi-agent collaboration
 
-_TBD, targeted for v1.3_
+Splitting a task across multiple agents, each with a narrower role, instead of one agent doing everything. Worth the added complexity only when a single agent's context or focus becomes the bottleneck.
+
+- **[Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents)** (Anthropic): free, official blog. Draws the line between a workflow (fixed code paths) and an agent (the model directs its own steps), and covers five common patterns before multi-agent is even necessary.
+- **[How we built our multi-agent research system](https://simonwillison.net/2025/Jun/14/multi-agent-research-system/)** (Anthropic, via Simon Willison's writeup): free, blog post. `[underrated]` Concrete, with real numbers (token cost, failure modes) from a production multi-agent system, rather than an architecture diagram alone.
+- **[CrewAI documentation](https://docs.crewai.com/)**: free, official docs. The framework built specifically around role-based multi-agent "crews"; see the pattern as a first-class abstraction rather than something you assemble yourself.
+
+Prereqs: [ReAct pattern](#react-pattern).
 
 ### Framework survey (LangGraph, CrewAI, OpenAI Agents SDK, PydanticAI)
 
-_TBD, targeted for v1.3_
+Four different opinions on how much structure an agent framework should impose. Worth knowing what each optimizes for before picking one; see [real-world-agents](https://github.com/rajeshm71/real-world-agents) for all four applied to real tasks.
+
+- **[LangGraph](https://docs.langchain.com/oss/python/langgraph/overview)**: free, official docs. Graph-based orchestration; the most explicit about control flow, at the cost of more boilerplate.
+- **[CrewAI documentation](https://docs.crewai.com/)**: free, official docs. Role-based abstraction (agents, crews, tasks); fastest to a working multi-agent prototype.
+- **[OpenAI Agents SDK](https://openai.github.io/openai-agents-python/)**: free, official docs. Lightweight, provider-authored, minimal abstraction over the tool-use loop itself.
+- **[PydanticAI documentation](https://ai.pydantic.dev/)**: free, official docs. `[underrated as newer]` Type-safe agents and dependency injection built by the Pydantic team; the newest of the four and the least likely to already be on your radar.
+
+Prereqs: [Tool use](#tool-use).
 
 ---
 
