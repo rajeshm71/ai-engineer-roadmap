@@ -10,7 +10,7 @@
 
 - [ ] Follows R1: one pick per resource type, not an addition to an
       already-full slot
-- [ ] Free-first (R2); any `$` pick has a one-sentence reason
+- [ ] Free-first (R2); any `paid` pick has a one-sentence reason
 - [ ] Link resolves (checked manually or CI is green)
 - [ ] No template stubs, no em dashes or en dashes (R5, style rules in
       CONTRIBUTING.md)

@@ -22,7 +22,7 @@ around it (CI, templates).
   book, one video, at most one repo, at most one paper. Not five courses
   on the same thing. If you think the current pick is worse than yours,
   PR to replace it, don't PR to add a second.
-- **R2.** Free where free exists. Paid picks are labeled `$` with a
+- **R2.** Free where free exists. Paid picks are labeled `paid` with a
   one-sentence reason they're worth paying for.
 - **R3.** Links must resolve. CI checks weekly; a PR that adds a dead link
   will fail the same check.
