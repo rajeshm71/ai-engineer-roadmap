@@ -32,6 +32,7 @@ The one language modern AI runs on. Get to the point where you can read someone 
 - **[Automate the Boring Stuff with Python](https://automatetheboringstuff.com/)** (Sweigart): free, book. Takes people who have never programmed to a productive level in Python.
 - **[Real Python: Python Basics learning path](https://realpython.com/learning-paths/python-basics/)**: free, articles + exercises. Good if you learn better in small pieces than a whole book.
 - **[Fluent Python, 2nd ed.](https://www.oreilly.com/library/view/fluent-python-2nd/9781492056348/)** (Ramalho): paid, book, 1000 pages. The one book that will change how you write Python. Come back to it after a year of Python under your belt; skip on the first pass.
+- **[Learn Python - Full Course for Beginners](https://www.youtube.com/watch?v=rfscVS0vtbw)** (freeCodeCamp.org): free, YouTube, ~4.5 hours. Best pick if you'd rather watch someone type than read a book cover to cover.
 
 Prereqs: none.
 
@@ -51,6 +52,7 @@ Version control. Non-negotiable.
 
 - **[Pro Git](https://git-scm.com/book/en/v2)** (Chacon, Straub): free, book. The canonical reference. Read chapters 1-3; treat the rest as a reference to return to.
 - **[Oh Shit, Git!?!](https://ohshitgit.com/)** (Julia Evans-flavored): free, cheat sheet. The one page you reach for when you've mangled a rebase and don't know what to do.
+- **[Git and GitHub for Beginners - Crash Course](https://www.youtube.com/watch?v=RGOj5yH7evk)** (freeCodeCamp.org): free, YouTube, ~1 hour. Fastest way to see commits, branching, and a GitHub PR workflow actually happen before you touch the CLI yourself.
 
 Prereqs: [CLI / Linux](#cli--linux).
 
@@ -106,6 +108,7 @@ Turning raw data into what the model actually needs. Modern deep-learning talks 
 - **[Feature Engineering for Machine Learning](https://www.oreilly.com/library/view/feature-engineering-for/9781491953235/)** (Zheng, Casari): paid, book. Canonical practitioner text.
 - **[Kaggle Learn: Feature Engineering](https://www.kaggle.com/learn/feature-engineering)**: free, short course. Fastest way to see the techniques applied to real tabular data.
 - **[Applied Predictive Modeling](http://appliedpredictivemodeling.com/)** (Kuhn, Johnson): paid, book. Older and written in R, but the reasoning about feature construction still beats most newer books.
+- **[100 Days of Machine Learning](https://www.youtube.com/playlist?list=PLKnIA16_Rmvbr7zKYQuBfsVkjoLcJgxHH)** (CampusX): free, YouTube playlist. Feature scaling, encoding categorical data, and outlier handling each get their own dedicated episode, worked through on real datasets.
 
 Prereqs: [Supervised learning](#supervised-learning).
 
@@ -200,6 +203,7 @@ Turning words, sentences, or documents into vectors so that similarity becomes a
 - **[The Illustrated Word2vec](https://jalammar.github.io/illustrated-word2vec/)** (Alammar): free, blog. The standard visual introduction to how word embeddings are learned and what the resulting vector space actually encodes.
 - **[On word embeddings, Part 1](https://www.ruder.io/word-embeddings-1/)** (Ruder): free, blog. Goes deeper than most tutorials into why the different word2vec and GloVe objectives produce different embeddings.
 - **[OpenAI: Vector embeddings guide](https://platform.openai.com/docs/guides/embeddings)**: free, official docs. The practical modern version: how to call an embeddings API and what to do with the vectors it returns.
+- **[Word Embedding and Word2Vec, Clearly Explained!!!](https://www.youtube.com/watch?v=viZrOnJclY0)** (StatQuest with Josh Starmer): free, YouTube. Same clear-explanation style as the classical-ML picks above, applied to how word2vec actually learns a vector space.
 
 Prereqs: [Python](#python), [Math](#math).
 
@@ -210,6 +214,7 @@ Attention, self-attention, and the encoder-decoder (or decoder-only) stack that 
 - **[Attention Is All You Need](https://arxiv.org/abs/1706.03762)** (Vaswani et al.): free, paper. The original. Worth reading once you already have an intuition for attention from elsewhere; dense on a first pass.
 - **[The Annotated Transformer](https://nlp.seas.harvard.edu/annotated-transformer/)** (Harvard NLP): free, code walkthrough. Puts the paper's equations next to a working PyTorch implementation, line by line.
 - **[Formal Algorithms for Transformers](https://arxiv.org/abs/2207.09238)** (Phuong, Hutter, DeepMind): free, paper. A complete, precise pseudocode reference for every transformer variant in about ten pages; useful once prose explanations start feeling hand-wavy.
+- **[Attention in transformers, step-by-step](https://www.youtube.com/watch?v=eMlx5fFNoYc)** (3Blue1Brown): free, YouTube, ~26 minutes. The clearest visual walkthrough of query-key-value attention; watch before the paper, not instead of it.
 
 Prereqs: [Neural network basics](#neural-network-basics), [Embeddings](#embeddings).
 
@@ -220,6 +225,7 @@ Named entity recognition, part-of-speech tagging, sentiment analysis, text class
 - **[Advanced NLP with spaCy](https://course.spacy.io/en/)**: free, interactive course. Builds rule-based and statistical pipelines for these exact tasks, in the browser, no setup.
 - **[Speech and Language Processing, 3rd ed. draft](https://web.stanford.edu/~jurafsky/slp3/)** (Jurafsky, Martin): free, book draft. The standard academic text for the field, free and continuously updated; most people jump straight to a course and never discover it covers the same ground more rigorously.
 - **[spaCy 101](https://spacy.io/usage/spacy-101)**: free, official docs. Reach for this once you know what task you want and just need the API.
+- **[Natural Language Processing with spaCy & Python: Course for Beginners](https://www.youtube.com/watch?v=dIUTsFT2MeQ)** (freeCodeCamp.org): free, YouTube, ~3 hours. Walks through NER, POS tagging, and text classification pipelines in spaCy end to end, code alongside explanation.
 
 Prereqs: [Python](#python), [Embeddings](#embeddings).
 
@@ -245,6 +251,7 @@ Convolutional layers exploit the fact that nearby pixels are related; stacking t
 
 - **[CS231n: Convolutional Neural Networks](https://cs231n.github.io/convolutional-networks/)** (Stanford): free, lecture notes. The canonical explanation of convolutional layers, pooling, and classic architectures.
 - **[A Guide to Convolution Arithmetic for Deep Learning](https://arxiv.org/abs/1603.07285)** (Dumoulin, Visin): free, paper. Answers the "what output size do I actually get" question with diagrams, for every combination of padding, stride, and dilation.
+- **[CS231n Winter 2016: Lecture 7: Convolutional Neural Networks](https://www.youtube.com/watch?v=LxfUGhug-iQ)** (Stanford, Karpathy & Fei-Fei Li): free, YouTube. The lecture the notes above are drawn from, taught by the people who wrote them.
 
 Prereqs: [Image basics](#image-basics), [Training loops](#training-loops).
 
@@ -265,6 +272,7 @@ Applying the transformer architecture from Phase 3 to images by splitting them i
 - **[An Image is Worth 16x16 Words](https://arxiv.org/abs/2010.11929)** (Dosovitskiy et al.): free, paper. The original ViT paper; shows a plain transformer competing with convnets once pretraining data is large enough.
 - **[Hugging Face: Vision Transformer (ViT)](https://huggingface.co/docs/transformers/model_doc/vit)**: free, official docs. The practical route: load a pretrained ViT and fine-tune it in a few lines.
 - **[Hugging Face Computer Vision Course: ViT for image classification](https://huggingface.co/learn/computer-vision-course/unit3/vision-transformers/vision-transformers-for-image-classification)**: free, course chapter. A newer, less-discovered course that walks the patch-embedding-to-classification pipeline step by step.
+- **[ViT (Vision Transformer) - An Image Is Worth 16x16 Words (Paper Explained)](https://www.youtube.com/watch?v=8phM16htKbU)** (Yannic Kilcher): free, YouTube, ~30 minutes. A thorough walkthrough of the original paper for anyone who wants the reasoning behind ViT, not just the API to run one.
 
 Prereqs: [Transformer architecture](#transformer-architecture), [Convnets](#convnets).
 
@@ -293,6 +301,7 @@ The craft of getting the model to do what you want. Less mystical than the inter
 - **[OpenAI: Prompt engineering](https://platform.openai.com/docs/guides/prompt-engineering)**: free, official docs. Best complement to Anthropic's guide.
 - **[Learn Prompting](https://learnprompting.org/)**: free, interactive course. Best full-course treatment if you want structured lessons.
 - **[Simon Willison's blog: llms tag](https://simonwillison.net/tags/llms/)**: free, blog. The most consistently useful practitioner blog on prompting; read the highlights.
+- **[AI prompt engineering: A deep dive](https://www.youtube.com/watch?v=T9aRN5JkmL8)** (Anthropic): free, YouTube. Anthropic's own prompt engineering team walking through their principles directly, rather than a third party's summary of them.
 
 Prereqs: [How LLMs work](#how-llms-work).
 
@@ -303,6 +312,7 @@ Getting JSON out of an LLM reliably. This is the technique underneath every real
 - **[Instructor library docs](https://python.useinstructor.com/)**: free, docs. The canonical library for Pydantic-schema-driven LLM extraction. Multi-provider.
 - **[OpenAI: Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs)**: free, official docs. Best treatment of provider-native structured output (versus library-mediated).
 - **[Pydantic AI docs](https://ai.pydantic.dev/)**: free, docs. Type-safe agent framework built by the Pydantic team. Read alongside Instructor to see the two shapes.
+- **[OpenAI DevDay 2024: Structured outputs for reliable applications](https://www.youtube.com/watch?v=kE4BkATIl9c)** (OpenAI): free, YouTube. The team that built the feature explaining why provider-native structured output exists and what it fixes over prompt-only JSON.
 
 Prereqs: [Prompt engineering](#prompt-engineering).
 
@@ -314,6 +324,7 @@ How you know your LLM app actually works. Different from classical ML evaluation
 - **[Ragas documentation](https://docs.ragas.io/)**: free, docs. Canonical library for RAG evaluation; the metrics section is the useful part even if you don't use the library.
 - **[Eugene Yan: Evals blog series](https://eugeneyan.com/writing/evals/)**: free, blog. The most practical treatment of building evals for real LLM systems.
 - **[OpenAI Evals](https://github.com/openai/evals)**: free, repo. Canonical open-source eval framework; read the examples folder for shapes to copy.
+- **[How to Systematically Setup LLM Evals](https://www.youtube.com/watch?v=a3SMraZWNNs)** (Datalumina): free, YouTube. A practical walkthrough of unit tests, human/model evals, and LLM-as-a-judge in one place, useful for seeing the pieces assembled rather than read about separately.
 
 Prereqs: [Prompt engineering](#prompt-engineering).
 
@@ -341,6 +352,7 @@ Letting a model call functions you define, so it can look things up or take acti
 - **[Claude: Tool use overview](https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview)**: free, official docs. Explains client-side versus server-side tools and how Claude decides when to call one.
 - **[OpenAI: Function calling guide](https://platform.openai.com/docs/guides/function-calling)**: free, official docs. The equivalent mechanism on the other major provider; read both to see what's provider-specific.
 - **[PydanticAI: Tools](https://ai.pydantic.dev/tools/)**: free, official docs. Tool definitions as typed Python functions with automatic schema generation, instead of hand-written JSON schemas.
+- **[Function Calling Demo at OpenAI DevDay](https://www.youtube.com/watch?v=D1Oqt7vig9k)** (OpenAI, Nov 2023): free, YouTube. The original demo introducing function calling, the mechanism most tool-use APIs since have converged on.
 
 Prereqs: [Structured output](#structured-output).
 
@@ -360,6 +372,7 @@ Splitting a task across multiple agents, each with a narrower role, instead of o
 - **[Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents)** (Anthropic): free, official blog. Draws the line between a workflow (fixed code paths) and an agent (the model directs its own steps), and covers five common patterns before multi-agent is even necessary.
 - **[How we built our multi-agent research system](https://simonwillison.net/2025/Jun/14/multi-agent-research-system/)** (Anthropic, via Simon Willison's writeup): free, blog post. Concrete, with real numbers (token cost, failure modes) from a production multi-agent system, rather than an architecture diagram alone.
 - **[CrewAI documentation](https://docs.crewai.com/)**: free, official docs. The framework built specifically around role-based multi-agent "crews"; see the pattern as a first-class abstraction rather than something you assemble yourself.
+- **[Anthropic: How to Build Multi-Agent Systems](https://www.youtube.com/watch?v=0HljLKVdtjo)** (Anthropic): free, YouTube. Drawn from the same production system as the writeup above, from the team that built it.
 
 Prereqs: [ReAct pattern](#react-pattern).
 
@@ -387,6 +400,7 @@ The representation a RAG system actually searches over: text turned into vectors
 - **[Pinecone: Learning Center](https://www.pinecone.io/learn/)**: free, guides. The practical, RAG-focused walkthrough of what embeddings are and how they get used in a retrieval pipeline, from a team that builds a vector database for a living.
 - **[What are embeddings?](https://vickiboykis.com/what_are_embeddings/)** (Boykis): free, long-form write-up. Goes further than any vendor guide into the engineering tradeoffs (dimensionality, storage, drift) that show up once a RAG system is in production.
 - **[Cohere: Embeddings documentation](https://docs.cohere.com/docs/embeddings)**: free, official docs. A second provider's take on the same API shape as OpenAI's, useful for seeing what's provider-specific versus universal.
+- **[OpenAI Embeddings and Vector Databases Crash Course](https://www.youtube.com/watch?v=ySus5ZS0b94)** (Adrian Twarog): free, YouTube. A hands-on walkthrough of generating embeddings and storing/querying them in a vector database, the full workflow in one sitting.
 
 Prereqs: [Embeddings](#embeddings).
 
@@ -397,6 +411,7 @@ How a query actually finds its matches: similarity search over the vectors above
 - **[LlamaIndex: Introduction to RAG](https://developers.llamaindex.ai/python/framework/understanding/rag/)**: free, official docs. The clearest map of the moving parts (loading, indexing, retrieving, querying) from a framework built around exactly this problem.
 - **[Vector Search Explained](https://weaviate.io/blog/vector-search-explained)** (Weaviate): free, blog. Explains HNSW and the ANN speed/accuracy tradeoff without requiring a systems background.
 - **[Faiss](https://github.com/facebookresearch/faiss)** (Meta): free, repo + wiki. The library actual similarity search under the hood usually runs on; most people never open it because a managed vector database hides it, but the wiki's tutorial is short and worth the hour.
+- **[Vector Search & Approximate Nearest Neighbors (ANN) | FAISS (HNSW & IVF)](https://www.youtube.com/watch?v=chz74Mtd1AA)** (Mustafa Zaki): free, YouTube. Walks through the two ANN index types you'll actually pick between (HNSW, IVF) directly in Faiss.
 
 Prereqs: [Vector embeddings](#vector-embeddings).
 
@@ -407,6 +422,7 @@ Pure vector search misses exact keyword matches; pure keyword search misses para
 - **[Getting Started with Hybrid Search](https://www.pinecone.io/learn/hybrid-search-intro/)** (Pinecone): free, guide. Explains the dense-plus-sparse combination and the tradeoff of weighting one against the other.
 - **[Cohere Rerank overview](https://docs.cohere.com/docs/rerank-overview)**: free, official docs. The most commonly reached-for reranking API; read this to see what a second-stage reranker actually buys you over retrieval alone.
 - **[Sentence Transformers: Retrieve & Rerank](https://sbert.net/examples/sentence_transformer/applications/retrieve_rerank/README.html)**: free, official docs. A free, self-hosted cross-encoder reranker; most people reach for a paid API without realizing this ships in a library they likely already have installed.
+- **[Don't naive-RAG, do hybrid search instead](https://www.youtube.com/watch?v=d_WwEdxyuGs)** (LLMs for Devs): free, YouTube. Compares hybrid-search implementations across Pinecone, Weaviate, and pgvector plus a reranking step, the concrete version of the tradeoff described above.
 
 Prereqs: [Retrieval basics](#retrieval-basics).
 
@@ -417,6 +433,7 @@ How a document gets split before it's embedded. The chunking decision shapes wha
 - **[5 Levels of Text Splitting](https://github.com/FullStackRetrieval-com/RetrievalTutorials/blob/main/tutorials/LevelsOfTextSplitting/5_Levels_Of_Text_Splitting.ipynb)** (Kamradt): free, notebook. The reference nearly everyone in RAG eventually finds; walks character splitting through semantic and agent-driven chunking with runnable code.
 - **[LangChain: text splitters](https://docs.langchain.com/oss/python/integrations/splitters)**: free, official docs. Practical reference once you know which strategy you want and just need the class to call.
 - **[Is Semantic Chunking Worth the Computational Cost?](https://arxiv.org/abs/2410.13070)**: free, paper. A rare counter-argument paper: tests whether the trendier semantic-chunking approach actually beats naive fixed-size chunks, and finds the answer is often no.
+- **[The 5 Levels Of Text Splitting For Retrieval](https://www.youtube.com/watch?v=8OJC21T2SL4)** (Greg Kamradt): free, YouTube. The video version of the notebook above, from the same author; watch first if you'd rather see the levels demoed before reading code.
 
 Prereqs: [Vector embeddings](#vector-embeddings).
 
@@ -427,6 +444,7 @@ How you know a RAG pipeline is actually retrieving the right context and answeri
 - **[Ragas documentation](https://docs.ragas.io/)**: free, docs. The canonical library for RAG-specific metrics (context precision, faithfulness, answer relevance); the concepts page is useful even without adopting the library.
 - **[Langfuse documentation](https://langfuse.com/docs)**: free, open source. Tracing and evaluation for a live pipeline: see the actual retrieved chunks and prompts behind any given answer.
 - **[Your AI Product Needs Evals](https://hamel.dev/blog/posts/evals/)** (Husain): free, blog post. A more skeptical, practitioner-first take than most vendor docs on what a useful eval loop actually requires.
+- **[RAGAS - Evaluate RAG Pipelines](https://www.youtube.com/watch?v=tqRDHaY923o)** (Fahd Mirza): free, YouTube. A direct demo of Ragas (the docs pick above) actually computing context precision and faithfulness on a pipeline, rather than just reading the metric definitions.
 
 Prereqs: [Retrieval basics](#retrieval-basics), [Evaluation](#evaluation).
 
@@ -471,6 +489,7 @@ Running a fine-tuned or open-weight model yourself instead of calling a provider
 - **[vLLM documentation](https://docs.vllm.ai/en/latest/)**: free, official docs. The throughput-focused serving engine most production open-model deployments are built on.
 - **[Ollama documentation](https://docs.ollama.com/)**: free, official docs. The fastest path to running an open-weight model locally with no infrastructure setup.
 - **[llama.cpp](https://github.com/ggml-org/llama.cpp)**: free, repo. The low-level inference engine underneath Ollama and many other tools; worth knowing it's there once you need something Ollama doesn't expose.
+- **[The State of vLLM](https://www.youtube.com/watch?v=4HPRf9nDZ6Q)** (Anyscale, Ray Summit 2024): free, YouTube, ~35 minutes. A conference talk by core vLLM contributors covering the project's architecture and why it became the default throughput-focused serving engine.
 
 Prereqs: [LoRA and adapters](#lora-and-adapters).
 
