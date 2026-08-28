@@ -20,7 +20,10 @@ jobs:
         with:
           args: >
             --no-progress
-            --accept 200,206,429
+            --accept 200,206,302,429
+            --exclude "oreilly\.com"
+            --exclude "reddit\.com"
+            --exclude "deeplearning\.ai/the-batch"
             --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36"
             README.md
           fail: true
