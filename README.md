@@ -86,7 +86,7 @@ Prereqs: [Math](#math), [Python](#python).
 
 Finding structure without labels: clustering, dimensionality reduction.
 
-- **[An Introduction to Statistical Learning, 2nd ed.](https://www.statlearning.com/)** (James, Witten, Hastie, Tibshirani): free, book, Python and R editions available. The definitive ML book grounded in statistics. Chapters 10 and 12 for unsupervised.
+- **[An Introduction to Statistical Learning, 2nd ed.](https://www.statlearning.com/)** (James, Witten, Hastie, Tibshirani): free, book, Python and R editions available. The definitive ML book grounded in statistics. Chapter 12 for unsupervised.
 - **[StatQuest: Clustering and PCA playlists](https://www.youtube.com/@statquest/playlists)**: free, YouTube. If ISLR feels too dense, watch these first, then read.
 - **[scikit-learn: clustering user guide](https://scikit-learn.org/stable/modules/clustering.html)**: free, official docs. Reach for this when you're about to `pip install` a clustering algorithm and want to know which one to pick.
 
@@ -268,7 +268,7 @@ Prereqs: [Convnets](#convnets).
 
 ### Vision transformers
 
-Applying the transformer architecture from Phase 3 to images by splitting them into patches and treating each patch as a token. Increasingly the default choice over convnets at large data scale.
+Applying the transformer architecture from Phase 4 to images by splitting them into patches and treating each patch as a token. Increasingly the default choice over convnets at large data scale.
 
 - **[An Image is Worth 16x16 Words](https://arxiv.org/abs/2010.11929)** (Dosovitskiy et al.): free, paper. The original ViT paper; shows a plain transformer competing with convnets once pretraining data is large enough.
 - **[Hugging Face: Vision Transformer (ViT)](https://huggingface.co/docs/transformers/model_doc/vit)**: free, official docs. The practical route: load a pretrained ViT and fine-tune it in a few lines.
@@ -600,7 +600,7 @@ Phase 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 in order. Full breadth. ~6-9 months full
 
 ### LLM engineer fast-track
 
-Phase 1, 2 (lighter pass), 3 (lighter pass through PyTorch + training loops), 6, 7, 8, 9, 10, 11. Skips computer vision; goes through classical ML and deep-learning fundamentals at reduced depth. For readers who already program and want the modern LLM/agent/RAG stack fast. ~3-4 months full-time equivalent.
+Phase 1, 2 (lighter pass), 3 (lighter pass through PyTorch + training loops), 4 (tokenization, embeddings, transformer architecture), 6, 7, 8, 9, 10, 11. Skips computer vision and classical NLP tasks; goes through classical ML and deep-learning fundamentals at reduced depth. For readers who already program and want the modern LLM/agent/RAG stack fast. ~3-4 months full-time equivalent.
 
 ---
 
