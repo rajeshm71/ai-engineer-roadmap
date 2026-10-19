@@ -1,6 +1,6 @@
 ## What changed
 
-<!-- Which topic, and what kind of change: new pick, replacement, dead-link fix, TBD fill-in. -->
+<!-- Which topic, and what kind of change: new pick, replacement, dead-link fix, new topic. -->
 
 ## Why this beats what's there (skip if this is a dead-link fix)
 

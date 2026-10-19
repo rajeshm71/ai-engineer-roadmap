@@ -97,7 +97,7 @@ Prereqs: [Supervised learning](#supervised-learning).
 Metrics, cross-validation, train/val/test splits. The most-skipped step and the one that separates working models from broken ones.
 
 - **[scikit-learn: model evaluation user guide](https://scikit-learn.org/stable/modules/model_evaluation.html)**: free, official docs. Canonical reference for every metric name and when to use it.
-- **[Google's Machine Learning Crash Course: Classification](https://developers.google.com/machine-learning/crash-course/classification/video-lecture)**: free, course section. Best intro to precision/recall/AUC and why accuracy alone lies.
+- **[Google's Machine Learning Crash Course: Classification](https://developers.google.com/machine-learning/crash-course/classification)**: free, course section. Best intro to precision/recall/AUC and why accuracy alone lies.
 - **[Designing Machine Learning Systems](https://www.oreilly.com/library/view/designing-machine-learning/9781098107956/)** (Huyen) chapter 6: paid, book. The one book that treats evaluation as a production problem, not a homework problem.
 
 Prereqs: [Supervised learning](#supervised-learning).
@@ -144,7 +144,7 @@ Prereqs: [Math](#math), [Python](#python).
 The deep-learning framework most modern research and a lot of production runs on. Learn it after neural-network basics; you'll use it through the rest of this roadmap.
 
 - **[Deep Learning with PyTorch, 2nd ed.](https://www.manning.com/books/deep-learning-with-pytorch-second-edition)** (Antiga, Stevens, Huang, Viehmann): paid, book. Canonical textbook, written by PyTorch core devs and updated for transformers and generative models.
-- **[PyTorch: 60 Minute Blitz](https://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html)**: free, tutorial, ~2 hours. Fastest way to get a real training loop running.
+- **[PyTorch: 60 Minute Blitz](https://docs.pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html)**: free, tutorial, ~2 hours. Fastest way to get a real training loop running.
 - **[Zero to Hero: makemore series](https://karpathy.ai/zero-to-hero.html)** (Karpathy): free, YouTube. Continuation of the neural-network-basics pick above, now in PyTorch. Best "click" moment for autograd.
 - **[fast.ai Practical Deep Learning](https://course.fast.ai/)**: free, course, ~22 hours. Alternative starting point if you'd rather start from working projects than from theory.
 - **[PyTorch Discuss](https://discuss.pytorch.org/)**: free, forum. Searchable, core devs answer, more useful than Stack Overflow for PyTorch-specific questions.
@@ -155,7 +155,7 @@ Prereqs: [Neural network basics](#neural-network-basics), [Python](#python).
 
 The `for epoch in range(...)` machinery: batches, optimizers, learning-rate schedules, checkpointing.
 
-- **[PyTorch: Training a Classifier tutorial](https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html)**: free, tutorial. The one you'll copy-paste the first ten times you write a training loop.
+- **[PyTorch: Training a Classifier tutorial](https://docs.pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html)**: free, tutorial. The one you'll copy-paste the first ten times you write a training loop.
 - **[fast.ai: lessons 1-4](https://course.fast.ai/)**: free, video lessons. Cover the training loop from a practitioner angle.
 - **[A Recipe for Training Neural Networks](https://karpathy.github.io/2019/04/25/recipe/)** (Karpathy): free, blog post. The one page every practitioner rediscovers eventually. Read it before your first "why isn't this model learning" bug.
 
@@ -175,9 +175,9 @@ Prereqs: [Training loops](#training-loops).
 
 Reusing pretrained models. This is how 90% of modern applied deep learning actually starts.
 
-- **[PyTorch: Transfer Learning Tutorial](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html)**: free, tutorial. Best minimal example: swap the last layer of a ResNet and fine-tune.
+- **[PyTorch: Transfer Learning Tutorial](https://docs.pytorch.org/tutorials/beginner/transfer_learning_tutorial.html)**: free, tutorial. Best minimal example: swap the last layer of a ResNet and fine-tune.
 - **[fast.ai: chapter on transfer learning](https://github.com/fastai/fastbook)**: free, book chapter (Notebook 5). Best explanation that starts from a working example, with code that runs.
-- **[HuggingFace: Transfer Learning](https://huggingface.co/learn/nlp-course/chapter1/4)**: free, course chapter. Transfer learning in the NLP context you'll actually use it in later.
+- **[HuggingFace: Transfer Learning](https://huggingface.co/learn/llm-course/chapter1/4)**: free, course chapter. Transfer learning in the NLP context you'll actually use it in later.
 
 Prereqs: [Training loops](#training-loops).
 
@@ -203,7 +203,7 @@ Turning words, sentences, or documents into vectors so that similarity becomes a
 
 - **[The Illustrated Word2vec](https://jalammar.github.io/illustrated-word2vec/)** (Alammar): free, blog. The standard visual introduction to how word embeddings are learned and what the resulting vector space actually encodes.
 - **[On word embeddings, Part 1](https://www.ruder.io/word-embeddings-1/)** (Ruder): free, blog. Goes deeper than most tutorials into why the different word2vec and GloVe objectives produce different embeddings.
-- **[OpenAI: Vector embeddings guide](https://platform.openai.com/docs/guides/embeddings)**: free, official docs. The practical modern version: how to call an embeddings API and what to do with the vectors it returns.
+- **[OpenAI: Vector embeddings guide](https://developers.openai.com/api/docs/guides/embeddings)**: free, official docs. The practical modern version: how to call an embeddings API and what to do with the vectors it returns.
 - **[Word Embedding and Word2Vec, Clearly Explained!!!](https://www.youtube.com/watch?v=viZrOnJclY0)** (StatQuest with Josh Starmer): free, YouTube. Same clear-explanation style as the classical-ML picks above, applied to how word2vec actually learns a vector space.
 
 Prereqs: [Python](#python), [Math](#math).
@@ -273,7 +273,7 @@ Applying the transformer architecture from Phase 4 to images by splitting them i
 - **[An Image is Worth 16x16 Words](https://arxiv.org/abs/2010.11929)** (Dosovitskiy et al.): free, paper. The original ViT paper; shows a plain transformer competing with convnets once pretraining data is large enough.
 - **[Hugging Face: Vision Transformer (ViT)](https://huggingface.co/docs/transformers/model_doc/vit)**: free, official docs. The practical route: load a pretrained ViT and fine-tune it in a few lines.
 - **[Hugging Face Computer Vision Course: ViT for image classification](https://huggingface.co/learn/computer-vision-course/unit3/vision-transformers/vision-transformers-for-image-classification)**: free, course chapter. A newer, less-discovered course that walks the patch-embedding-to-classification pipeline step by step.
-- **[ViT (Vision Transformer) - An Image Is Worth 16x16 Words (Paper Explained)](https://www.youtube.com/watch?v=8phM16htKbU)** (Yannic Kilcher): free, YouTube, ~30 minutes. A thorough walkthrough of the original paper for anyone who wants the reasoning behind ViT, not just the API to run one.
+- **[An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale (Paper Explained)](https://www.youtube.com/watch?v=TrdevFK_am4)** (Yannic Kilcher): free, YouTube, ~30 minutes. A thorough walkthrough of the original paper for anyone who wants the reasoning behind ViT, not just the API to run one.
 
 Prereqs: [Transformer architecture](#transformer-architecture), [Convnets](#convnets).
 
@@ -297,8 +297,8 @@ Prereqs: [Transformer architecture](#transformer-architecture).
 
 The craft of getting the model to do what you want. Less mystical than the internet makes it sound; a few real principles you can learn in a weekend.
 
-- **[Anthropic: Prompt Engineering Overview](https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/overview)**: free, official docs. Best structured intro from a model builder.
-- **[OpenAI: Prompt engineering](https://platform.openai.com/docs/guides/prompt-engineering)**: free, official docs. Best complement to Anthropic's guide.
+- **[Anthropic: Prompt Engineering Overview](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview)**: free, official docs. Best structured intro from a model builder.
+- **[OpenAI: Prompt engineering](https://developers.openai.com/api/docs/guides/prompt-engineering)**: free, official docs. Best complement to Anthropic's guide.
 - **[Learn Prompting](https://learnprompting.org/)**: free, interactive course. Best full-course treatment if you want structured lessons.
 - **[Simon Willison's blog: llms tag](https://simonwillison.net/tags/llms/)**: free, blog. The most consistently useful practitioner blog on prompting; read the highlights.
 - **[AI prompt engineering: A deep dive](https://www.youtube.com/watch?v=T9aRN5JkmL8)** (Anthropic): free, YouTube. Anthropic's own prompt engineering team walking through their principles directly, rather than a third party's summary of them.
@@ -310,8 +310,8 @@ Prereqs: [How LLMs work](#how-llms-work).
 Getting JSON out of an LLM reliably. This is the technique underneath every real LLM app.
 
 - **[Instructor library docs](https://python.useinstructor.com/)**: free, docs. The canonical library for Pydantic-schema-driven LLM extraction. Multi-provider.
-- **[OpenAI: Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs)**: free, official docs. Best treatment of provider-native structured output (versus library-mediated).
-- **[Pydantic AI docs](https://ai.pydantic.dev/)**: free, docs. Type-safe agent framework built by the Pydantic team. Read alongside Instructor to see the two shapes.
+- **[OpenAI: Structured Outputs](https://developers.openai.com/api/docs/guides/structured-outputs)**: free, official docs. Best treatment of provider-native structured output (versus library-mediated).
+- **[Pydantic AI docs](https://pydantic.dev/docs/ai/overview/)**: free, docs. Type-safe agent framework built by the Pydantic team. Read alongside Instructor to see the two shapes.
 - **[OpenAI DevDay 2024: Structured outputs for reliable applications](https://www.youtube.com/watch?v=kE4BkATIl9c)** (OpenAI): free, YouTube. The team that built the feature explaining why provider-native structured output exists and what it fixes over prompt-only JSON.
 
 Prereqs: [Prompt engineering](#prompt-engineering).
@@ -323,7 +323,7 @@ How you know your LLM app actually works. Different from classical ML evaluation
 - **[Ragas documentation](https://docs.ragas.io/)**: free, docs. Canonical library for RAG evaluation; the metrics section is the useful part even if you don't use the library.
 - **[Eugene Yan: Evals blog series](https://eugeneyan.com/writing/evals/)**: free, blog. The most practical treatment of building evals for real LLM systems.
 - **[OpenAI Evals](https://github.com/openai/evals)**: free, repo. Canonical open-source eval framework; read the examples folder for shapes to copy.
-- **[How to Systematically Setup LLM Evals](https://www.youtube.com/watch?v=a3SMraZWNNs)** (Datalumina): free, YouTube. A practical walkthrough of unit tests, human/model evals, and LLM-as-a-judge in one place, useful for seeing the pieces assembled rather than read about separately.
+- **[How to Systematically Setup LLM Evals](https://www.youtube.com/watch?v=a3SMraZWNNs)** (Dave Ebbelaar): free, YouTube. A practical walkthrough of unit tests, human/model evals, and LLM-as-a-judge in one place, useful for seeing the pieces assembled rather than read about separately.
 
 Prereqs: [Prompt engineering](#prompt-engineering).
 
@@ -331,9 +331,9 @@ Prereqs: [Prompt engineering](#prompt-engineering).
 
 The Python SDKs you'll actually call: OpenAI, Anthropic, Google.
 
-- **[OpenAI Python SDK docs](https://platform.openai.com/docs/libraries)**: free, docs. Canonical.
-- **[Anthropic Python SDK docs](https://docs.claude.com/en/api/client-sdks)**: free, docs. Canonical.
-- **[Google Gen AI SDK docs](https://ai.google.dev/gemini-api/docs/quickstart)**: free, docs. Canonical.
+- **[OpenAI Python SDK docs](https://developers.openai.com/api/docs/libraries)**: free, docs. Canonical.
+- **[Anthropic Python SDK docs](https://platform.claude.com/docs/en/cli-sdks-libraries/overview)**: free, docs. Canonical.
+- **[Google Gen AI SDK docs](https://ai.google.dev/gemini-api/docs/get-started)**: free, docs. Canonical.
 - **[LiteLLM docs](https://docs.litellm.ai/)**: free, docs. One interface across ~100 LLM providers; read the "getting started" and provider-config pages.
 
 Prereqs: [Prompt engineering](#prompt-engineering).
@@ -349,9 +349,9 @@ Build agents in at least two frameworks. See sibling project [real-world-agents]
 Letting a model call functions you define, so it can look things up or take actions instead of only generating text. The mechanism underneath almost everything else in this phase.
 
 - **[Claude: Tool use overview](https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview)**: free, official docs. Explains client-side versus server-side tools and how Claude decides when to call one.
-- **[OpenAI: Function calling guide](https://platform.openai.com/docs/guides/function-calling)**: free, official docs. The equivalent mechanism on the other major provider; read both to see what's provider-specific.
-- **[PydanticAI: Tools](https://ai.pydantic.dev/tools/)**: free, official docs. Tool definitions as typed Python functions with automatic schema generation, instead of hand-written JSON schemas.
-- **[Function Calling Demo at OpenAI DevDay](https://www.youtube.com/watch?v=D1Oqt7vig9k)** (OpenAI, Nov 2023): free, YouTube. The original demo introducing function calling, the mechanism most tool-use APIs since have converged on.
+- **[OpenAI: Function calling guide](https://developers.openai.com/api/docs/guides/function-calling)**: free, official docs. The equivalent mechanism on the other major provider; read both to see what's provider-specific.
+- **[PydanticAI: Tools](https://pydantic.dev/docs/ai/tools-toolsets/tools/)**: free, official docs. Tool definitions as typed Python functions with automatic schema generation, instead of hand-written JSON schemas.
+- **[Function Calling Demo at OpenAI DevDay](https://www.youtube.com/watch?v=D1Oqt7vig9k)** (CX, AI, and Outsourcing): free, YouTube, ~1 minute. A short clip of the function-calling demo from OpenAI's November 2023 DevDay keynote; the quickest way to watch a model drive a live app through function calls.
 
 Prereqs: [Structured output](#structured-output).
 
@@ -371,7 +371,7 @@ Splitting a task across multiple agents, each with a narrower role, instead of o
 - **[Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents)** (Anthropic): free, official blog. Draws the line between a workflow (fixed code paths) and an agent (the model directs its own steps), and covers five common patterns before multi-agent is even necessary.
 - **[How we built our multi-agent research system](https://www.anthropic.com/engineering/multi-agent-research-system)** (Anthropic): free, official blog. Concrete, with real numbers (token cost, failure modes) from a production multi-agent system, rather than an architecture diagram alone.
 - **[CrewAI documentation](https://docs.crewai.com/)**: free, official docs. The framework built specifically around role-based multi-agent "crews"; see the pattern as a first-class abstraction rather than something you assemble yourself.
-- **[Anthropic: How to Build Multi-Agent Systems](https://www.youtube.com/watch?v=0HljLKVdtjo)** (Anthropic): free, YouTube. Drawn from the same production system as the writeup above, from the team that built it.
+- **[Anthropic: How to Build Multi-Agent Systems](https://www.youtube.com/watch?v=0HljLKVdtjo)** (Alejandro AO): free, YouTube, ~38 minutes. A walkthrough of the Anthropic writeup above: when a multi-agent setup is worth it, plus the prompt, tool-design, and evaluation lessons it reports.
 
 Prereqs: [ReAct pattern](#react-pattern).
 
@@ -382,7 +382,7 @@ Four different opinions on how much structure an agent framework should impose. 
 - **[LangGraph](https://docs.langchain.com/oss/python/langgraph/overview)**: free, official docs. Graph-based orchestration; the most explicit about control flow, at the cost of more boilerplate.
 - **[CrewAI documentation](https://docs.crewai.com/)**: free, official docs. Role-based abstraction (agents, crews, tasks); fastest to a working multi-agent prototype.
 - **[OpenAI Agents SDK](https://openai.github.io/openai-agents-python/)**: free, official docs. Lightweight, provider-authored, minimal abstraction over the tool-use loop itself.
-- **[PydanticAI documentation](https://ai.pydantic.dev/)**: free, official docs. Type-safe agents and dependency injection built by the Pydantic team; the newest of the four and the least likely to already be on your radar.
+- **[PydanticAI documentation](https://pydantic.dev/docs/ai/overview/)**: free, official docs. Type-safe agents and dependency injection built by the Pydantic team; the newest of the four and the least likely to already be on your radar.
 
 Prereqs: [Tool use](#tool-use).
 
@@ -418,10 +418,10 @@ Prereqs: [Vector embeddings](#vector-embeddings).
 
 Pure vector search misses exact keyword matches; pure keyword search misses paraphrases and synonyms. Hybrid search runs both and combines the scores; reranking then re-scores the combined candidates with a model that reads the query and each candidate together.
 
-- **[Getting Started with Hybrid Search](https://www.pinecone.io/learn/hybrid-search-intro/)** (Pinecone): free, guide. Explains the dense-plus-sparse combination and the tradeoff of weighting one against the other.
+- **[Pinecone: Hybrid search overview](https://docs.pinecone.io/guides/search/hybrid-search)**: free, official docs. Lays out the ways to combine a keyword (sparse) signal with a semantic (dense) one: rank fusion, or a single index with a weight that trades one off against the other.
 - **[Cohere Rerank overview](https://docs.cohere.com/docs/rerank-overview)**: free, official docs. The most commonly reached-for reranking API; read this to see what a second-stage reranker actually buys you over retrieval alone.
 - **[Sentence Transformers: Retrieve & Rerank](https://sbert.net/examples/sentence_transformer/applications/retrieve_rerank/README.html)**: free, official docs. A free, self-hosted cross-encoder reranker; most people reach for a paid API without realizing this ships in a library they likely already have installed.
-- **[Don't naive-RAG, do hybrid search instead](https://www.youtube.com/watch?v=d_WwEdxyuGs)** (LLMs for Devs): free, YouTube. Compares hybrid-search implementations across Pinecone, Weaviate, and pgvector plus a reranking step, the concrete version of the tradeoff described above.
+- **[Don't naive-RAG, do hybrid search instead](https://www.youtube.com/watch?v=d_WwEdxyuGs)** (AI with Hai): free, YouTube. Compares hybrid-search implementations across Pinecone, Weaviate, and pgvector plus a reranking step, the concrete version of the tradeoff described above.
 
 Prereqs: [Retrieval basics](#retrieval-basics).
 
@@ -521,7 +521,7 @@ Prereqs: [Deployment](#deployment-hf-spaces-modal-replicate).
 
 Tracking which model (or prompt, or fine-tuned adapter) produced which result, so a regression can be traced back and rolled back.
 
-- **[W&B Registry](https://docs.wandb.ai/models/registry)**: free tier, official docs. Versioning, lineage, and promotion stages for models treated as first-class tracked artifacts.
+- **[W&B Registry](https://docs.coreweave.com/products/registry)**: free tier, official docs. Versioning, lineage, and promotion stages for models treated as first-class tracked artifacts.
 - **[DVC documentation](https://dvc.org/doc)**: free, official docs. Git-style versioning for models and datasets together; less turnkey than a hosted registry but keeps everything in your own repo.
 
 Prereqs: [Deployment](#deployment-hf-spaces-modal-replicate).
@@ -541,7 +541,7 @@ Prereqs: [Evaluation and observability](#evaluation-and-observability).
 Checking inputs and outputs against policy before they reach a user or an action executes: jailbreak attempts, PII leakage, off-topic responses, unsafe tool calls.
 
 - **[OWASP Top 10 for LLM Applications](https://genai.owasp.org/)**: free, official project. The security-first framing of the same failure modes; treats prompt injection and data leakage as first-class vulnerabilities to defend against, not edge cases.
-- **[NeMo Guardrails](https://docs.nvidia.com/nemo/guardrails/latest/about/overview.html)** (NVIDIA): free, official docs. Open-source, programmable guardrails with a dialog-flow language, rather than a single input/output filter.
+- **[NeMo Guardrails](https://docs.nvidia.com/nemo/guardrails/latest/about-nemo-guardrails-library/overview)** (NVIDIA): free, official docs. Open-source, programmable guardrails with a dialog-flow language, rather than a single input/output filter.
 
 Prereqs: [Structured output](#structured-output).
 
@@ -614,34 +614,34 @@ Every topic and its picks in one table, for scanning or searching instead of rea
 | [CLI / Linux](#cli--linux) | [The Missing Semester of Your CS Education](https://missing.csail.mit.edu/)<br>[The Linux Command Line](https://linuxcommand.org/tlcl.php) |
 | [Supervised learning](#supervised-learning) | [Machine Learning Specialization](https://www.coursera.org/specializations/machine-learning-introduction)<br>[Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow, 3rd ed.](https://www.oreilly.com/library/view/hands-on-machine-learning/9781098125967/)<br>[StatQuest with Josh Starmer](https://www.youtube.com/@statquest) |
 | [Unsupervised learning](#unsupervised-learning) | [An Introduction to Statistical Learning, 2nd ed.](https://www.statlearning.com/)<br>[StatQuest: Clustering and PCA playlists](https://www.youtube.com/@statquest/playlists)<br>[scikit-learn: clustering user guide](https://scikit-learn.org/stable/modules/clustering.html) |
-| [Model evaluation](#model-evaluation) | [scikit-learn: model evaluation user guide](https://scikit-learn.org/stable/modules/model_evaluation.html)<br>[Google's Machine Learning Crash Course: Classification](https://developers.google.com/machine-learning/crash-course/classification/video-lecture)<br>[Designing Machine Learning Systems](https://www.oreilly.com/library/view/designing-machine-learning/9781098107956/) |
+| [Model evaluation](#model-evaluation) | [scikit-learn: model evaluation user guide](https://scikit-learn.org/stable/modules/model_evaluation.html)<br>[Google's Machine Learning Crash Course: Classification](https://developers.google.com/machine-learning/crash-course/classification)<br>[Designing Machine Learning Systems](https://www.oreilly.com/library/view/designing-machine-learning/9781098107956/) |
 | [Feature engineering](#feature-engineering) | [Feature Engineering for Machine Learning](https://www.oreilly.com/library/view/feature-engineering-for/9781491953235/)<br>[Kaggle Learn: Feature Engineering](https://www.kaggle.com/learn/feature-engineering)<br>[Applied Predictive Modeling](http://appliedpredictivemodeling.com/)<br>[100 Days of Machine Learning](https://www.youtube.com/playlist?list=PLKnIA16_Rmvbr7zKYQuBfsVkjoLcJgxHH) |
 | [scikit-learn](#scikit-learn) | [scikit-learn: user guide](https://scikit-learn.org/stable/user_guide.html)<br>[Hands-On ML](https://www.oreilly.com/library/view/hands-on-machine-learning/9781098125967/)<br>[Machine Learning in Python with scikit-learn](https://www.fun-mooc.fr/en/courses/machine-learning-python-scikit-learn/) |
 | [Neural network basics](#neural-network-basics) | [Deep Learning Specialization](https://www.coursera.org/specializations/deep-learning)<br>[3Blue1Brown: Neural Networks playlist](https://www.3blue1brown.com/topics/neural-networks)<br>[Neural Networks: Zero to Hero](https://karpathy.ai/zero-to-hero.html) |
-| [PyTorch](#pytorch) | [Deep Learning with PyTorch, 2nd ed.](https://www.manning.com/books/deep-learning-with-pytorch-second-edition)<br>[PyTorch: 60 Minute Blitz](https://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html)<br>[Zero to Hero: makemore series](https://karpathy.ai/zero-to-hero.html)<br>[fast.ai Practical Deep Learning](https://course.fast.ai/)<br>[PyTorch Discuss](https://discuss.pytorch.org/) |
-| [Training loops](#training-loops) | [PyTorch: Training a Classifier tutorial](https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html)<br>[fast.ai: lessons 1-4](https://course.fast.ai/)<br>[A Recipe for Training Neural Networks](https://karpathy.github.io/2019/04/25/recipe/) |
+| [PyTorch](#pytorch) | [Deep Learning with PyTorch, 2nd ed.](https://www.manning.com/books/deep-learning-with-pytorch-second-edition)<br>[PyTorch: 60 Minute Blitz](https://docs.pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html)<br>[Zero to Hero: makemore series](https://karpathy.ai/zero-to-hero.html)<br>[fast.ai Practical Deep Learning](https://course.fast.ai/)<br>[PyTorch Discuss](https://discuss.pytorch.org/) |
+| [Training loops](#training-loops) | [PyTorch: Training a Classifier tutorial](https://docs.pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html)<br>[fast.ai: lessons 1-4](https://course.fast.ai/)<br>[A Recipe for Training Neural Networks](https://karpathy.github.io/2019/04/25/recipe/) |
 | [Regularization](#regularization) | [Deep Learning](https://www.deeplearningbook.org/)<br>[Sebastian Raschka's blog: regularization posts](https://sebastianraschka.com/blog/)<br>[Deep Learning Specialization, course 2](https://www.coursera.org/learn/deep-neural-network) |
-| [Transfer learning](#transfer-learning) | [PyTorch: Transfer Learning Tutorial](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html)<br>[fast.ai: chapter on transfer learning](https://github.com/fastai/fastbook)<br>[HuggingFace: Transfer Learning](https://huggingface.co/learn/nlp-course/chapter1/4) |
+| [Transfer learning](#transfer-learning) | [PyTorch: Transfer Learning Tutorial](https://docs.pytorch.org/tutorials/beginner/transfer_learning_tutorial.html)<br>[fast.ai: chapter on transfer learning](https://github.com/fastai/fastbook)<br>[HuggingFace: Transfer Learning](https://huggingface.co/learn/llm-course/chapter1/4) |
 | [Tokenization](#tokenization) | [Hugging Face LLM Course: tokenizers](https://huggingface.co/learn/llm-course/chapter6/1)<br>[Let's build the GPT Tokenizer](https://www.youtube.com/watch?v=zduSFxRajkE)<br>[tiktoken](https://github.com/openai/tiktoken) |
-| [Embeddings](#embeddings) | [The Illustrated Word2vec](https://jalammar.github.io/illustrated-word2vec/)<br>[On word embeddings, Part 1](https://www.ruder.io/word-embeddings-1/)<br>[OpenAI: Vector embeddings guide](https://platform.openai.com/docs/guides/embeddings)<br>[Word Embedding and Word2Vec, Clearly Explained!!!](https://www.youtube.com/watch?v=viZrOnJclY0) |
+| [Embeddings](#embeddings) | [The Illustrated Word2vec](https://jalammar.github.io/illustrated-word2vec/)<br>[On word embeddings, Part 1](https://www.ruder.io/word-embeddings-1/)<br>[OpenAI: Vector embeddings guide](https://developers.openai.com/api/docs/guides/embeddings)<br>[Word Embedding and Word2Vec, Clearly Explained!!!](https://www.youtube.com/watch?v=viZrOnJclY0) |
 | [Transformer architecture](#transformer-architecture) | [Attention Is All You Need](https://arxiv.org/abs/1706.03762)<br>[The Annotated Transformer](https://nlp.seas.harvard.edu/annotated-transformer/)<br>[Formal Algorithms for Transformers](https://arxiv.org/abs/2207.09238)<br>[Attention in transformers, step-by-step](https://www.youtube.com/watch?v=eMlx5fFNoYc) |
 | [Classical NLP tasks](#classical-nlp-tasks) | [Advanced NLP with spaCy](https://course.spacy.io/en/)<br>[Speech and Language Processing, 3rd ed. draft](https://web.stanford.edu/~jurafsky/slp3/)<br>[spaCy 101](https://spacy.io/usage/spacy-101)<br>[Natural Language Processing with spaCy & Python: Course for Beginners](https://www.youtube.com/watch?v=dIUTsFT2MeQ) |
 | [Image basics](#image-basics) | [Practical Deep Learning for Coders](https://course.fast.ai/)<br>[Torchvision: transforms](https://docs.pytorch.org/vision/stable/transforms.html)<br>[But what is a convolution?](https://www.3blue1brown.com/lessons/convolutions/) |
 | [Convnets](#convnets) | [CS231n: Convolutional Neural Networks](https://cs231n.github.io/convolutional-networks/)<br>[A Guide to Convolution Arithmetic for Deep Learning](https://arxiv.org/abs/1603.07285)<br>[CS231n Winter 2016: Lecture 7: Convolutional Neural Networks](https://www.youtube.com/watch?v=LxfUGhug-iQ) |
 | [Object detection](#object-detection) | [Ultralytics YOLO: Object Detection](https://docs.ultralytics.com/tasks/detect)<br>[TorchVision Object Detection Finetuning Tutorial](https://docs.pytorch.org/tutorials/intermediate/torchvision_tutorial.html)<br>[mAP (mean Average Precision) for Object Detection](https://naokishibuya.github.io/blog/2022-05-27-object-detection-mean-average-precision/) |
-| [Vision transformers](#vision-transformers) | [An Image is Worth 16x16 Words](https://arxiv.org/abs/2010.11929)<br>[Hugging Face: Vision Transformer (ViT)](https://huggingface.co/docs/transformers/model_doc/vit)<br>[Hugging Face Computer Vision Course: ViT for image classification](https://huggingface.co/learn/computer-vision-course/unit3/vision-transformers/vision-transformers-for-image-classification)<br>[ViT (Vision Transformer) - An Image Is Worth 16x16 Words (Paper Explained)](https://www.youtube.com/watch?v=8phM16htKbU) |
+| [Vision transformers](#vision-transformers) | [An Image is Worth 16x16 Words](https://arxiv.org/abs/2010.11929)<br>[Hugging Face: Vision Transformer (ViT)](https://huggingface.co/docs/transformers/model_doc/vit)<br>[Hugging Face Computer Vision Course: ViT for image classification](https://huggingface.co/learn/computer-vision-course/unit3/vision-transformers/vision-transformers-for-image-classification)<br>[An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale (Paper Explained)](https://www.youtube.com/watch?v=TrdevFK_am4) |
 | [How LLMs work](#how-llms-work) | [Intro to Large Language Models](https://www.youtube.com/watch?v=zjkBMFhNj_g)<br>[Let's build GPT: from scratch, in code, spelled out](https://www.youtube.com/watch?v=kCc8FmEb1nY)<br>[The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/) |
-| [Prompt engineering](#prompt-engineering) | [Anthropic: Prompt Engineering Overview](https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/overview)<br>[OpenAI: Prompt engineering](https://platform.openai.com/docs/guides/prompt-engineering)<br>[Learn Prompting](https://learnprompting.org/)<br>[Simon Willison's blog: llms tag](https://simonwillison.net/tags/llms/)<br>[AI prompt engineering: A deep dive](https://www.youtube.com/watch?v=T9aRN5JkmL8) |
-| [Structured output](#structured-output) | [Instructor library docs](https://python.useinstructor.com/)<br>[OpenAI: Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs)<br>[Pydantic AI docs](https://ai.pydantic.dev/)<br>[OpenAI DevDay 2024: Structured outputs for reliable applications](https://www.youtube.com/watch?v=kE4BkATIl9c) |
+| [Prompt engineering](#prompt-engineering) | [Anthropic: Prompt Engineering Overview](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview)<br>[OpenAI: Prompt engineering](https://developers.openai.com/api/docs/guides/prompt-engineering)<br>[Learn Prompting](https://learnprompting.org/)<br>[Simon Willison's blog: llms tag](https://simonwillison.net/tags/llms/)<br>[AI prompt engineering: A deep dive](https://www.youtube.com/watch?v=T9aRN5JkmL8) |
+| [Structured output](#structured-output) | [Instructor library docs](https://python.useinstructor.com/)<br>[OpenAI: Structured Outputs](https://developers.openai.com/api/docs/guides/structured-outputs)<br>[Pydantic AI docs](https://pydantic.dev/docs/ai/overview/)<br>[OpenAI DevDay 2024: Structured outputs for reliable applications](https://www.youtube.com/watch?v=kE4BkATIl9c) |
 | [Evaluation](#evaluation) | [Ragas documentation](https://docs.ragas.io/)<br>[Eugene Yan: Evals blog series](https://eugeneyan.com/writing/evals/)<br>[OpenAI Evals](https://github.com/openai/evals)<br>[How to Systematically Setup LLM Evals](https://www.youtube.com/watch?v=a3SMraZWNNs) |
-| [Provider SDKs](#provider-sdks) | [OpenAI Python SDK docs](https://platform.openai.com/docs/libraries)<br>[Anthropic Python SDK docs](https://docs.claude.com/en/api/client-sdks)<br>[Google Gen AI SDK docs](https://ai.google.dev/gemini-api/docs/quickstart)<br>[LiteLLM docs](https://docs.litellm.ai/) |
-| [Tool use](#tool-use) | [Claude: Tool use overview](https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview)<br>[OpenAI: Function calling guide](https://platform.openai.com/docs/guides/function-calling)<br>[PydanticAI: Tools](https://ai.pydantic.dev/tools/)<br>[Function Calling Demo at OpenAI DevDay](https://www.youtube.com/watch?v=D1Oqt7vig9k) |
+| [Provider SDKs](#provider-sdks) | [OpenAI Python SDK docs](https://developers.openai.com/api/docs/libraries)<br>[Anthropic Python SDK docs](https://platform.claude.com/docs/en/cli-sdks-libraries/overview)<br>[Google Gen AI SDK docs](https://ai.google.dev/gemini-api/docs/get-started)<br>[LiteLLM docs](https://docs.litellm.ai/) |
+| [Tool use](#tool-use) | [Claude: Tool use overview](https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview)<br>[OpenAI: Function calling guide](https://developers.openai.com/api/docs/guides/function-calling)<br>[PydanticAI: Tools](https://pydantic.dev/docs/ai/tools-toolsets/tools/)<br>[Function Calling Demo at OpenAI DevDay](https://www.youtube.com/watch?v=D1Oqt7vig9k) |
 | [ReAct pattern](#react-pattern) | [ReAct: Synergizing Reasoning and Acting in Language Models](https://arxiv.org/abs/2210.03629)<br>[LLM Powered Autonomous Agents](https://lilianweng.github.io/posts/2023-06-23-agent/) |
 | [Multi-agent collaboration](#multi-agent-collaboration) | [Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents)<br>[How we built our multi-agent research system](https://www.anthropic.com/engineering/multi-agent-research-system)<br>[CrewAI documentation](https://docs.crewai.com/)<br>[Anthropic: How to Build Multi-Agent Systems](https://www.youtube.com/watch?v=0HljLKVdtjo) |
-| [Framework survey (LangGraph, CrewAI, OpenAI Agents SDK, PydanticAI)](#framework-survey-langgraph-crewai-openai-agents-sdk-pydanticai) | [LangGraph](https://docs.langchain.com/oss/python/langgraph/overview)<br>[CrewAI documentation](https://docs.crewai.com/)<br>[OpenAI Agents SDK](https://openai.github.io/openai-agents-python/)<br>[PydanticAI documentation](https://ai.pydantic.dev/) |
+| [Framework survey (LangGraph, CrewAI, OpenAI Agents SDK, PydanticAI)](#framework-survey-langgraph-crewai-openai-agents-sdk-pydanticai) | [LangGraph](https://docs.langchain.com/oss/python/langgraph/overview)<br>[CrewAI documentation](https://docs.crewai.com/)<br>[OpenAI Agents SDK](https://openai.github.io/openai-agents-python/)<br>[PydanticAI documentation](https://pydantic.dev/docs/ai/overview/) |
 | [Vector embeddings](#vector-embeddings) | [Pinecone: Learning Center](https://www.pinecone.io/learn/)<br>[What are embeddings?](https://vickiboykis.com/what_are_embeddings/)<br>[Cohere: Embeddings documentation](https://docs.cohere.com/docs/embeddings)<br>[OpenAI Embeddings and Vector Databases Crash Course](https://www.youtube.com/watch?v=ySus5ZS0b94) |
 | [Retrieval basics](#retrieval-basics) | [LlamaIndex: Introduction to RAG](https://developers.llamaindex.ai/python/framework/understanding/rag/)<br>[Vector Search Explained](https://weaviate.io/blog/vector-search-explained)<br>[Faiss](https://github.com/facebookresearch/faiss)<br>[Vector Search & Approximate Nearest Neighbors (ANN) \| FAISS (HNSW & IVF)](https://www.youtube.com/watch?v=chz74Mtd1AA) |
-| [Hybrid search + reranking](#hybrid-search--reranking) | [Getting Started with Hybrid Search](https://www.pinecone.io/learn/hybrid-search-intro/)<br>[Cohere Rerank overview](https://docs.cohere.com/docs/rerank-overview)<br>[Sentence Transformers: Retrieve & Rerank](https://sbert.net/examples/sentence_transformer/applications/retrieve_rerank/README.html)<br>[Don't naive-RAG, do hybrid search instead](https://www.youtube.com/watch?v=d_WwEdxyuGs) |
+| [Hybrid search + reranking](#hybrid-search--reranking) | [Pinecone: Hybrid search overview](https://docs.pinecone.io/guides/search/hybrid-search)<br>[Cohere Rerank overview](https://docs.cohere.com/docs/rerank-overview)<br>[Sentence Transformers: Retrieve & Rerank](https://sbert.net/examples/sentence_transformer/applications/retrieve_rerank/README.html)<br>[Don't naive-RAG, do hybrid search instead](https://www.youtube.com/watch?v=d_WwEdxyuGs) |
 | [Chunking strategies](#chunking-strategies) | [5 Levels of Text Splitting](https://github.com/FullStackRetrieval-com/RetrievalTutorials/blob/main/tutorials/LevelsOfTextSplitting/5_Levels_Of_Text_Splitting.ipynb)<br>[LangChain: text splitters](https://docs.langchain.com/oss/python/integrations/splitters)<br>[Is Semantic Chunking Worth the Computational Cost?](https://arxiv.org/abs/2410.13070)<br>[The 5 Levels Of Text Splitting For Retrieval](https://www.youtube.com/watch?v=8OJC21T2SL4) |
 | [Evaluation and observability](#evaluation-and-observability) | [Ragas documentation](https://docs.ragas.io/)<br>[Langfuse documentation](https://langfuse.com/docs)<br>[Your AI Product Needs Evals](https://hamel.dev/blog/posts/evals/)<br>[RAGAS - Evaluate RAG Pipelines](https://www.youtube.com/watch?v=tqRDHaY923o) |
 | [When to fine-tune](#when-to-fine-tune) | [Patterns for Building LLM-based Systems & Products](https://eugeneyan.com/writing/llm-patterns/)<br>[PEFT documentation](https://huggingface.co/docs/peft/) |
@@ -650,9 +650,9 @@ Every topic and its picks in one table, for scanning or searching instead of rea
 | [Open-model serving](#open-model-serving) | [vLLM documentation](https://docs.vllm.ai/en/latest/)<br>[Ollama documentation](https://docs.ollama.com/)<br>[llama.cpp](https://github.com/ggml-org/llama.cpp)<br>[The State of vLLM](https://www.youtube.com/watch?v=4HPRf9nDZ6Q) |
 | [Deployment (HF Spaces, Modal, Replicate)](#deployment-hf-spaces-modal-replicate) | [Hugging Face Spaces](https://huggingface.co/docs/hub/spaces)<br>[Modal documentation](https://modal.com/docs)<br>[Replicate documentation](https://replicate.com/docs) |
 | [Monitoring: cost, latency](#monitoring-cost-latency) | [An Introduction to Observability for LLM-based applications using OpenTelemetry](https://opentelemetry.io/blog/2024/llm-observability/)<br>[Data Distribution Shifts and Monitoring](https://huyenchip.com/2022/02/07/data-distribution-shifts-and-monitoring.html) |
-| [Model versioning](#model-versioning) | [W&B Registry](https://docs.wandb.ai/models/registry)<br>[DVC documentation](https://dvc.org/doc) |
+| [Model versioning](#model-versioning) | [W&B Registry](https://docs.coreweave.com/products/registry)<br>[DVC documentation](https://dvc.org/doc) |
 | [Observability (Langfuse, Helicone, Phoenix)](#observability-langfuse-helicone-phoenix) | [Langfuse documentation](https://langfuse.com/docs)<br>[Helicone documentation](https://docs.helicone.ai/getting-started/quick-start)<br>[Arize Phoenix](https://arize.com/docs/phoenix) |
-| [Safety and guardrails](#safety-and-guardrails) | [OWASP Top 10 for LLM Applications](https://genai.owasp.org/)<br>[NeMo Guardrails](https://docs.nvidia.com/nemo/guardrails/latest/about/overview.html) |
+| [Safety and guardrails](#safety-and-guardrails) | [OWASP Top 10 for LLM Applications](https://genai.owasp.org/)<br>[NeMo Guardrails](https://docs.nvidia.com/nemo/guardrails/latest/about-nemo-guardrails-library/overview) |
 | [Weekly newsletters](#weekly-newsletters) | [The Batch](https://www.deeplearning.ai/the-batch/)<br>[Ahead of AI](https://magazine.sebastianraschka.com/) |
 | [Communities](#communities) | [r/MachineLearning](https://www.reddit.com/r/MachineLearning/)<br>[r/LocalLLaMA](https://www.reddit.com/r/LocalLLaMA/)<br>[Latent Space](https://www.latent.space/) |
 | [Papers to track](#papers-to-track) | [Hugging Face Papers](https://huggingface.co/papers)<br>[arxiv-sanity-lite](https://github.com/karpathy/arxiv-sanity-lite) |

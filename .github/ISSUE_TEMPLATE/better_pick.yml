@@ -1,5 +1,5 @@
 name: Better pick
-description: Propose replacing a resource, or filling in a TBD topic
+description: Propose replacing a resource, or adding a missing topic
 labels: ["better-pick"]
 body:
   - type: input
@@ -12,7 +12,7 @@ body:
   - type: input
     id: current
     attributes:
-      label: Current pick (leave blank if the topic is TBD)
+      label: Current pick (leave blank if proposing a new topic)
       placeholder: "Title of the resource being replaced"
     validations:
       required: false
