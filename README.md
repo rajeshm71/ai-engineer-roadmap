@@ -24,7 +24,7 @@ A path through becoming an AI engineer: programming and math first, then classic
 
 ## Phase 1: Prerequisites
 
-Install packages, use git, do linear algebra, run bash. If you already program, move quickly through this phase; otherwise these are the basics everyone needs.
+Install packages, wrangle data with pandas and SQL, do linear algebra, run bash, use git. If you already program, move quickly through this phase; otherwise these are the basics everyone needs.
 
 ### Python
 
@@ -34,6 +34,28 @@ The one language modern AI runs on. Get to the point where you can read someone 
 - **[Real Python: Python Basics learning path](https://realpython.com/learning-paths/python-basics/)**: free, articles + exercises. Good if you learn better in small pieces than a whole book.
 - **[The Python Tutorial](https://docs.python.org/3/tutorial/)** (Python Software Foundation): free, official docs. The authoritative tour of the language from the people who maintain it; come back to it once the basics stick to fill in what beginner material skips.
 - **[Learn Python - Full Course for Beginners](https://www.youtube.com/watch?v=rfscVS0vtbw)** (freeCodeCamp.org): free, YouTube, ~4.5 hours. Best pick if you'd rather watch someone type than read a book cover to cover.
+
+Prereqs: none.
+
+### NumPy and pandas
+
+Arrays and dataframes, the formats almost every later library expects data to arrive in. Learn to load a CSV, filter rows, group and aggregate, and vectorize instead of writing loops.
+
+- **[NumPy: the absolute basics for beginners](https://numpy.org/doc/stable/user/absolute_beginners.html)**: free, official docs. Creating, indexing, reshaping, and broadcasting arrays, from the NumPy maintainers.
+- **[Python for Data Analysis, 3rd ed.](https://wesmckinney.com/book/)** (McKinney): free, book. The full text online, written by the creator of pandas. Read the NumPy basics and the pandas chapters first.
+- **[Kaggle Learn: Pandas](https://www.kaggle.com/learn/pandas)**: free, course. Short lessons with exercises you run in the browser on real datasets, no setup.
+- **[Complete Python Pandas Data Science Tutorial! (2025 Updated Edition)](https://www.youtube.com/watch?v=2uvysYbKdjM)** (Keith Galli): free, YouTube, ~1.5 hours. Loading, filtering, grouping, and merging real data, typed live.
+
+Prereqs: [Python](#python).
+
+### SQL
+
+Most real data lives in a database, not a CSV. Learn enough SQL to select, filter, aggregate, and join tables, so you can pull your own training or evaluation data.
+
+- **[SQLBolt](https://sqlbolt.com/)**: free, interactive. Short lessons with a query box on each page that checks your answer, from SELECT through joins and aggregates.
+- **[Kaggle Learn: Intro to SQL](https://www.kaggle.com/learn/intro-to-sql)**: free, course. Practice queries against large public datasets in BigQuery from a notebook.
+- **[PostgreSQL Tutorial](https://www.postgresql.org/docs/current/tutorial.html)** (PostgreSQL Global Development Group): free, official docs. Written by the people who build the database: creating tables, querying, joins, and aggregates, then transactions and window functions.
+- **[SQL Course for Beginners [Full Course]](https://www.youtube.com/watch?v=7S_tz1z_5bA)** (Programming with Mosh): free, YouTube, ~3 hours. A complete walkthrough in MySQL, from a first SELECT to joins, subqueries, and changing data.
 
 Prereqs: none.
 
@@ -47,6 +69,15 @@ Enough linear algebra, calculus, and probability to read papers and understand w
 
 Prereqs: [Python](#python) helps for the ML-flavored examples.
 
+### CLI / Linux
+
+Command line + basic shell. If `cd`, `ls`, `grep`, `chmod`, `|`, `>` aren't second nature, start here.
+
+- **[The Missing Semester of Your CS Education](https://missing.csail.mit.edu/)** (MIT): free, lecture series, ~12 hours. Everything CS programs assume you already know: shell, git, editors, debugging, remote machines. Watch lectures 1-4 minimum.
+- **[The Linux Command Line](https://linuxcommand.org/tlcl.php)** (Shotts): free, book. Systematic reference if you want a real book.
+
+Prereqs: none.
+
 ### Git
 
 Version control. Non-negotiable.
@@ -56,15 +87,6 @@ Version control. Non-negotiable.
 - **[Git and GitHub for Beginners - Crash Course](https://www.youtube.com/watch?v=RGOj5yH7evk)** (freeCodeCamp.org): free, YouTube, ~1 hour. Fastest way to see commits, branching, and a GitHub PR workflow actually happen before you touch the CLI yourself.
 
 Prereqs: [CLI / Linux](#cli--linux).
-
-### CLI / Linux
-
-Command line + basic shell. If `cd`, `ls`, `grep`, `chmod`, `|`, `>` aren't second nature, start here.
-
-- **[The Missing Semester of Your CS Education](https://missing.csail.mit.edu/)** (MIT): free, lecture series, ~12 hours. Everything CS programs assume you already know: shell, git, editors, debugging, remote machines. Watch lectures 1-4 minimum.
-- **[The Linux Command Line](https://linuxcommand.org/tlcl.php)** (Shotts): free, book. Systematic reference if you want a real book.
-
-Prereqs: none.
 
 ---
 
@@ -77,7 +99,7 @@ Build + evaluate a scikit-learn classifier end to end. Modern LLM work still res
 Regression + classification: predicting labels from features. Learn the vocabulary here, it applies everywhere else.
 
 - **[Machine Learning Specialization](https://www.coursera.org/specializations/machine-learning-introduction)** (Andrew Ng, Coursera): free to audit, course. The canonical entry point for supervised learning.
-- **[Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow, 3rd ed.](https://www.oreilly.com/library/view/hands-on-machine-learning/9781098125967/)** (Géron): paid, book. Best practitioner text; chapters 1-6 cover supervised learning end to end with real code.
+- **[Hands-On Machine Learning with Scikit-Learn and PyTorch](https://www.oreilly.com/library/view/hands-on-machine-learning/9798341607972/)** (Géron): paid, book. Best practitioner text; chapters 1-6 cover supervised learning end to end with real code.
 - **[StatQuest with Josh Starmer](https://www.youtube.com/@statquest)**: free, YouTube channel. Visual explanations of every classical ML concept. One of the clearest resources for the "why" behind linear regression, logistic regression, decision trees.
 
 Prereqs: [Math](#math), [Python](#python).
@@ -118,7 +140,7 @@ Prereqs: [Supervised learning](#supervised-learning).
 The library everything else in classical ML uses. Get comfortable with the API; you'll use it in fine-tuning data prep, evaluation, and prototyping.
 
 - **[scikit-learn: user guide](https://scikit-learn.org/stable/user_guide.html)**: free, official docs. Better than most tutorials. Start with "Getting started".
-- **[Hands-On ML](https://www.oreilly.com/library/view/hands-on-machine-learning/9781098125967/)** (Géron) chapters 3-8: paid, book. Best practical introduction to sklearn, written so you can run the code as you read.
+- **[Hands-On ML](https://www.oreilly.com/library/view/hands-on-machine-learning/9798341607972/)** (Géron) chapters 2-8: paid, book. Best practical introduction to sklearn, written so you can run the code as you read.
 - **[Machine Learning in Python with scikit-learn](https://www.fun-mooc.fr/en/courses/machine-learning-python-scikit-learn/)** (Inria, scikit-learn core team): free, MOOC. Taught by the people who wrote the library.
 
 Prereqs: [Supervised learning](#supervised-learning).
@@ -322,7 +344,8 @@ How you know your LLM app actually works. Different from classical ML evaluation
 
 - **[Ragas documentation](https://docs.ragas.io/)**: free, docs. Canonical library for RAG evaluation; the metrics section is the useful part even if you don't use the library.
 - **[Eugene Yan: Evals blog series](https://eugeneyan.com/writing/evals/)**: free, blog. The most practical treatment of building evals for real LLM systems.
-- **[OpenAI Evals](https://github.com/openai/evals)**: free, repo. Canonical open-source eval framework; read the examples folder for shapes to copy.
+- **[Inspect](https://github.com/UKGovernmentBEIS/inspect_ai)** (UK AI Security Institute): free, repo. An actively maintained open-source eval framework; its datasets, solvers, and scorers map directly onto the eval loop described above.
+- **[AI Engineering](https://www.oreilly.com/library/view/ai-engineering/9781098166298/)** (Huyen) chapters 3-4: paid, book. The most complete treatment of evaluating open-ended model output, from exact metrics and AI-as-a-judge to building an eval pipeline for a whole system.
 - **[How to Systematically Setup LLM Evals](https://www.youtube.com/watch?v=a3SMraZWNNs)** (Dave Ebbelaar): free, YouTube. A practical walkthrough of unit tests, human/model evals, and LLM-as-a-judge in one place, useful for seeing the pieces assembled rather than read about separately.
 
 Prereqs: [Prompt engineering](#prompt-engineering).
@@ -355,6 +378,17 @@ Letting a model call functions you define, so it can look things up or take acti
 
 Prereqs: [Structured output](#structured-output).
 
+### Model Context Protocol (MCP)
+
+An open protocol for connecting a model to tools and data through a standard server, so each integration is written once instead of wired separately into every app. An MCP server exposes tools, resources, and prompts that any MCP client can discover and call.
+
+- **[Model Context Protocol: Introduction](https://modelcontextprotocol.io/docs/getting-started/intro)**: free, official docs. The maintainers' own explanation of hosts, clients, and servers, with the full specification one click away when you need exact message shapes.
+- **[MCP Python SDK](https://github.com/modelcontextprotocol/python-sdk)** (Model Context Protocol): free, repo. The official SDK for building servers and clients; the README's FastMCP examples get a working server running in a few lines.
+- **[Introduction to Model Context Protocol](https://anthropic.skilljar.com/introduction-to-model-context-protocol)** (Anthropic): free with sign-in, course. Builds an MCP server and client from scratch in Python, covering all three primitives, from the team that created the protocol.
+- **[Building Agents with Model Context Protocol - Full Workshop with Mahesh Murag of Anthropic](https://www.youtube.com/watch?v=kQmXtrmQ5Zg)** (AI Engineer): free, YouTube, ~1.7 hours. A workshop from the Anthropic team behind MCP: why the protocol exists, how servers and clients fit together, and how agents use it.
+
+Prereqs: [Tool use](#tool-use).
+
 ### ReAct pattern
 
 Interleaving reasoning ("what should I do next") with acting ("call this tool, observe the result") in a loop, instead of planning everything upfront. The pattern most agent frameworks build their default loop around.
@@ -363,6 +397,17 @@ Interleaving reasoning ("what should I do next") with acting ("call this tool, o
 - **[LLM Powered Autonomous Agents](https://lilianweng.github.io/posts/2023-06-23-agent/)** (Weng): free, blog post. Places ReAct inside the larger design space (planning, memory, tool use); most people cite this post without having read past the ReAct section.
 
 Prereqs: [Tool use](#tool-use).
+
+### Context engineering
+
+Deciding what goes into a model's context window at each step of a long agent run: instructions, tool definitions, retrieved data, memory, and summaries of what came before. Models get worse as context grows, so what you leave out matters as much as what you put in.
+
+- **[Effective context engineering for AI agents](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)** (Anthropic): free, official blog. Treats context as a limited budget and covers the main levers: tight system prompts, lean tool sets, just-in-time retrieval, compaction, note-taking, and sub-agents.
+- **[Context Rot: How Increasing Input Tokens Impacts LLM Performance](https://www.trychroma.com/research/context-rot)** (Hong, Troynikov, Huber): free, technical report. Measures how accuracy drops as input length grows across many current models, even on simple tasks; the evidence for keeping context small.
+- **[Claude: Context windows](https://platform.claude.com/docs/en/build-with-claude/context-windows)**: free, official docs. How thinking and tool use count against the window, plus the provider features for managing it as a conversation grows.
+- **[Context Engineering for Agents](https://www.youtube.com/watch?v=4GiqzUHD5AA)** (LangChain): free, YouTube, ~22 minutes. Groups the strategies into write, select, compress, and isolate, with examples from popular agents and papers.
+
+Prereqs: [ReAct pattern](#react-pattern), [Prompt engineering](#prompt-engineering).
 
 ### Multi-agent collaboration
 
@@ -476,10 +521,31 @@ Prereqs: [When to fine-tune](#when-to-fine-tune).
 
 Fine-tuning data quality matters more than quantity: a small, carefully curated set of examples regularly beats a large noisy one.
 
-- **[Preprocess](https://huggingface.co/docs/transformers/en/preprocessing)** (Hugging Face): free, official docs. The mechanical side: turning raw text into the tokenized, batched format training actually consumes.
+- **[TRL: Dataset formats and types](https://huggingface.co/docs/trl/en/dataset_formats)** (Hugging Face): free, official docs. The shapes fine-tuning data has to take (prompt-completion, conversational, preference) and which trainer expects which, with code to convert between them.
 - **[LIMA: Less Is More for Alignment](https://arxiv.org/abs/2305.11206)** (Zhou et al.): free, paper. Fine-tuned a 65B model on just 1,000 curated examples and matched much larger instruction-tuning efforts; the strongest evidence that curation beats volume.
 
 Prereqs: [When to fine-tune](#when-to-fine-tune).
+
+### Running a fine-tune
+
+Taking an open model, a chat-formatted dataset, and a LoRA config through a real training run, then checking what came out. Most of the work is configuration; the trainer handles the loop.
+
+- **[Hugging Face LLM Course: Supervised Fine-Tuning](https://huggingface.co/learn/llm-course/chapter11/1)**: free, course. Walks the full sequence in order: chat templates, SFT with TRL, LoRA, then evaluating the model you trained.
+- **[TRL: SFT Trainer](https://huggingface.co/docs/trl/en/sft_trainer)**: free, official docs. The reference for the trainer most open fine-tuning code is built on: dataset formats, packing, and passing in a PEFT config.
+- **[Unsloth](https://github.com/unslothai/unsloth)**: free, repo. Faster, lower-memory fine-tuning for popular open models, with free Colab notebooks that run a complete fine-tune end to end.
+
+Prereqs: [LoRA and adapters](#lora-and-adapters), [Data preparation](#data-preparation).
+
+### Preference tuning (DPO)
+
+SFT teaches a model the format; preference tuning teaches it which of two answers is better, using pairs of chosen and rejected responses. DPO does this with a single loss on those pairs, with no separate reward model or RL loop.
+
+- **[Direct Preference Optimization: Your Language Model is Secretly a Reward Model](https://arxiv.org/abs/2305.18290)** (Rafailov et al.): free, paper. The original; shows the RLHF objective can be optimized directly on preference pairs with a simple classification-style loss.
+- **[TRL: DPO Trainer](https://huggingface.co/docs/trl/en/dpo_trainer)**: free, official docs. The practical API: the chosen/rejected dataset format and the beta parameter that controls how far the model drifts from its reference.
+- **[Reinforcement Learning from Human Feedback](https://rlhfbook.com/)** (Lambert): free online, book. The direct-alignment chapter sets DPO beside its variants (IPO, ORPO, SimPO) and PPO-based RLHF.
+- **[Direct Preference Optimization (DPO) and Friends | Post-Training Course, Lecture 6](https://www.youtube.com/watch?v=6g6b4gvO-y0)** (Nathan Lambert): free, YouTube, ~43 minutes. The book's author covering DPO and the variants built on it, as one lecture of his post-training course.
+
+Prereqs: [Running a fine-tune](#running-a-fine-tune).
 
 ### Open-model serving
 
@@ -491,6 +557,17 @@ Running a fine-tuned or open-weight model yourself instead of calling a provider
 - **[The State of vLLM](https://www.youtube.com/watch?v=4HPRf9nDZ6Q)** (Anyscale, Ray Summit 2024): free, YouTube, ~35 minutes. A conference talk by core vLLM contributors covering the project's architecture and why it became the default throughput-focused serving engine.
 
 Prereqs: [LoRA and adapters](#lora-and-adapters).
+
+### Quantization
+
+Storing weights in fewer bits (8-bit, 4-bit) so a model fits in less memory and often runs faster, at a small cost in quality. Which format you use (GGUF, GPTQ, AWQ, bitsandbytes) mostly depends on the engine you serve with.
+
+- **[A Visual Guide to Quantization](https://newsletter.maartengrootendorst.com/p/a-visual-guide-to-quantization)** (Grootendorst): free, blog post. Builds up from how numbers are stored to GPTQ, GGUF, and BitNet, with a diagram at every step.
+- **[Transformers: Quantization overview](https://huggingface.co/docs/transformers/en/quantization/overview)**: free, official docs. Compares the supported methods (bitsandbytes, GPTQ, AWQ, GGUF, torchao, HQQ, and others) side by side.
+- **[QLoRA: Efficient Finetuning of Quantized LLMs](https://arxiv.org/abs/2305.14314)** (Dettmers et al.): free, paper. Introduces 4-bit NormalFloat and fine-tunes a 65B model on a single 48GB GPU; the reason quantization and LoRA so often appear together.
+- **[Which Quantization Method is Right for You? (GPTQ vs. GGUF vs. AWQ)](https://www.youtube.com/watch?v=mNE_d-C82lI)** (Maarten Grootendorst): free, YouTube, ~16 minutes. The guide's author comparing, hands-on, the three formats you will run into when downloading open weights.
+
+Prereqs: [Open-model serving](#open-model-serving), [LoRA and adapters](#lora-and-adapters).
 
 ---
 
@@ -544,6 +621,17 @@ Checking inputs and outputs against policy before they reach a user or an action
 - **[NeMo Guardrails](https://docs.nvidia.com/nemo/guardrails/latest/about-nemo-guardrails-library/overview)** (NVIDIA): free, official docs. Open-source, programmable guardrails with a dialog-flow language, rather than a single input/output filter.
 
 Prereqs: [Structured output](#structured-output).
+
+### Prompt injection
+
+Any untrusted text a model reads (a web page, an email, a tool result) can carry instructions the model will follow. No filter catches this reliably, so the defense has to be in the design: limit what an agent can do once it has read untrusted input.
+
+- **[Simon Willison: Prompt injection series](https://simonwillison.net/series/prompt-injection/)**: free, blog series. Started in 2022 with the post that named the attack, and has followed new attacks and proposed defenses since.
+- **[Design Patterns for Securing LLM Agents against Prompt Injections](https://arxiv.org/abs/2506.08837)** (Beurer-Kellner et al.): free, paper. Six concrete patterns (action-selector, plan-then-execute, map-reduce, dual LLM, code-then-execute, context-minimization) that limit what an injected instruction can reach.
+- **[OpenAI: Safety in building agents](https://developers.openai.com/api/docs/guides/agent-builder-safety)**: free, official docs. Vendor guidance on keeping untrusted input out of developer messages, using structured outputs between nodes, and requiring tool approvals.
+- **[Prompt Injection, explained](https://www.youtube.com/watch?v=FgxwCaL6UTA)** (Simon Willison): free, YouTube, ~12 minutes. The opening of his 2023 LangChain webinar talk: what the attack is and why it is hard to fix.
+
+Prereqs: [Tool use](#tool-use), [Safety and guardrails](#safety-and-guardrails).
 
 ---
 
@@ -609,14 +697,16 @@ Every topic and its picks in one table, for scanning or searching instead of rea
 | Topic | Resources |
 |---|---|
 | [Python](#python) | [Automate the Boring Stuff with Python](https://automatetheboringstuff.com/)<br>[Real Python: Python Basics learning path](https://realpython.com/learning-paths/python-basics/)<br>[The Python Tutorial](https://docs.python.org/3/tutorial/)<br>[Learn Python - Full Course for Beginners](https://www.youtube.com/watch?v=rfscVS0vtbw) |
+| [NumPy and pandas](#numpy-and-pandas) | [NumPy: the absolute basics for beginners](https://numpy.org/doc/stable/user/absolute_beginners.html)<br>[Python for Data Analysis, 3rd ed.](https://wesmckinney.com/book/)<br>[Kaggle Learn: Pandas](https://www.kaggle.com/learn/pandas)<br>[Complete Python Pandas Data Science Tutorial! (2025 Updated Edition)](https://www.youtube.com/watch?v=2uvysYbKdjM) |
+| [SQL](#sql) | [SQLBolt](https://sqlbolt.com/)<br>[Kaggle Learn: Intro to SQL](https://www.kaggle.com/learn/intro-to-sql)<br>[PostgreSQL Tutorial](https://www.postgresql.org/docs/current/tutorial.html)<br>[SQL Course for Beginners [Full Course]](https://www.youtube.com/watch?v=7S_tz1z_5bA) |
 | [Math](#math) | [Mathematics for Machine Learning](https://mml-book.github.io/)<br>[Essence of Linear Algebra](https://www.3blue1brown.com/topics/linear-algebra)<br>[Introduction to Probability](https://www.edx.org/learn/probability/harvard-university-introduction-to-probability) |
-| [Git](#git) | [Pro Git](https://git-scm.com/book/en/v2)<br>[Oh Shit, Git!?!](https://ohshitgit.com/)<br>[Git and GitHub for Beginners - Crash Course](https://www.youtube.com/watch?v=RGOj5yH7evk) |
 | [CLI / Linux](#cli--linux) | [The Missing Semester of Your CS Education](https://missing.csail.mit.edu/)<br>[The Linux Command Line](https://linuxcommand.org/tlcl.php) |
-| [Supervised learning](#supervised-learning) | [Machine Learning Specialization](https://www.coursera.org/specializations/machine-learning-introduction)<br>[Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow, 3rd ed.](https://www.oreilly.com/library/view/hands-on-machine-learning/9781098125967/)<br>[StatQuest with Josh Starmer](https://www.youtube.com/@statquest) |
+| [Git](#git) | [Pro Git](https://git-scm.com/book/en/v2)<br>[Oh Shit, Git!?!](https://ohshitgit.com/)<br>[Git and GitHub for Beginners - Crash Course](https://www.youtube.com/watch?v=RGOj5yH7evk) |
+| [Supervised learning](#supervised-learning) | [Machine Learning Specialization](https://www.coursera.org/specializations/machine-learning-introduction)<br>[Hands-On Machine Learning with Scikit-Learn and PyTorch](https://www.oreilly.com/library/view/hands-on-machine-learning/9798341607972/)<br>[StatQuest with Josh Starmer](https://www.youtube.com/@statquest) |
 | [Unsupervised learning](#unsupervised-learning) | [An Introduction to Statistical Learning, 2nd ed.](https://www.statlearning.com/)<br>[StatQuest: Clustering and PCA playlists](https://www.youtube.com/@statquest/playlists)<br>[scikit-learn: clustering user guide](https://scikit-learn.org/stable/modules/clustering.html) |
 | [Model evaluation](#model-evaluation) | [scikit-learn: model evaluation user guide](https://scikit-learn.org/stable/modules/model_evaluation.html)<br>[Google's Machine Learning Crash Course: Classification](https://developers.google.com/machine-learning/crash-course/classification)<br>[Designing Machine Learning Systems](https://www.oreilly.com/library/view/designing-machine-learning/9781098107956/) |
 | [Feature engineering](#feature-engineering) | [Feature Engineering for Machine Learning](https://www.oreilly.com/library/view/feature-engineering-for/9781491953235/)<br>[Kaggle Learn: Feature Engineering](https://www.kaggle.com/learn/feature-engineering)<br>[scikit-learn: Preprocessing data](https://scikit-learn.org/stable/modules/preprocessing.html)<br>[100 Days of Machine Learning](https://www.youtube.com/playlist?list=PLKnIA16_Rmvbr7zKYQuBfsVkjoLcJgxHH) |
-| [scikit-learn](#scikit-learn) | [scikit-learn: user guide](https://scikit-learn.org/stable/user_guide.html)<br>[Hands-On ML](https://www.oreilly.com/library/view/hands-on-machine-learning/9781098125967/)<br>[Machine Learning in Python with scikit-learn](https://www.fun-mooc.fr/en/courses/machine-learning-python-scikit-learn/) |
+| [scikit-learn](#scikit-learn) | [scikit-learn: user guide](https://scikit-learn.org/stable/user_guide.html)<br>[Hands-On ML](https://www.oreilly.com/library/view/hands-on-machine-learning/9798341607972/)<br>[Machine Learning in Python with scikit-learn](https://www.fun-mooc.fr/en/courses/machine-learning-python-scikit-learn/) |
 | [Neural network basics](#neural-network-basics) | [Deep Learning Specialization](https://www.coursera.org/specializations/deep-learning)<br>[Neural Networks and Deep Learning](http://neuralnetworksanddeeplearning.com/)<br>[Neural Networks: Zero to Hero](https://karpathy.ai/zero-to-hero.html) |
 | [PyTorch](#pytorch) | [Deep Learning with PyTorch, 2nd ed.](https://www.manning.com/books/deep-learning-with-pytorch-second-edition)<br>[PyTorch: 60 Minute Blitz](https://docs.pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html)<br>[Zero to Hero: makemore series](https://karpathy.ai/zero-to-hero.html)<br>[fast.ai Practical Deep Learning](https://course.fast.ai/)<br>[PyTorch Discuss](https://discuss.pytorch.org/) |
 | [Training loops](#training-loops) | [PyTorch: Training a Classifier tutorial](https://docs.pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html)<br>[fast.ai: lessons 1-4](https://course.fast.ai/)<br>[A Recipe for Training Neural Networks](https://karpathy.github.io/2019/04/25/recipe/) |
@@ -633,10 +723,12 @@ Every topic and its picks in one table, for scanning or searching instead of rea
 | [How LLMs work](#how-llms-work) | [Intro to Large Language Models](https://www.youtube.com/watch?v=zjkBMFhNj_g)<br>[LLM Visualization](https://bbycroft.net/llm)<br>[The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/) |
 | [Prompt engineering](#prompt-engineering) | [Anthropic: Prompt Engineering Overview](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview)<br>[OpenAI: Prompt engineering](https://developers.openai.com/api/docs/guides/prompt-engineering)<br>[Learn Prompting](https://learnprompting.org/)<br>[Simon Willison's blog: llms tag](https://simonwillison.net/tags/llms/)<br>[AI prompt engineering: A deep dive](https://www.youtube.com/watch?v=T9aRN5JkmL8) |
 | [Structured output](#structured-output) | [Instructor library docs](https://python.useinstructor.com/)<br>[OpenAI: Structured Outputs](https://developers.openai.com/api/docs/guides/structured-outputs)<br>[Pydantic AI docs](https://pydantic.dev/docs/ai/overview/)<br>[OpenAI DevDay 2024: Structured outputs for reliable applications](https://www.youtube.com/watch?v=kE4BkATIl9c) |
-| [Evaluation](#evaluation) | [Ragas documentation](https://docs.ragas.io/)<br>[Eugene Yan: Evals blog series](https://eugeneyan.com/writing/evals/)<br>[OpenAI Evals](https://github.com/openai/evals)<br>[How to Systematically Setup LLM Evals](https://www.youtube.com/watch?v=a3SMraZWNNs) |
+| [Evaluation](#evaluation) | [Ragas documentation](https://docs.ragas.io/)<br>[Eugene Yan: Evals blog series](https://eugeneyan.com/writing/evals/)<br>[Inspect](https://github.com/UKGovernmentBEIS/inspect_ai)<br>[AI Engineering](https://www.oreilly.com/library/view/ai-engineering/9781098166298/)<br>[How to Systematically Setup LLM Evals](https://www.youtube.com/watch?v=a3SMraZWNNs) |
 | [Provider SDKs](#provider-sdks) | [OpenAI Python SDK docs](https://developers.openai.com/api/docs/libraries)<br>[Anthropic Python SDK docs](https://platform.claude.com/docs/en/cli-sdks-libraries/overview)<br>[Google Gen AI SDK docs](https://ai.google.dev/gemini-api/docs/get-started)<br>[LiteLLM docs](https://docs.litellm.ai/) |
 | [Tool use](#tool-use) | [Claude: Tool use overview](https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview)<br>[OpenAI: Function calling guide](https://developers.openai.com/api/docs/guides/function-calling)<br>[PydanticAI: Tools](https://pydantic.dev/docs/ai/tools-toolsets/tools/)<br>[LLM Function Calling - AI Tools Deep Dive](https://www.youtube.com/watch?v=gMeTK6zzaO4) |
+| [Model Context Protocol (MCP)](#model-context-protocol-mcp) | [Model Context Protocol: Introduction](https://modelcontextprotocol.io/docs/getting-started/intro)<br>[MCP Python SDK](https://github.com/modelcontextprotocol/python-sdk)<br>[Introduction to Model Context Protocol](https://anthropic.skilljar.com/introduction-to-model-context-protocol)<br>[Building Agents with Model Context Protocol - Full Workshop with Mahesh Murag of Anthropic](https://www.youtube.com/watch?v=kQmXtrmQ5Zg) |
 | [ReAct pattern](#react-pattern) | [ReAct: Synergizing Reasoning and Acting in Language Models](https://arxiv.org/abs/2210.03629)<br>[LLM Powered Autonomous Agents](https://lilianweng.github.io/posts/2023-06-23-agent/) |
+| [Context engineering](#context-engineering) | [Effective context engineering for AI agents](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)<br>[Context Rot: How Increasing Input Tokens Impacts LLM Performance](https://www.trychroma.com/research/context-rot)<br>[Claude: Context windows](https://platform.claude.com/docs/en/build-with-claude/context-windows)<br>[Context Engineering for Agents](https://www.youtube.com/watch?v=4GiqzUHD5AA) |
 | [Multi-agent collaboration](#multi-agent-collaboration) | [Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents)<br>[How we built our multi-agent research system](https://www.anthropic.com/engineering/multi-agent-research-system)<br>[CrewAI documentation](https://docs.crewai.com/)<br>[Anthropic: How to Build Multi-Agent Systems](https://www.youtube.com/watch?v=0HljLKVdtjo) |
 | [Framework survey (LangGraph, CrewAI, OpenAI Agents SDK, PydanticAI)](#framework-survey-langgraph-crewai-openai-agents-sdk-pydanticai) | [LangGraph](https://docs.langchain.com/oss/python/langgraph/overview)<br>[CrewAI documentation](https://docs.crewai.com/)<br>[OpenAI Agents SDK](https://openai.github.io/openai-agents-python/)<br>[PydanticAI documentation](https://pydantic.dev/docs/ai/overview/) |
 | [Vector embeddings](#vector-embeddings) | [Pinecone: Learning Center](https://www.pinecone.io/learn/)<br>[What are embeddings?](https://vickiboykis.com/what_are_embeddings/)<br>[Cohere: Embeddings documentation](https://docs.cohere.com/docs/embeddings)<br>[OpenAI Embeddings and Vector Databases Crash Course](https://www.youtube.com/watch?v=ySus5ZS0b94) |
@@ -646,13 +738,17 @@ Every topic and its picks in one table, for scanning or searching instead of rea
 | [Evaluation and observability](#evaluation-and-observability) | [Ragas documentation](https://docs.ragas.io/)<br>[Langfuse documentation](https://langfuse.com/docs)<br>[Your AI Product Needs Evals](https://hamel.dev/blog/posts/evals/)<br>[RAGAS - Evaluate RAG Pipelines](https://www.youtube.com/watch?v=tqRDHaY923o) |
 | [When to fine-tune](#when-to-fine-tune) | [Patterns for Building LLM-based Systems & Products](https://eugeneyan.com/writing/llm-patterns/)<br>[PEFT documentation](https://huggingface.co/docs/peft/) |
 | [LoRA and adapters](#lora-and-adapters) | [LoRA: Low-Rank Adaptation of Large Language Models](https://arxiv.org/abs/2106.09685)<br>[PEFT: LoRA](https://huggingface.co/docs/peft/en/package_reference/lora)<br>[Practical Tips for Finetuning LLMs Using LoRA](https://magazine.sebastianraschka.com/p/practical-tips-for-finetuning-llms) |
-| [Data preparation](#data-preparation) | [Preprocess](https://huggingface.co/docs/transformers/en/preprocessing)<br>[LIMA: Less Is More for Alignment](https://arxiv.org/abs/2305.11206) |
+| [Data preparation](#data-preparation) | [TRL: Dataset formats and types](https://huggingface.co/docs/trl/en/dataset_formats)<br>[LIMA: Less Is More for Alignment](https://arxiv.org/abs/2305.11206) |
+| [Running a fine-tune](#running-a-fine-tune) | [Hugging Face LLM Course: Supervised Fine-Tuning](https://huggingface.co/learn/llm-course/chapter11/1)<br>[TRL: SFT Trainer](https://huggingface.co/docs/trl/en/sft_trainer)<br>[Unsloth](https://github.com/unslothai/unsloth) |
+| [Preference tuning (DPO)](#preference-tuning-dpo) | [Direct Preference Optimization: Your Language Model is Secretly a Reward Model](https://arxiv.org/abs/2305.18290)<br>[TRL: DPO Trainer](https://huggingface.co/docs/trl/en/dpo_trainer)<br>[Reinforcement Learning from Human Feedback](https://rlhfbook.com/)<br>[Direct Preference Optimization (DPO) and Friends \| Post-Training Course, Lecture 6](https://www.youtube.com/watch?v=6g6b4gvO-y0) |
 | [Open-model serving](#open-model-serving) | [vLLM documentation](https://docs.vllm.ai/en/latest/)<br>[Ollama documentation](https://docs.ollama.com/)<br>[llama.cpp](https://github.com/ggml-org/llama.cpp)<br>[The State of vLLM](https://www.youtube.com/watch?v=4HPRf9nDZ6Q) |
+| [Quantization](#quantization) | [A Visual Guide to Quantization](https://newsletter.maartengrootendorst.com/p/a-visual-guide-to-quantization)<br>[Transformers: Quantization overview](https://huggingface.co/docs/transformers/en/quantization/overview)<br>[QLoRA: Efficient Finetuning of Quantized LLMs](https://arxiv.org/abs/2305.14314)<br>[Which Quantization Method is Right for You? (GPTQ vs. GGUF vs. AWQ)](https://www.youtube.com/watch?v=mNE_d-C82lI) |
 | [Deployment (HF Spaces, Modal, Replicate)](#deployment-hf-spaces-modal-replicate) | [Hugging Face Spaces](https://huggingface.co/docs/hub/spaces)<br>[Modal documentation](https://modal.com/docs)<br>[Replicate documentation](https://replicate.com/docs) |
 | [Monitoring: cost, latency](#monitoring-cost-latency) | [An Introduction to Observability for LLM-based applications using OpenTelemetry](https://opentelemetry.io/blog/2024/llm-observability/)<br>[Data Distribution Shifts and Monitoring](https://huyenchip.com/2022/02/07/data-distribution-shifts-and-monitoring.html) |
 | [Model versioning](#model-versioning) | [W&B Registry](https://docs.coreweave.com/products/registry)<br>[DVC documentation](https://dvc.org/doc) |
 | [Observability (Langfuse, Helicone, Phoenix)](#observability-langfuse-helicone-phoenix) | [Langfuse documentation](https://langfuse.com/docs)<br>[Helicone documentation](https://docs.helicone.ai/getting-started/quick-start)<br>[Arize Phoenix](https://arize.com/docs/phoenix) |
 | [Safety and guardrails](#safety-and-guardrails) | [OWASP Top 10 for LLM Applications](https://genai.owasp.org/)<br>[NeMo Guardrails](https://docs.nvidia.com/nemo/guardrails/latest/about-nemo-guardrails-library/overview) |
+| [Prompt injection](#prompt-injection) | [Simon Willison: Prompt injection series](https://simonwillison.net/series/prompt-injection/)<br>[Design Patterns for Securing LLM Agents against Prompt Injections](https://arxiv.org/abs/2506.08837)<br>[OpenAI: Safety in building agents](https://developers.openai.com/api/docs/guides/agent-builder-safety)<br>[Prompt Injection, explained](https://www.youtube.com/watch?v=FgxwCaL6UTA) |
 | [Weekly newsletters](#weekly-newsletters) | [The Batch](https://www.deeplearning.ai/the-batch/)<br>[Ahead of AI](https://magazine.sebastianraschka.com/) |
 | [Communities](#communities) | [r/MachineLearning](https://www.reddit.com/r/MachineLearning/)<br>[r/LocalLLaMA](https://www.reddit.com/r/LocalLLaMA/)<br>[Latent Space](https://www.latent.space/) |
 | [Papers to track](#papers-to-track) | [Hugging Face Papers](https://huggingface.co/papers)<br>[arxiv-sanity-lite](https://github.com/karpathy/arxiv-sanity-lite) |
