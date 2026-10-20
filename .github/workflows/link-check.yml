@@ -15,19 +15,23 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      # YouTube answers 200 for removed and private videos, so a plain HTTP
-      # check passes them. The oEmbed endpoint returns 401 or 404 instead.
-      - name: Check YouTube videos via oEmbed
+      # YouTube answers 200 for removed and private videos and playlists, so a
+      # plain HTTP check passes them. The oEmbed endpoint returns 401 or 404.
+      - name: Check YouTube videos and playlists via oEmbed
         run: |
-          ids=$(grep -oE 'youtube\.com/watch\?([^ )>"]*&)?v=[A-Za-z0-9_-]{11}' README.md \
-            | grep -oE '[A-Za-z0-9_-]{11}$' | sort -u)
-          if [ -z "$ids" ]; then
-            echo "No YouTube watch links found."
+          videos=$(grep -oE 'youtube\.com/watch\?([^ )>"]*&)?v=[A-Za-z0-9_-]{11}' README.md \
+            | grep -oE '[A-Za-z0-9_-]{11}$' | sort -u \
+            | sed 's#^#https://www.youtube.com/watch?v=#')
+          playlists=$(grep -oE 'youtube\.com/playlist\?([^ )>"]*&)?list=[A-Za-z0-9_-]+' README.md \
+            | grep -oE '[A-Za-z0-9_-]+$' | sort -u \
+            | sed 's#^#https://www.youtube.com/playlist?list=#')
+          urls=$(printf '%s\n%s\n' "$videos" "$playlists" | sed '/^$/d')
+          if [ -z "$urls" ]; then
+            echo "No YouTube video or playlist links found."
             exit 0
           fi
           failed=0
-          for id in $ids; do
-            url="https://www.youtube.com/watch?v=$id"
+          for url in $urls; do
             # curl retries 408, 429, 5xx and timeouts with exponential backoff.
             code=$(curl -sS -o /dev/null -w '%{http_code}' -G \
               --retry 4 --retry-connrefused --max-time 30 \
@@ -36,7 +40,7 @@ jobs:
             if [ "$code" = "200" ]; then
               echo "OK   $url"
             else
-              echo "::error file=README.md::YouTube video unavailable (oEmbed HTTP $code): $url"
+              echo "::error file=README.md::YouTube link unavailable (oEmbed HTTP $code): $url"
               failed=1
             fi
           done
