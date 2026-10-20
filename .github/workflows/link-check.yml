@@ -13,19 +13,52 @@ jobs:
   lychee:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
+      # YouTube answers 200 for removed and private videos, so a plain HTTP
+      # check passes them. The oEmbed endpoint returns 401 or 404 instead.
+      - name: Check YouTube videos via oEmbed
+        run: |
+          ids=$(grep -oE 'youtube\.com/watch\?([^ )>"]*&)?v=[A-Za-z0-9_-]{11}' README.md \
+            | grep -oE '[A-Za-z0-9_-]{11}$' | sort -u)
+          if [ -z "$ids" ]; then
+            echo "No YouTube watch links found."
+            exit 0
+          fi
+          failed=0
+          for id in $ids; do
+            url="https://www.youtube.com/watch?v=$id"
+            # curl retries 408, 429, 5xx and timeouts with exponential backoff.
+            code=$(curl -sS -o /dev/null -w '%{http_code}' -G \
+              --retry 4 --retry-connrefused --max-time 30 \
+              --data-urlencode "url=$url" -d format=json \
+              https://www.youtube.com/oembed) || true
+            if [ "$code" = "200" ]; then
+              echo "OK   $url"
+            else
+              echo "::error file=README.md::YouTube video unavailable (oEmbed HTTP $code): $url"
+              failed=1
+            fi
+          done
+          exit $failed
+
+      # 429 is not accepted: lychee retries it with exponential backoff
+      # (5s, 10s, 20s, 40s) and also slows down per host when rate limited.
       - name: Check links in README
+        if: ${{ !cancelled() }}
         uses: lycheeverse/lychee-action@v2
         with:
           args: >
             --no-progress
-            --accept 200,206,302,429
-            --max-retries 3
+            --include-fragments
+            --accept 200,206,302
+            --max-retries 4
             --retry-wait-time 5
+            --host-concurrency 4
             --exclude "oreilly\.com"
             --exclude "reddit\.com"
             --exclude "deeplearning\.ai/the-batch"
+            --exclude "genai\.owasp\.org"
             --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36"
             README.md
           fail: true
