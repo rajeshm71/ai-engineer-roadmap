@@ -4,6 +4,7 @@ A path through becoming an AI engineer: programming and math first, then classic
 
 ## Contents
 
+- [Start here](#start-here)
 - [Phase 1: Prerequisites](#phase-1-prerequisites)
 - [Phase 2: Classical ML](#phase-2-classical-ml)
 - [Phase 3: Deep Learning](#phase-3-deep-learning)
@@ -22,7 +23,29 @@ A path through becoming an AI engineer: programming and math first, then classic
 
 ---
 
+## Start here
+
+Work down the list and stop at the first question you answer no to: that is your starting phase. Skim the phases before it to fill any gaps.
+
+1. Can you write a Python script that cleans a CSV with pandas, write a SQL join, and commit your work with git? If no, start at [Phase 1](#phase-1-prerequisites).
+2. Can you train and evaluate a scikit-learn classifier, and explain overfitting, cross-validation, and precision versus recall? If no, start at [Phase 2](#phase-2-classical-ml).
+3. Can you write a training loop in PyTorch from memory? If no, start at [Phase 3](#phase-3-deep-learning).
+4. Can you explain how self-attention works and what a tokenizer does to text? If no, start at [Phase 4](#phase-4-nlp).
+5. Have you built an app that calls an LLM API and gets back validated structured output? If no, start at [Phase 6](#phase-6-llms). [Phase 5](#phase-5-computer-vision) is optional if you are aiming at LLM work.
+6. Have you built an agent that calls tools in a loop until a task is done? If no, start at [Phase 7](#phase-7-agents).
+7. Have you built a RAG pipeline and measured its retrieval quality on a test set? If no, start at [Phase 8](#phase-8-rag).
+
+Yes to all seven? Start at [Phase 9](#phase-9-fine-tuning) for fine-tuning or [Phase 10](#phase-10-mlops--production) for deploying and monitoring.
+
+Then pick a track. Do you already program, and is your goal LLM apps, agents, and RAG rather than vision or broad ML? If yes, follow the [LLM engineer fast-track](#llm-engineer-fast-track). Otherwise follow the [Default AI engineer path](#default-ai-engineer-path).
+
+Each phase lists a rough time in full-time weeks, sized to add up to the [Tracks](#tracks) totals. Studying part-time, roughly double it.
+
+---
+
 ## Phase 1: Prerequisites
+
+Time: ~3-5 weeks if you are new to programming; about 1 week of review if you already program.
 
 Install packages, wrangle data with pandas and SQL, do linear algebra, run bash, use git. If you already program, move quickly through this phase; otherwise these are the basics everyone needs.
 
@@ -97,6 +120,8 @@ Prereqs: [CLI / Linux](#cli--linux).
 
 ## Phase 2: Classical ML
 
+Time: ~3-5 weeks; about 1 week for the lighter pass in the LLM fast-track.
+
 Build + evaluate a scikit-learn classifier end to end. Modern LLM work still rests on the concepts here (loss functions, regularization, evaluation metrics). Don't skip.
 
 ### Supervised learning
@@ -159,6 +184,8 @@ Prereqs: [Supervised learning](#supervised-learning).
 ---
 
 ## Phase 3: Deep Learning
+
+Time: ~4-6 weeks; about 1 week for the lighter pass in the LLM fast-track.
 
 Train a CNN from scratch on a small dataset. This is where PyTorch enters and the rest of the roadmap depends on it.
 
@@ -224,6 +251,8 @@ Prereqs: [Training loops](#training-loops).
 
 ## Phase 4: NLP
 
+Time: ~3-4 weeks; about 1 week for the fast-track subset (tokenization, embeddings, transformer architecture).
+
 Explain attention and build a text classifier. Older techniques (tokenization, embeddings) are still needed for LLM work; newer parts (transformer architecture) are the whole modern game.
 
 ### Tokenization
@@ -278,6 +307,8 @@ Prereqs: [Python](#python), [Embeddings](#embeddings).
 
 ## Phase 5: Computer Vision
 
+Time: ~3-4 weeks.
+
 Fine-tune a vision model and run inference. Skippable if your target is pure LLM/agent work; keep for breadth.
 
 ### Image basics
@@ -329,6 +360,8 @@ Prereqs: [Transformer architecture](#transformer-architecture), [Convnets](#conv
 ---
 
 ## Phase 6: LLMs
+
+Time: ~3-4 weeks.
 
 Build a production LLM app with structured output. This is where the modern AI engineer stack starts.
 
@@ -420,6 +453,8 @@ Prereqs: [How LLMs work](#how-llms-work), [Vision transformers](#vision-transfor
 
 ## Phase 7: Agents
 
+Time: ~2-3 weeks.
+
 Build agents in at least two frameworks. See sibling project [real-world-agents](https://github.com/rajeshm71/real-world-agents) for the applied version.
 
 ### Tool use
@@ -496,6 +531,8 @@ Prereqs: [Tool use](#tool-use).
 
 ## Phase 8: RAG
 
+Time: ~2 weeks.
+
 Build a production RAG pipeline. See sibling project [rag-recipes](https://github.com/rajeshm71/rag-recipes) for the applied version.
 
 ### Vector embeddings
@@ -562,6 +599,8 @@ Prereqs: [Retrieval basics](#retrieval-basics), [Evaluation](#evaluation).
 ---
 
 ## Phase 9: Fine-tuning
+
+Time: ~1-2 weeks.
 
 Know when fine-tuning is the right call and can run one.
 
@@ -645,6 +684,8 @@ Prereqs: [Open-model serving](#open-model-serving), [LoRA and adapters](#lora-an
 
 ## Phase 10: MLOps & Production
 
+Time: ~1-2 weeks.
+
 Deploy + monitor + iterate on a shipped AI system.
 
 ### Deployment (HF Spaces, Modal, Replicate)
@@ -714,6 +755,8 @@ Prereqs: [Tool use](#tool-use), [Safety and guardrails](#safety-and-guardrails).
 ---
 
 ## Phase 11: Staying current
+
+Time: about 1 week to set up the habits, then ongoing.
 
 Keep up + find work.
 
