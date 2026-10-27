@@ -88,6 +88,11 @@ Version control. Non-negotiable.
 
 Prereqs: [CLI / Linux](#cli--linux).
 
+> **Checkpoint: answer questions about a public dataset.** Pick a public CSV (from a city open-data portal or Kaggle), load it with pandas, write it into a SQLite database, and answer the same three questions about it in both pandas and SQL. Done when:
+> - `python report.py data.csv` prints all three answers from the command line, and the pandas and SQL answers match.
+> - At least one calculation is vectorized with NumPy or pandas instead of a Python loop over rows.
+> - The project is a public git repo with several meaningful commits and a README that says how to run it.
+
 ---
 
 ## Phase 2: Classical ML
@@ -144,6 +149,12 @@ The library everything else in classical ML uses. Get comfortable with the API; 
 - **[Machine Learning in Python with scikit-learn](https://www.fun-mooc.fr/en/courses/machine-learning-python-scikit-learn/)** (Inria, scikit-learn core team): free, MOOC. Taught by the people who wrote the library.
 
 Prereqs: [Supervised learning](#supervised-learning).
+
+> **Checkpoint: an end-to-end tabular classifier.** Train a scikit-learn classifier on a public dataset, such as Adult census income from OpenML or the breast cancer dataset built into scikit-learn. Done when:
+> - Preprocessing and model sit in one `Pipeline`, and you report 5-fold cross-validated precision and recall.
+> - The model clearly beats a `DummyClassifier` baseline, and a held-out test set is scored once, at the very end.
+> - You can explain one feature-engineering choice (an encoding, a scaling step, a derived feature) and show what it changed in the scores.
+> - A PCA or k-means view of the data comes with one sentence on what structure it does or doesn't show.
 
 ---
 
@@ -203,6 +214,12 @@ Reusing pretrained models. This is how 90% of modern applied deep learning actua
 
 Prereqs: [Training loops](#training-loops).
 
+> **Checkpoint: a training loop you wrote yourself.** In plain PyTorch, train a small CNN from scratch on CIFAR-10 (built into torchvision), then fine-tune a pretrained ResNet-18 on the same data. A free Colab or Kaggle GPU is enough. Done when:
+> - Before the real run, your model overfits a single batch to near-zero loss.
+> - Your loop logs training and validation loss each epoch, saves checkpoints, and can resume from one.
+> - One regularization change (dropout, weight decay, or augmentation) visibly narrows the gap between the two loss curves.
+> - The fine-tuned ResNet-18 beats your from-scratch model, and you can say why.
+
 ---
 
 ## Phase 4: NLP
@@ -252,6 +269,11 @@ Named entity recognition, part-of-speech tagging, sentiment analysis, text class
 
 Prereqs: [Python](#python), [Embeddings](#embeddings).
 
+> **Checkpoint: a sentiment classifier, old and new.** On the IMDB movie reviews dataset from the Hugging Face Hub, build a TF-IDF plus logistic regression baseline, then fine-tune a small pretrained transformer such as DistilBERT. Done when:
+> - Both models are scored on the same test split, and you can say whether the transformer's gain is worth its extra cost.
+> - Your own scaled dot-product attention, in about 20 lines of PyTorch, matches `torch.nn.functional.scaled_dot_product_attention` on random inputs.
+> - For five reviews the transformer gets wrong, you can show how they were tokenized and name a likely cause (negation, sarcasm, rare words).
+
 ---
 
 ## Phase 5: Computer Vision
@@ -298,6 +320,11 @@ Applying the transformer architecture from Phase 4 to images by splitting them i
 - **[An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale (Paper Explained)](https://www.youtube.com/watch?v=TrdevFK_am4)** (Yannic Kilcher): free, YouTube, ~30 minutes. A thorough walkthrough of the original paper for anyone who wants the reasoning behind ViT, not just the API to run one.
 
 Prereqs: [Transformer architecture](#transformer-architecture), [Convnets](#convnets).
+
+> **Checkpoint: fine-tune, then predict.** Fine-tune a pretrained convnet or ViT on the Oxford-IIIT Pet dataset (built into torchvision) and wrap it in a script that classifies any image you give it. Done when:
+> - You report test accuracy and a confusion matrix, and can show example images for the two breeds the model mixes up most.
+> - `python predict.py photo.jpg` prints the top three labels with probabilities, using exactly the training-time resize and normalization.
+> - A pretrained YOLO model detects objects in ten of your own photos, and you compute IoU by hand for one predicted box against a box you drew.
 
 ---
 
@@ -383,6 +410,12 @@ LLMs that read images, PDFs, or audio in the same prompt as text. Most open visi
 
 Prereqs: [How LLMs work](#how-llms-work), [Vision transformers](#vision-transformers), [Provider SDKs](#provider-sdks).
 
+> **Checkpoint: an extraction app with an eval.** Build a small app that turns messy input (job postings, support emails, receipts) into a typed Pydantic object through a provider SDK, using a provider's free API tier. Done when:
+> - Every output validates against the schema; failures are retried or reported, never passed through silently.
+> - A hand-labeled set of 30 or more examples gives a field-level accuracy score, rerun after every prompt change.
+> - A table compares two models, one of them a reasoning model, on accuracy, latency, and cost per 100 calls.
+> - The app also accepts a screenshot or photo of the same kind of input through a multimodal model.
+
 ---
 
 ## Phase 7: Agents
@@ -453,6 +486,12 @@ Four different opinions on how much structure an agent framework should impose. 
 
 Prereqs: [Tool use](#tool-use).
 
+> **Checkpoint: one agent, two frameworks.** Build an agent that finishes a multi-step task with tools you wrote (research a topic and write a cited summary, or triage a set of GitHub issues), then build it again in a second framework from the survey. [real-world-agents](https://github.com/rajeshm71/real-world-agents) has worked examples to compare against. Done when:
+> - The agent uses at least two of your own tools, and at least one is served from an MCP server you wrote.
+> - On 10 test tasks, you log success rate, tool calls, and tokens per run, and every run stops on its own within a step limit.
+> - Long runs trim or summarize old tool output instead of letting the context grow without bound.
+> - You can say which framework you would keep for this task and why.
+
 ---
 
 ## Phase 8: RAG
@@ -513,6 +552,12 @@ How you know a RAG pipeline is actually retrieving the right context and answeri
 - **[RAGAS - Evaluate RAG Pipelines](https://www.youtube.com/watch?v=tqRDHaY923o)** (Fahd Mirza): free, YouTube. A direct demo of Ragas (the docs pick above) actually computing context precision and faithfulness on a pipeline, rather than just reading the metric definitions.
 
 Prereqs: [Retrieval basics](#retrieval-basics), [Evaluation](#evaluation).
+
+> **Checkpoint: Q&A over documents you care about.** Build a RAG pipeline over a document set you pick (a library's docs, a set of public reports) that answers questions with citations. Compare your choices with [rag-recipes](https://github.com/rajeshm71/rag-recipes). Done when:
+> - A hand-written set of 25 or more questions with known source passages scores retrieval hit rate and answer faithfulness.
+> - You compare vector-only search against hybrid search plus a reranker, and two chunk sizes, then keep whichever wins on that set.
+> - Every answer cites the chunks it used, and the system says it doesn't know when nothing relevant was retrieved.
+> - For any answer, a trace shows the retrieved chunks and the final prompt.
 
 ---
 
@@ -591,6 +636,11 @@ Storing weights in fewer bits (8-bit, 4-bit) so a model fits in less memory and 
 
 Prereqs: [Open-model serving](#open-model-serving), [LoRA and adapters](#lora-and-adapters).
 
+> **Checkpoint: a fine-tune that has to earn its place.** Pick a narrow task where prompting a small open model (1B to 3B parameters) falls short, curate a few hundred chat-formatted examples, and LoRA fine-tune the model in a free Colab or Kaggle GPU notebook. Done when:
+> - The prompted base model's score on a held-out test set is recorded before training, as the baseline to beat.
+> - You report the fine-tuned score against that baseline, plus a short verdict on whether the gain justifies training and serving your own model.
+> - A 4-bit quantized version runs locally through Ollama or llama.cpp, and you measure its score and tokens per second against the unquantized model.
+
 ---
 
 ## Phase 10: MLOps & Production
@@ -655,6 +705,12 @@ Any untrusted text a model reads (a web page, an email, a tool result) can carry
 
 Prereqs: [Tool use](#tool-use), [Safety and guardrails](#safety-and-guardrails).
 
+> **Checkpoint: ship it and watch it.** Deploy your Phase 6, 7, or 8 project as a public demo on Hugging Face Spaces, then run it like a production system. Done when:
+> - Every response is traced with its latency, token cost, and the model and prompt version that produced it, and you can roll back to the previous version in one step.
+> - A spending cap or rate limit stops a single user from running up your bill.
+> - You try at least five prompt-injection attacks, including one hidden in retrieved or tool-fetched content, and record which got through and what design change contained them.
+> - You ship one improvement found by reading production traces and show its effect on your eval set.
+
 ---
 
 ## Phase 11: Staying current
@@ -697,6 +753,11 @@ The role itself is new enough that the job title and the interview loop are both
 - **[Introduction to Machine Learning Interviews](https://huyenchip.com/ml-interviews-book/)** (Huyen): free, book. Covers the interview process itself: what roles exist, what each one screens for, and over 200 practice questions.
 
 Prereqs: none.
+
+> **Checkpoint: a portfolio and a habit.** Turn your checkpoint projects into something a hiring manager can read, and keep up with the field for a month. Done when:
+> - Your two or three strongest projects are public repos whose READMEs state the problem, the eval numbers, and what you would try next.
+> - For four weeks you have read one newsletter issue a week, and you have tried one technique from a recent paper on one of your projects and written up the result, good or bad.
+> - You can walk through each project in five minutes, including one decision you would now make differently.
 
 ---
 
