@@ -605,7 +605,7 @@ Getting a model or pipeline from a notebook into something other people can call
 - **[Modal documentation](https://modal.com/docs)**: free tier, official docs. Serverless GPU functions with no Dockerfile or standing instance; pay per second of actual compute.
 - **[Replicate documentation](https://replicate.com/docs)**: free to browse, paid to run, official docs. Run someone else's published model behind a stable API without hosting anything yourself; useful before you've decided your own deployment needs custom infrastructure at all.
 
-Prereqs: [Open-model serving](#open-model-serving).
+Prereqs: [Provider SDKs](#provider-sdks); add [Open-model serving](#open-model-serving) if you host your own model.
 
 ### Monitoring: cost, latency
 
@@ -708,7 +708,7 @@ Phase 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 in order. Full breadth. ~6-9 months full
 
 ### LLM engineer fast-track
 
-Phase 1, 2 (lighter pass), 3 (lighter pass through PyTorch + training loops), 4 (tokenization, embeddings, transformer architecture), 6, 7, 8, 9, 10, 11. Skips computer vision and classical NLP tasks; goes through classical ML and deep-learning fundamentals at reduced depth. For readers who already program and want the modern LLM/agent/RAG stack fast. ~3-4 months full-time equivalent.
+Phase 1, 2 (lighter pass), 3 (lighter pass through PyTorch + training loops), 4 (tokenization, embeddings, transformer architecture), 6, 7, 8, 9, 10, 11. Skips computer vision and classical NLP tasks, except [Vision transformers](#vision-transformers), which [Multimodal models](#multimodal-models) builds on; goes through classical ML and deep-learning fundamentals at reduced depth. For readers who already program and want the modern LLM/agent/RAG stack fast. ~3-4 months full-time equivalent.
 
 ---
 

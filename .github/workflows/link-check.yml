@@ -66,3 +66,42 @@ jobs:
             --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36"
             README.md
           fail: true
+
+      # The resource index repeats every topic's picks by hand, so fail when
+      # it drifts from the topic sections (missing, extra, or reordered picks).
+      - name: Check resource index matches topic sections
+        if: ${{ !cancelled() }}
+        shell: python3 {0}
+        run: |
+          import re, sys
+          text = open("README.md", encoding="utf-8").read()
+          body, index = text.split("\n## Resource index\n", 1)
+          index = index.split("\n## ", 1)[0]
+          link = re.compile(r"\[(.+?)\]\((.+?)\)")
+
+          sections, topic = {}, None
+          for line in body.splitlines():
+              if line.startswith("### "):
+                  topic = line[4:].strip()
+                  sections[topic] = []
+              m = re.match(r"- \*\*" + link.pattern + r"\*\*", line)
+              if m and topic:
+                  sections[topic].append(m.groups())
+          sections = {t: p for t, p in sections.items() if p}
+
+          rows = {}
+          for line in index.splitlines():
+              m = re.match(r"\| \[(.+?)\]\(#[^)]+\) \| (.+) \|$", line)
+              if m:
+                  rows[m.group(1)] = link.findall(m.group(2).replace("\\|", "|"))
+
+          errors = []
+          if list(sections) != list(rows):
+              errors.append("Topic order or set differs between sections and index.")
+          for t in sections.keys() | rows.keys():
+              if sections.get(t) != rows.get(t):
+                  errors.append(f"Index row for '{t}' does not match its section.")
+          for e in errors:
+              print(f"::error file=README.md::{e}")
+          print(f"Checked {len(sections)} topics.")
+          sys.exit(1 if errors else 0)
