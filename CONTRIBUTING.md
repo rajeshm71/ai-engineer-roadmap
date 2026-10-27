@@ -27,9 +27,12 @@ around it (CI, templates).
   will fail the same check.
 - **R4.** Short prose. Two sentences of context per topic, then the
   resource list. No filler.
-- **R5.** No template stubs. Never add "What it is / Why you need this /
-  Estimated time / When you're done you can" style sections. Just a
-  heading, context, the resource list, and a prereqs line.
+- **R5.** No template stubs in topics. Never add "What it is / Why you
+  need this / Estimated time / When you're done you can" style sections to
+  a topic. A topic is just a heading, context, the resource list, and a
+  prereqs line. Phases are the one exception: each phase may carry one
+  `Time:` line under its intro and one `Checkpoint` block after its last
+  topic, and no more.
 
 ## Every new pick needs
 
