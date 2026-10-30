@@ -45,7 +45,7 @@ Each phase lists a rough time in full-time weeks, sized to add up to the [Tracks
 
 ## Phase 1: Prerequisites
 
-Time: ~3-5 weeks if you are new to programming; about 1 week of review if you already program.
+Time: ~3-5 weeks if you are new to programming; about 1-2 weeks of review if you already program.
 
 Install packages, wrangle data with pandas and SQL, do linear algebra, run bash, use git. If you already program, move quickly through this phase; otherwise these are the basics everyone needs.
 
@@ -108,6 +108,16 @@ Version control. Non-negotiable.
 - **[Pro Git](https://git-scm.com/book/en/v2)** (Chacon, Straub): free, book. The canonical reference. Read chapters 1-3; treat the rest as a reference to return to.
 - **[Oh Shit, Git!?!](https://ohshitgit.com/)** (Sylor-Miller): free, cheat sheet. The one page you reach for when you've mangled a rebase and don't know what to do.
 - **[Git and GitHub for Beginners - Crash Course](https://www.youtube.com/watch?v=RGOj5yH7evk)** (freeCodeCamp.org): free, YouTube, ~1 hour. Fastest way to see commits, branching, and a GitHub PR workflow actually happen before you touch the CLI yourself.
+
+Prereqs: [CLI / Linux](#cli--linux).
+
+### Docker
+
+Packages an app with its Python version, system libraries, and dependencies into an image that runs the same on your laptop, a teammate's machine, or a cloud GPU. Later phases lean on it to start a vector database or vLLM's official image with one command.
+
+- **[Docker: Get started](https://docs.docker.com/get-started/)**: free, official docs. The "Docker concepts" pages run from what containers and images are through writing a Dockerfile, the build cache, multi-stage builds, persisting data, and multi-container apps with Compose.
+- **[DevOps with Docker](https://devopswithdocker.com/)** (University of Helsinki): free, course. Graded exercises: parts 1 and 2 cover images, volumes, ports, and Docker Compose, including running a database next to your app; part 3 adds image optimization.
+- **[Getting Started with Docker](https://www.youtube.com/watch?v=gAGEar5HQoU)** (Docker): free, YouTube, ~2.7 hours. A hands-on workshop from Docker's developer relations team: running containers, building a Python web app image, volumes, and Compose.
 
 Prereqs: [CLI / Linux](#cli--linux).
 
@@ -421,6 +431,17 @@ The Python SDKs you'll actually call: OpenAI, Anthropic, Google.
 
 Prereqs: [Prompt engineering](#prompt-engineering).
 
+### Cost and latency
+
+Most of an LLM app's bill and wait time comes from a few choices: which model handles each request, how many tokens go in and come out, and whether repeated prefixes and offline jobs use the caching and batch discounts providers offer. A gateway that retries or falls back to a second provider keeps the app answering when the first one is slow or down.
+
+- **[Anthropic: Prompt caching](https://platform.claude.com/docs/en/build-with-claude/prompt-caching)**: free, official docs. How to mark a reusable prefix with `cache_control`, why prompt order decides what can be cached, the 5-minute and 1-hour lifetimes, and how cache writes and reads are priced against normal input tokens.
+- **[FrugalGPT: How to Use Large Language Models While Reducing Cost and Improving Performance](https://arxiv.org/abs/2305.05176)** (Chen, Zaharia, Zou): free, paper. Names three levers (shorter prompts, caching or cheaper stand-in models, and a cascade that tries a small model first and escalates only when its answer scores low), then shows a cascade matching GPT-4 at up to 98% lower cost.
+- **[Building A Generative AI Platform](https://huyenchip.com/2024/07/25/genai-platform.html)** (Huyen): free, blog post. Places a model router, a gateway with fallback policies for rate limits and outages, and exact, semantic, and prompt caches in one architecture, so you can see where each fix sits in a real system.
+- **[OpenAI DevDay 2024: Balancing accuracy, latency, and cost at scale](https://www.youtube.com/watch?v=Bx6sUDRMx-8)** (OpenAI): free, YouTube, ~34 minutes. Gets accuracy right first, then cuts latency (fewer output tokens, shorter prompts) and cost (prompt caching, the Batch API) on a customer-service example.
+
+Prereqs: [Provider SDKs](#provider-sdks), [Evaluation](#evaluation).
+
 ### Reasoning models
 
 Models trained with reinforcement learning to write out a long chain of thought before answering, so they spend more compute at inference time on harder problems. For an engineer, this means an effort setting on each request, reasoning tokens you pay for and wait on, and prompts that state the goal and constraints instead of spelling out every step.
@@ -453,7 +474,7 @@ Prereqs: [How LLMs work](#how-llms-work), [Vision transformers](#vision-transfor
 
 ## Phase 7: Agents
 
-Time: ~2-3 weeks.
+Time: ~3 weeks.
 
 Build agents in at least two frameworks. See sibling project [real-world-agents](https://github.com/rajeshm71/real-world-agents) for the applied version.
 
@@ -492,7 +513,7 @@ Prereqs: [Tool use](#tool-use).
 
 Deciding what goes into a model's context window at each step of a long agent run: instructions, tool definitions, retrieved data, memory, and summaries of what came before. Models get worse as context grows, so what you leave out matters as much as what you put in.
 
-- **[Effective context engineering for AI agents](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)** (Anthropic): free, official blog. Treats context as a limited budget and covers the main levers: tight system prompts, lean tool sets, just-in-time retrieval, compaction, note-taking, and sub-agents.
+- **[Effective context engineering for AI agents](https://www.anthropic.com/research/effective-context-engineering-for-ai-agents)** (Anthropic): free, official blog. Treats context as a limited budget and covers the main levers: tight system prompts, lean tool sets, just-in-time retrieval, compaction, note-taking, and sub-agents.
 - **[Context Rot: How Increasing Input Tokens Impacts LLM Performance](https://www.trychroma.com/research/context-rot)** (Hong, Troynikov, Huber): free, technical report. Measures how accuracy drops as input length grows across many current models, even on simple tasks; the evidence for keeping context small.
 - **[Claude: Context windows](https://platform.claude.com/docs/en/build-with-claude/context-windows)**: free, official docs. How thinking and tool use count against the window, plus the provider features for managing it as a conversation grows.
 - **[Context Engineering for Agents](https://www.youtube.com/watch?v=4GiqzUHD5AA)** (LangChain): free, YouTube, ~22 minutes. Groups the strategies into write, select, compress, and isolate, with examples from popular agents and papers.
@@ -503,8 +524,8 @@ Prereqs: [ReAct pattern](#react-pattern), [Prompt engineering](#prompt-engineeri
 
 Splitting a task across multiple agents, each with a narrower role, instead of one agent doing everything. Worth the added complexity only when a single agent's context or focus becomes the bottleneck.
 
-- **[Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents)** (Anthropic): free, official blog. Draws the line between a workflow (fixed code paths) and an agent (the model directs its own steps), and covers five common patterns before multi-agent is even necessary.
-- **[How we built our multi-agent research system](https://www.anthropic.com/engineering/multi-agent-research-system)** (Anthropic): free, official blog. Concrete, with real numbers (token cost, failure modes) from a production multi-agent system, rather than an architecture diagram alone.
+- **[Building Effective Agents](https://www.anthropic.com/research/building-effective-agents)** (Anthropic): free, official blog. Draws the line between a workflow (fixed code paths) and an agent (the model directs its own steps), and covers five common patterns before multi-agent is even necessary.
+- **[How we built our multi-agent research system](https://www.anthropic.com/research/multi-agent-research-system)** (Anthropic): free, official blog. Concrete, with real numbers (token cost, failure modes) from a production multi-agent system, rather than an architecture diagram alone.
 - **[CrewAI documentation](https://docs.crewai.com/)**: free, official docs. The framework built specifically around role-based multi-agent "crews"; see the pattern as a first-class abstraction rather than something you assemble yourself.
 - **[Anthropic: How to Build Multi-Agent Systems](https://www.youtube.com/watch?v=0HljLKVdtjo)** (Alejandro AO): free, YouTube, ~38 minutes. A walkthrough of the Anthropic writeup above: when a multi-agent setup is worth it, plus the prompt, tool-design, and evaluation lessons it reports.
 
@@ -521,6 +542,17 @@ Four different opinions on how much structure an agent framework should impose. 
 
 Prereqs: [Tool use](#tool-use).
 
+### Agent evaluation
+
+An agent can reach the right answer by a wasteful path or fail at step six of ten, so grading only the final output hides most of what goes wrong. Agent evals grade the end state, the sequence of tool calls, and the cost and step count of each run, over several trials per task, since the same agent rarely behaves the same way twice.
+
+- **[Demystifying evals for AI agents](https://www.anthropic.com/research/demystifying-evals-for-ai-agents)** (Anthropic): free, official blog. Defines tasks, trials, graders, and transcripts, compares code-based, model-based, and human graders, and explains when to report pass@k versus pass^k.
+- **[τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains](https://arxiv.org/abs/2406.12045)** (Yao, Shinn, Razavi, Narasimhan): free, paper. A simulated user talks to an agent bound by a domain policy, grading compares the final database state with the goal state, and the pass^k metric shows how far success drops when the same task runs k times.
+- **[How to evaluate your agent with trajectory evaluations](https://docs.langchain.com/langsmith/trajectory-evals)** (LangChain): free, official docs. Uses the open-source agentevals package to check an agent's tool calls against a reference trajectory (strict, unordered, subset, or superset match) or score them with an LLM judge.
+- **[Building and evaluating AI Agents](https://www.youtube.com/watch?v=d5EltXhbcfA)** (Sayash Kapoor, AI Engineer): free, YouTube, ~20 minutes. A co-author of "AI Agents That Matter" on why static benchmarks overstate agent performance, why cost belongs next to accuracy, and the gap between capability and reliability.
+
+Prereqs: [Evaluation](#evaluation), [ReAct pattern](#react-pattern).
+
 > **Checkpoint: one agent, two frameworks.** Build an agent that finishes a multi-step task with tools you wrote (research a topic and write a cited summary, or triage a set of GitHub issues), then build it again in a second framework from the survey. [real-world-agents](https://github.com/rajeshm71/real-world-agents) has worked examples to compare against. Done when:
 > - The agent uses at least two of your own tools, and at least one is served from an MCP server you wrote.
 > - On 10 test tasks, you log success rate, tool calls, and tokens per run, and every run stops on its own within a step limit.
@@ -531,7 +563,7 @@ Prereqs: [Tool use](#tool-use).
 
 ## Phase 8: RAG
 
-Time: ~2 weeks.
+Time: ~2-3 weeks.
 
 Build a production RAG pipeline. See sibling project [rag-recipes](https://github.com/rajeshm71/rag-recipes) for the applied version.
 
@@ -568,6 +600,17 @@ Pure vector search misses exact keyword matches; pure keyword search misses para
 
 Prereqs: [Retrieval basics](#retrieval-basics).
 
+### Document parsing
+
+Turning PDFs, scanned pages, tables, and slides into clean text and structure before anything gets chunked. Chunking assumes clean text, but real pipelines usually break earlier: multi-column pages come out in the wrong reading order, tables flatten into loose rows of numbers, and a scanned page has no text at all until OCR or a vision-language model reads it.
+
+- **[Docling](https://github.com/docling-project/docling)** (IBM Research): free, repo. An MIT-licensed parser that runs layout analysis, reading order, table structure recognition, and OCR locally, or hands pages to a small vision-language model, then exports Markdown or lossless JSON; its HybridChunker feeds straight into the next topic.
+- **[Unstructured: Partitioning strategies](https://docs.unstructured.io/open-source/concepts/partitioning-strategies)**: free, official docs. The clearest statement of the core tradeoff: a rule-based `fast` strategy far quicker than image-to-text models but unsuited to scans, a model-based `hi_res` strategy that uses page layout and can infer table structure, and `ocr_only` for image-based files.
+- **[OmniDocBench: Benchmarking Diverse PDF Document Parsing with Comprehensive Annotations](https://arxiv.org/abs/2412.07626)** (Ouyang et al.): free, paper. A CVPR 2025 benchmark that scores pipeline tools and end-to-end vision-language models on nine document sources, from academic papers to handwritten notes and dense newspapers, and reports where each approach is strong or weak by document type.
+- **[Teaching PyTorch To Read Your Worst PDFs With Docling](https://www.youtube.com/watch?v=97nKwxT4g1E)** (Zhao, Staar, Chen; PyTorch): free, YouTube, ~24 minutes. Docling maintainers on how lost table structure, captions split from figures, and multi-column layouts break RAG pipelines before any model sees the data.
+
+Prereqs: [Multimodal models](#multimodal-models).
+
 ### Chunking strategies
 
 How a document gets split before it's embedded. The chunking decision shapes what the retriever can find; too large and irrelevant text dilutes the match, too small and the model loses context it needed.
@@ -577,7 +620,7 @@ How a document gets split before it's embedded. The chunking decision shapes wha
 - **[Is Semantic Chunking Worth the Computational Cost?](https://arxiv.org/abs/2410.13070)**: free, paper. A rare counter-argument paper: tests whether the trendier semantic-chunking approach actually beats naive fixed-size chunks, and finds the answer is often no.
 - **[The 5 Levels Of Text Splitting For Retrieval](https://www.youtube.com/watch?v=8OJC21T2SL4)** (Greg Kamradt): free, YouTube. The video version of the notebook above, from the same author; watch first if you'd rather see the levels demoed before reading code.
 
-Prereqs: [Vector embeddings](#vector-embeddings).
+Prereqs: [Vector embeddings](#vector-embeddings), [Document parsing](#document-parsing).
 
 ### Evaluation and observability
 
@@ -600,7 +643,7 @@ Prereqs: [Retrieval basics](#retrieval-basics), [Evaluation](#evaluation).
 
 ## Phase 9: Fine-tuning
 
-Time: ~1-2 weeks.
+Time: ~2-3 weeks.
 
 Know when fine-tuning is the right call and can run one.
 
@@ -684,9 +727,20 @@ Prereqs: [Open-model serving](#open-model-serving), [LoRA and adapters](#lora-an
 
 ## Phase 10: MLOps & Production
 
-Time: ~1-2 weeks.
+Time: ~2-3 weeks.
 
 Deploy + monitor + iterate on a shipped AI system.
+
+### Serving an LLM app
+
+The HTTP layer between your users and the model: an endpoint that streams tokens as they arrive, a timeout on every upstream call, and a per-user limit that refuses requests once a user's budget is spent. The OpenAI and Anthropic SDKs already retry rate-limit and server errors with exponential backoff, so the parts left to you are timeouts, a cap on retries, and limits per user.
+
+- **[FastAPI: Tutorial - User Guide](https://fastapi.tiangolo.com/tutorial/)** (Ramírez): free, official docs. Endpoints, Pydantic request validation, and dependencies (where a per-user limit check belongs), plus a Server-Sent Events page for streaming tokens to the browser. Read the "Concurrency and async / await" page before your first `async def`.
+- **[Timeouts, retries, and backoff with jitter](https://builder.aws.com/content/3EumjoZascWd1oZiEgL8ORlv3qE/timeouts-retries-and-backoff-with-jitter)** (Brooker, AWS Builders' Library): free, blog post. How to set a timeout from a latency percentile, why retries need a token-bucket cap, and how jitter stops retrying clients from hitting a recovering service all at once.
+- **[Site Reliability Engineering: Handling Overload](https://sre.google/sre-book/handling-overload/)** (Forero Cuervo, Google): free online, book chapter. Per-customer quotas, rejecting over-quota requests cheaply, and per-client retry budgets: the design a per-user rate limit or spending cap follows.
+- **[Sebastián Ramirez What's New in FastAPI - PyAI Conf 2026](https://www.youtube.com/watch?v=YYkFq66jPe8)** (Sebastián Ramírez, PyAI Conf 2026): free, YouTube, ~22 minutes. FastAPI's creator on streaming with `yield`, JSON Lines, and Server-Sent Events, ending with a live demo that streams an LLM response.
+
+Prereqs: [Provider SDKs](#provider-sdks).
 
 ### Deployment (HF Spaces, Modal, Replicate)
 
@@ -696,7 +750,7 @@ Getting a model or pipeline from a notebook into something other people can call
 - **[Modal documentation](https://modal.com/docs)**: free tier, official docs. Serverless GPU functions with no Dockerfile or standing instance; pay per second of actual compute.
 - **[Replicate documentation](https://replicate.com/docs)**: free to browse, paid to run, official docs. Run someone else's published model behind a stable API without hosting anything yourself; useful before you've decided your own deployment needs custom infrastructure at all.
 
-Prereqs: [Provider SDKs](#provider-sdks); add [Open-model serving](#open-model-serving) if you host your own model.
+Prereqs: [Serving an LLM app](#serving-an-llm-app); add [Open-model serving](#open-model-serving) if you host your own model.
 
 ### Monitoring: cost, latency
 
@@ -808,11 +862,11 @@ Prereqs: none.
 
 ### Default AI engineer path
 
-Phase 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 in order. Full breadth. ~6-9 months full-time equivalent.
+Phase 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 in order. Full breadth. ~7-10 months full-time equivalent.
 
 ### LLM engineer fast-track
 
-Phase 1, 2 (lighter pass), 3 (lighter pass through PyTorch + training loops), 4 (tokenization, embeddings, transformer architecture), 6, 7, 8, 9, 10, 11. Skips computer vision and classical NLP tasks, except [Vision transformers](#vision-transformers), which [Multimodal models](#multimodal-models) builds on; goes through classical ML and deep-learning fundamentals at reduced depth. For readers who already program and want the modern LLM/agent/RAG stack fast. ~3-4 months full-time equivalent.
+Phase 1, 2 (lighter pass), 3 (lighter pass through PyTorch + training loops), 4 (tokenization, embeddings, transformer architecture), 6, 7, 8, 9, 10, 11. Skips computer vision and classical NLP tasks, except [Vision transformers](#vision-transformers), which [Multimodal models](#multimodal-models) builds on; goes through classical ML and deep-learning fundamentals at reduced depth. For readers who already program and want the modern LLM/agent/RAG stack fast. ~4-5 months full-time equivalent.
 
 ---
 
@@ -828,6 +882,7 @@ Every topic and its picks in one table, for scanning or searching instead of rea
 | [Math](#math) | [Mathematics for Machine Learning](https://mml-book.github.io/)<br>[Essence of Linear Algebra](https://www.3blue1brown.com/topics/linear-algebra)<br>[Introduction to Probability](https://www.edx.org/learn/probability/harvard-university-introduction-to-probability) |
 | [CLI / Linux](#cli--linux) | [The Missing Semester of Your CS Education](https://missing.csail.mit.edu/)<br>[The Linux Command Line](https://linuxcommand.org/tlcl.php) |
 | [Git](#git) | [Pro Git](https://git-scm.com/book/en/v2)<br>[Oh Shit, Git!?!](https://ohshitgit.com/)<br>[Git and GitHub for Beginners - Crash Course](https://www.youtube.com/watch?v=RGOj5yH7evk) |
+| [Docker](#docker) | [Docker: Get started](https://docs.docker.com/get-started/)<br>[DevOps with Docker](https://devopswithdocker.com/)<br>[Getting Started with Docker](https://www.youtube.com/watch?v=gAGEar5HQoU) |
 | [Supervised learning](#supervised-learning) | [Machine Learning Specialization](https://www.coursera.org/specializations/machine-learning-introduction)<br>[Hands-On Machine Learning with Scikit-Learn and PyTorch](https://www.oreilly.com/library/view/hands-on-machine-learning/9798341607972/)<br>[StatQuest with Josh Starmer](https://www.youtube.com/@statquest) |
 | [Unsupervised learning](#unsupervised-learning) | [An Introduction to Statistical Learning, 2nd ed.](https://www.statlearning.com/)<br>[StatQuest: Clustering and PCA playlists](https://www.youtube.com/@statquest/playlists)<br>[scikit-learn: clustering user guide](https://scikit-learn.org/stable/modules/clustering.html) |
 | [Model evaluation](#model-evaluation) | [scikit-learn: model evaluation user guide](https://scikit-learn.org/stable/modules/model_evaluation.html)<br>[Google's Machine Learning Crash Course: Classification](https://developers.google.com/machine-learning/crash-course/classification)<br>[Designing Machine Learning Systems](https://www.oreilly.com/library/view/designing-machine-learning/9781098107956/) |
@@ -851,17 +906,20 @@ Every topic and its picks in one table, for scanning or searching instead of rea
 | [Structured output](#structured-output) | [Instructor library docs](https://python.useinstructor.com/)<br>[OpenAI: Structured Outputs](https://developers.openai.com/api/docs/guides/structured-outputs)<br>[Pydantic AI docs](https://pydantic.dev/docs/ai/overview/)<br>[OpenAI DevDay 2024: Structured outputs for reliable applications](https://www.youtube.com/watch?v=kE4BkATIl9c) |
 | [Evaluation](#evaluation) | [Ragas documentation](https://docs.ragas.io/)<br>[Eugene Yan: Evals blog series](https://eugeneyan.com/writing/evals/)<br>[Inspect](https://github.com/UKGovernmentBEIS/inspect_ai)<br>[AI Engineering](https://www.oreilly.com/library/view/ai-engineering/9781098166298/)<br>[How to Systematically Setup LLM Evals](https://www.youtube.com/watch?v=a3SMraZWNNs) |
 | [Provider SDKs](#provider-sdks) | [OpenAI Python SDK docs](https://developers.openai.com/api/docs/libraries)<br>[Anthropic Python SDK docs](https://platform.claude.com/docs/en/cli-sdks-libraries/overview)<br>[Google Gen AI SDK docs](https://ai.google.dev/gemini-api/docs/get-started)<br>[LiteLLM docs](https://docs.litellm.ai/) |
+| [Cost and latency](#cost-and-latency) | [Anthropic: Prompt caching](https://platform.claude.com/docs/en/build-with-claude/prompt-caching)<br>[FrugalGPT: How to Use Large Language Models While Reducing Cost and Improving Performance](https://arxiv.org/abs/2305.05176)<br>[Building A Generative AI Platform](https://huyenchip.com/2024/07/25/genai-platform.html)<br>[OpenAI DevDay 2024: Balancing accuracy, latency, and cost at scale](https://www.youtube.com/watch?v=Bx6sUDRMx-8) |
 | [Reasoning models](#reasoning-models) | [OpenAI: Reasoning models](https://developers.openai.com/api/docs/guides/reasoning)<br>[DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](https://arxiv.org/abs/2501.12948)<br>[Understanding Reasoning LLMs](https://magazine.sebastianraschka.com/p/understanding-reasoning-llms)<br>[How do thinking and reasoning models work?](https://www.youtube.com/watch?v=xCRvOUykOX0) |
 | [Multimodal models](#multimodal-models) | [Visual Instruction Tuning](https://arxiv.org/abs/2304.08485)<br>[Anthropic: Vision](https://platform.claude.com/docs/en/build-with-claude/vision)<br>[Vision Language Models Explained](https://huggingface.co/blog/vlms)<br>[Large Multimodal Models: Towards Building General-Purpose Multimodal Assistant](https://www.youtube.com/watch?v=S0CpenMvG48) |
 | [Tool use](#tool-use) | [Claude: Tool use overview](https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview)<br>[OpenAI: Function calling guide](https://developers.openai.com/api/docs/guides/function-calling)<br>[PydanticAI: Tools](https://pydantic.dev/docs/ai/tools-toolsets/tools/)<br>[LLM Function Calling - AI Tools Deep Dive](https://www.youtube.com/watch?v=gMeTK6zzaO4) |
 | [Model Context Protocol (MCP)](#model-context-protocol-mcp) | [Model Context Protocol: Introduction](https://modelcontextprotocol.io/docs/getting-started/intro)<br>[MCP Python SDK](https://github.com/modelcontextprotocol/python-sdk)<br>[Introduction to Model Context Protocol](https://anthropic.skilljar.com/introduction-to-model-context-protocol)<br>[Building Agents with Model Context Protocol - Full Workshop with Mahesh Murag of Anthropic](https://www.youtube.com/watch?v=kQmXtrmQ5Zg) |
 | [ReAct pattern](#react-pattern) | [ReAct: Synergizing Reasoning and Acting in Language Models](https://arxiv.org/abs/2210.03629)<br>[LLM Powered Autonomous Agents](https://lilianweng.github.io/posts/2023-06-23-agent/) |
-| [Context engineering](#context-engineering) | [Effective context engineering for AI agents](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)<br>[Context Rot: How Increasing Input Tokens Impacts LLM Performance](https://www.trychroma.com/research/context-rot)<br>[Claude: Context windows](https://platform.claude.com/docs/en/build-with-claude/context-windows)<br>[Context Engineering for Agents](https://www.youtube.com/watch?v=4GiqzUHD5AA) |
-| [Multi-agent collaboration](#multi-agent-collaboration) | [Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents)<br>[How we built our multi-agent research system](https://www.anthropic.com/engineering/multi-agent-research-system)<br>[CrewAI documentation](https://docs.crewai.com/)<br>[Anthropic: How to Build Multi-Agent Systems](https://www.youtube.com/watch?v=0HljLKVdtjo) |
+| [Context engineering](#context-engineering) | [Effective context engineering for AI agents](https://www.anthropic.com/research/effective-context-engineering-for-ai-agents)<br>[Context Rot: How Increasing Input Tokens Impacts LLM Performance](https://www.trychroma.com/research/context-rot)<br>[Claude: Context windows](https://platform.claude.com/docs/en/build-with-claude/context-windows)<br>[Context Engineering for Agents](https://www.youtube.com/watch?v=4GiqzUHD5AA) |
+| [Multi-agent collaboration](#multi-agent-collaboration) | [Building Effective Agents](https://www.anthropic.com/research/building-effective-agents)<br>[How we built our multi-agent research system](https://www.anthropic.com/research/multi-agent-research-system)<br>[CrewAI documentation](https://docs.crewai.com/)<br>[Anthropic: How to Build Multi-Agent Systems](https://www.youtube.com/watch?v=0HljLKVdtjo) |
 | [Framework survey (LangGraph, CrewAI, OpenAI Agents SDK, PydanticAI)](#framework-survey-langgraph-crewai-openai-agents-sdk-pydanticai) | [LangGraph](https://docs.langchain.com/oss/python/langgraph/overview)<br>[CrewAI documentation](https://docs.crewai.com/)<br>[OpenAI Agents SDK](https://openai.github.io/openai-agents-python/)<br>[PydanticAI documentation](https://pydantic.dev/docs/ai/overview/) |
+| [Agent evaluation](#agent-evaluation) | [Demystifying evals for AI agents](https://www.anthropic.com/research/demystifying-evals-for-ai-agents)<br>[τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains](https://arxiv.org/abs/2406.12045)<br>[How to evaluate your agent with trajectory evaluations](https://docs.langchain.com/langsmith/trajectory-evals)<br>[Building and evaluating AI Agents](https://www.youtube.com/watch?v=d5EltXhbcfA) |
 | [Vector embeddings](#vector-embeddings) | [Pinecone: Learning Center](https://www.pinecone.io/learn/)<br>[What are embeddings?](https://vickiboykis.com/what_are_embeddings/)<br>[Cohere: Embeddings documentation](https://docs.cohere.com/docs/embeddings)<br>[OpenAI Embeddings and Vector Databases Crash Course](https://www.youtube.com/watch?v=ySus5ZS0b94) |
 | [Retrieval basics](#retrieval-basics) | [LlamaIndex: Introduction to RAG](https://developers.llamaindex.ai/python/framework/understanding/rag/)<br>[Vector Search Explained](https://weaviate.io/blog/vector-search-explained)<br>[Faiss](https://github.com/facebookresearch/faiss)<br>[Vector Search & Approximate Nearest Neighbors (ANN) \| FAISS (HNSW & IVF)](https://www.youtube.com/watch?v=chz74Mtd1AA) |
 | [Hybrid search + reranking](#hybrid-search--reranking) | [Pinecone: Hybrid search overview](https://docs.pinecone.io/guides/search/hybrid-search)<br>[Cohere Rerank overview](https://docs.cohere.com/docs/rerank-overview)<br>[Sentence Transformers: Retrieve & Rerank](https://sbert.net/examples/sentence_transformer/applications/retrieve_rerank/README.html)<br>[Don't naive-RAG, do hybrid search instead](https://www.youtube.com/watch?v=d_WwEdxyuGs) |
+| [Document parsing](#document-parsing) | [Docling](https://github.com/docling-project/docling)<br>[Unstructured: Partitioning strategies](https://docs.unstructured.io/open-source/concepts/partitioning-strategies)<br>[OmniDocBench: Benchmarking Diverse PDF Document Parsing with Comprehensive Annotations](https://arxiv.org/abs/2412.07626)<br>[Teaching PyTorch To Read Your Worst PDFs With Docling](https://www.youtube.com/watch?v=97nKwxT4g1E) |
 | [Chunking strategies](#chunking-strategies) | [5 Levels of Text Splitting](https://github.com/FullStackRetrieval-com/RetrievalTutorials/blob/main/tutorials/LevelsOfTextSplitting/5_Levels_Of_Text_Splitting.ipynb)<br>[LangChain: text splitters](https://docs.langchain.com/oss/python/integrations/splitters)<br>[Is Semantic Chunking Worth the Computational Cost?](https://arxiv.org/abs/2410.13070)<br>[The 5 Levels Of Text Splitting For Retrieval](https://www.youtube.com/watch?v=8OJC21T2SL4) |
 | [Evaluation and observability](#evaluation-and-observability) | [Ragas documentation](https://docs.ragas.io/)<br>[Langfuse documentation](https://langfuse.com/docs)<br>[Your AI Product Needs Evals](https://hamel.dev/blog/posts/evals/)<br>[RAGAS - Evaluate RAG Pipelines](https://www.youtube.com/watch?v=tqRDHaY923o) |
 | [When to fine-tune](#when-to-fine-tune) | [Patterns for Building LLM-based Systems & Products](https://eugeneyan.com/writing/llm-patterns/)<br>[PEFT documentation](https://huggingface.co/docs/peft/) |
@@ -871,6 +929,7 @@ Every topic and its picks in one table, for scanning or searching instead of rea
 | [Preference tuning (DPO)](#preference-tuning-dpo) | [Direct Preference Optimization: Your Language Model is Secretly a Reward Model](https://arxiv.org/abs/2305.18290)<br>[TRL: DPO Trainer](https://huggingface.co/docs/trl/en/dpo_trainer)<br>[Reinforcement Learning from Human Feedback](https://rlhfbook.com/)<br>[Direct Preference Optimization (DPO) and Friends \| Post-Training Course, Lecture 6](https://www.youtube.com/watch?v=6g6b4gvO-y0) |
 | [Open-model serving](#open-model-serving) | [vLLM documentation](https://docs.vllm.ai/en/latest/)<br>[Ollama documentation](https://docs.ollama.com/)<br>[llama.cpp](https://github.com/ggml-org/llama.cpp)<br>[The State of vLLM](https://www.youtube.com/watch?v=4HPRf9nDZ6Q) |
 | [Quantization](#quantization) | [A Visual Guide to Quantization](https://newsletter.maartengrootendorst.com/p/a-visual-guide-to-quantization)<br>[Transformers: Quantization overview](https://huggingface.co/docs/transformers/en/quantization/overview)<br>[QLoRA: Efficient Finetuning of Quantized LLMs](https://arxiv.org/abs/2305.14314)<br>[Which Quantization Method is Right for You? (GPTQ vs. GGUF vs. AWQ)](https://www.youtube.com/watch?v=mNE_d-C82lI) |
+| [Serving an LLM app](#serving-an-llm-app) | [FastAPI: Tutorial - User Guide](https://fastapi.tiangolo.com/tutorial/)<br>[Timeouts, retries, and backoff with jitter](https://builder.aws.com/content/3EumjoZascWd1oZiEgL8ORlv3qE/timeouts-retries-and-backoff-with-jitter)<br>[Site Reliability Engineering: Handling Overload](https://sre.google/sre-book/handling-overload/)<br>[Sebastián Ramirez What's New in FastAPI - PyAI Conf 2026](https://www.youtube.com/watch?v=YYkFq66jPe8) |
 | [Deployment (HF Spaces, Modal, Replicate)](#deployment-hf-spaces-modal-replicate) | [Hugging Face Spaces](https://huggingface.co/docs/hub/spaces)<br>[Modal documentation](https://modal.com/docs)<br>[Replicate documentation](https://replicate.com/docs) |
 | [Monitoring: cost, latency](#monitoring-cost-latency) | [An Introduction to Observability for LLM-based applications using OpenTelemetry](https://opentelemetry.io/blog/2024/llm-observability/)<br>[Data Distribution Shifts and Monitoring](https://huyenchip.com/2022/02/07/data-distribution-shifts-and-monitoring.html) |
 | [Model versioning](#model-versioning) | [W&B Registry](https://docs.coreweave.com/products/registry)<br>[DVC documentation](https://dvc.org/doc) |
