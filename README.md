@@ -371,7 +371,7 @@ Prereqs: [Transformer architecture](#transformer-architecture), [Convnets](#conv
 
 ## Phase 6: LLMs
 
-Time: ~3-4 weeks.
+Time: ~4 weeks.
 
 Build a production LLM app with structured output. This is where the modern AI engineer stack starts.
 
@@ -464,6 +464,17 @@ LLMs that read images, PDFs, or audio in the same prompt as text. Most open visi
 
 Prereqs: [How LLMs work](#how-llms-work), [Vision transformers](#vision-transformers), [Provider SDKs](#provider-sdks).
 
+### Speech and voice
+
+Speech-to-text, text-to-speech, and voice agents that hold a spoken conversation, built either as one speech-to-speech model or as a chained STT, LLM, and TTS pipeline where you can inspect every stage. Most of the difficulty is timing: people expect a reply about half a second after they stop talking, so the agent has to detect the end of a turn and stop speaking when interrupted while audio streams both ways.
+
+- **[Robust Speech Recognition via Large-Scale Weak Supervision](https://arxiv.org/abs/2212.04356)** (Radford et al.): free, paper. The Whisper paper: a model trained on 680,000 hours of weakly labeled multilingual web audio transcribes zero-shot, approaching human accuracy and robustness, with weights released so you can run it locally.
+- **[OpenAI: Voice agents](https://developers.openai.com/api/docs/guides/voice-agents)**: free, official docs. Compares speech-to-speech and chained STT, agent, TTS architectures, builds the chained pipeline with the Agents SDK, and shows how to evaluate task success, response latency, and interruptions.
+- **[Voice AI & Voice Agents: An Illustrated Primer](https://voiceaiandvoiceagents.com/)** (Hultman Kramer): free, online book. Starts from the voice-to-voice latency a caller actually hears, then covers STT and TTS choices, voice activity detection, turn detection, interruption handling, WebSockets versus WebRTC, and per-minute cost.
+- **[Pipecat](https://github.com/pipecat-ai/pipecat)** (Daily): free, repo. An open-source Python framework where a voice agent is a pipeline of swappable STT, LLM, TTS, or speech-to-speech services over a WebRTC or WebSocket transport; swap one service at a time and measure what it does to response latency.
+
+Prereqs: [Multimodal models](#multimodal-models), [Cost and latency](#cost-and-latency).
+
 > **Checkpoint: an extraction app with an eval.** Build a small app that turns messy input (job postings, support emails, receipts) into a typed Pydantic object through a provider SDK, using a provider's free API tier. Done when:
 > - Every output validates against the schema; failures are retried or reported, never passed through silently.
 > - A hand-labeled set of 30 or more examples gives a field-level accuracy score, rerun after every prompt change.
@@ -474,7 +485,7 @@ Prereqs: [How LLMs work](#how-llms-work), [Vision transformers](#vision-transfor
 
 ## Phase 7: Agents
 
-Time: ~3 weeks.
+Time: ~3-4 weeks.
 
 Build agents in at least two frameworks. See sibling project [real-world-agents](https://github.com/rajeshm71/real-world-agents) for the applied version.
 
@@ -541,6 +552,17 @@ Four different opinions on how much structure an agent framework should impose. 
 - **[PydanticAI documentation](https://pydantic.dev/docs/ai/overview/)**: free, official docs. Type-safe agents and dependency injection built by the Pydantic team; the newest of the four and the least likely to already be on your radar.
 
 Prereqs: [Tool use](#tool-use).
+
+### Coding agents and agent harnesses
+
+Coding agents such as Claude Code, OpenAI Codex, and OpenHands read files, edit code, run commands, and check the results in a loop until a task is done. The harness underneath (file system and shell access, permissions, context compaction, subagents) is general-purpose, so you can build your own agents on it as well as work alongside one every day.
+
+- **[Claude Agent SDK overview](https://code.claude.com/docs/en/agent-sdk/overview)**: free, official docs. The harness that runs Claude Code, packaged as a Python and TypeScript library with built-in file and shell tools, permissions, sessions, hooks, and subagents, plus a comparison of when to use it and when to write the tool loop yourself.
+- **[Building agents with the Claude Agent SDK](https://claude.com/resources/articles/building-agents-with-the-claude-agent-sdk)** (Shihipar, Anthropic): free, official blog. Treats an agent as a gather context, take action, verify work loop, and explains why a terminal and a file system make a coding harness useful for research, finance, and support agents too.
+- **[SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering](https://arxiv.org/abs/2405.15793)** (Yang et al.): free, paper. Argues that agents need interfaces designed for them, and shows that purpose-built commands for navigating repos, editing files, and running tests sharply raise success on SWE-bench; the design argument behind every coding agent's tool set.
+- **[Claude Code best practices | Code w/ Claude](https://www.youtube.com/watch?v=gv0WHhKelSE)** (Cal Rueb, Anthropic): free, YouTube, ~26 minutes. How Claude Code works under the hood, then the habits that make it effective: project instruction files, permission settings, managing context, plan-first workflows, and headless runs for automation.
+
+Prereqs: [Tool use](#tool-use), [Model Context Protocol (MCP)](#model-context-protocol-mcp), [Context engineering](#context-engineering).
 
 ### Agent evaluation
 
@@ -674,6 +696,17 @@ Fine-tuning data quality matters more than quantity: a small, carefully curated 
 - **[LIMA: Less Is More for Alignment](https://arxiv.org/abs/2305.11206)** (Zhou et al.): free, paper. Fine-tuned a 65B model on just 1,000 curated examples and matched much larger instruction-tuning efforts; the strongest evidence that curation beats volume.
 
 Prereqs: [When to fine-tune](#when-to-fine-tune).
+
+### Synthetic data and distillation
+
+When curated examples are scarce, a stronger model can write or label them: generating instructions and responses, judging which to keep, and passing its behavior on to a smaller, cheaper model you fine-tune. Most of the work is in the filtering, since unchecked synthetic data repeats the teacher's mistakes and drifts into near-duplicates.
+
+- **[Self-Instruct: Aligning Language Models with Self-Generated Instructions](https://arxiv.org/abs/2212.10560)** (Wang et al.): free, paper. The template most synthetic instruction pipelines still follow: a model generates instructions, inputs, and outputs from a small seed set, invalid or near-duplicate ones are filtered out, and the rest fine-tune the model.
+- **[How to Generate and Use Synthetic Data for Finetuning](https://eugeneyan.com/writing/synthetic/)** (Yan): free, blog post. Sorts the papers that matter into distillation from a stronger model and self-improvement without one, across instruction tuning, preference tuning, and pretraining.
+- **[distilabel documentation](https://distilabel.argilla.io/latest/)** (Argilla): free, official docs. A framework for generation and AI-feedback pipelines (LLM-as-judge scoring, preference pairs) that rebuilds published methods such as UltraFeedback and Instruction Backtranslation.
+- **[MedAI #88: Distilling Step-by-Step! Outperforming LLMs with Smaller Model Sizes](https://www.youtube.com/watch?v=fnDUaDDrR4c)** (Cheng-Yu Hsieh, Stanford MedAI): free, YouTube, ~57 minutes. The paper's first author on training small models on a large model's labels plus its rationales, where a 770M T5 beats few-shot 540B PaLM using less data than standard fine-tuning needs.
+
+Prereqs: [Data preparation](#data-preparation), [Evaluation](#evaluation).
 
 ### Running a fine-tune
 
@@ -909,12 +942,14 @@ Every topic and its picks in one table, for scanning or searching instead of rea
 | [Cost and latency](#cost-and-latency) | [Anthropic: Prompt caching](https://platform.claude.com/docs/en/build-with-claude/prompt-caching)<br>[FrugalGPT: How to Use Large Language Models While Reducing Cost and Improving Performance](https://arxiv.org/abs/2305.05176)<br>[Building A Generative AI Platform](https://huyenchip.com/2024/07/25/genai-platform.html)<br>[OpenAI DevDay 2024: Balancing accuracy, latency, and cost at scale](https://www.youtube.com/watch?v=Bx6sUDRMx-8) |
 | [Reasoning models](#reasoning-models) | [OpenAI: Reasoning models](https://developers.openai.com/api/docs/guides/reasoning)<br>[DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](https://arxiv.org/abs/2501.12948)<br>[Understanding Reasoning LLMs](https://magazine.sebastianraschka.com/p/understanding-reasoning-llms)<br>[How do thinking and reasoning models work?](https://www.youtube.com/watch?v=xCRvOUykOX0) |
 | [Multimodal models](#multimodal-models) | [Visual Instruction Tuning](https://arxiv.org/abs/2304.08485)<br>[Anthropic: Vision](https://platform.claude.com/docs/en/build-with-claude/vision)<br>[Vision Language Models Explained](https://huggingface.co/blog/vlms)<br>[Large Multimodal Models: Towards Building General-Purpose Multimodal Assistant](https://www.youtube.com/watch?v=S0CpenMvG48) |
+| [Speech and voice](#speech-and-voice) | [Robust Speech Recognition via Large-Scale Weak Supervision](https://arxiv.org/abs/2212.04356)<br>[OpenAI: Voice agents](https://developers.openai.com/api/docs/guides/voice-agents)<br>[Voice AI & Voice Agents: An Illustrated Primer](https://voiceaiandvoiceagents.com/)<br>[Pipecat](https://github.com/pipecat-ai/pipecat) |
 | [Tool use](#tool-use) | [Claude: Tool use overview](https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview)<br>[OpenAI: Function calling guide](https://developers.openai.com/api/docs/guides/function-calling)<br>[PydanticAI: Tools](https://pydantic.dev/docs/ai/tools-toolsets/tools/)<br>[LLM Function Calling - AI Tools Deep Dive](https://www.youtube.com/watch?v=gMeTK6zzaO4) |
 | [Model Context Protocol (MCP)](#model-context-protocol-mcp) | [Model Context Protocol: Introduction](https://modelcontextprotocol.io/docs/getting-started/intro)<br>[MCP Python SDK](https://github.com/modelcontextprotocol/python-sdk)<br>[Introduction to Model Context Protocol](https://anthropic.skilljar.com/introduction-to-model-context-protocol)<br>[Building Agents with Model Context Protocol - Full Workshop with Mahesh Murag of Anthropic](https://www.youtube.com/watch?v=kQmXtrmQ5Zg) |
 | [ReAct pattern](#react-pattern) | [ReAct: Synergizing Reasoning and Acting in Language Models](https://arxiv.org/abs/2210.03629)<br>[LLM Powered Autonomous Agents](https://lilianweng.github.io/posts/2023-06-23-agent/) |
 | [Context engineering](#context-engineering) | [Effective context engineering for AI agents](https://www.anthropic.com/research/effective-context-engineering-for-ai-agents)<br>[Context Rot: How Increasing Input Tokens Impacts LLM Performance](https://www.trychroma.com/research/context-rot)<br>[Claude: Context windows](https://platform.claude.com/docs/en/build-with-claude/context-windows)<br>[Context Engineering for Agents](https://www.youtube.com/watch?v=4GiqzUHD5AA) |
 | [Multi-agent collaboration](#multi-agent-collaboration) | [Building Effective Agents](https://www.anthropic.com/research/building-effective-agents)<br>[How we built our multi-agent research system](https://www.anthropic.com/research/multi-agent-research-system)<br>[CrewAI documentation](https://docs.crewai.com/)<br>[Anthropic: How to Build Multi-Agent Systems](https://www.youtube.com/watch?v=0HljLKVdtjo) |
 | [Framework survey (LangGraph, CrewAI, OpenAI Agents SDK, PydanticAI)](#framework-survey-langgraph-crewai-openai-agents-sdk-pydanticai) | [LangGraph](https://docs.langchain.com/oss/python/langgraph/overview)<br>[CrewAI documentation](https://docs.crewai.com/)<br>[OpenAI Agents SDK](https://openai.github.io/openai-agents-python/)<br>[PydanticAI documentation](https://pydantic.dev/docs/ai/overview/) |
+| [Coding agents and agent harnesses](#coding-agents-and-agent-harnesses) | [Claude Agent SDK overview](https://code.claude.com/docs/en/agent-sdk/overview)<br>[Building agents with the Claude Agent SDK](https://claude.com/resources/articles/building-agents-with-the-claude-agent-sdk)<br>[SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering](https://arxiv.org/abs/2405.15793)<br>[Claude Code best practices \| Code w/ Claude](https://www.youtube.com/watch?v=gv0WHhKelSE) |
 | [Agent evaluation](#agent-evaluation) | [Demystifying evals for AI agents](https://www.anthropic.com/research/demystifying-evals-for-ai-agents)<br>[τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains](https://arxiv.org/abs/2406.12045)<br>[How to evaluate your agent with trajectory evaluations](https://docs.langchain.com/langsmith/trajectory-evals)<br>[Building and evaluating AI Agents](https://www.youtube.com/watch?v=d5EltXhbcfA) |
 | [Vector embeddings](#vector-embeddings) | [Pinecone: Learning Center](https://www.pinecone.io/learn/)<br>[What are embeddings?](https://vickiboykis.com/what_are_embeddings/)<br>[Cohere: Embeddings documentation](https://docs.cohere.com/docs/embeddings)<br>[OpenAI Embeddings and Vector Databases Crash Course](https://www.youtube.com/watch?v=ySus5ZS0b94) |
 | [Retrieval basics](#retrieval-basics) | [LlamaIndex: Introduction to RAG](https://developers.llamaindex.ai/python/framework/understanding/rag/)<br>[Vector Search Explained](https://weaviate.io/blog/vector-search-explained)<br>[Faiss](https://github.com/facebookresearch/faiss)<br>[Vector Search & Approximate Nearest Neighbors (ANN) \| FAISS (HNSW & IVF)](https://www.youtube.com/watch?v=chz74Mtd1AA) |
@@ -925,6 +960,7 @@ Every topic and its picks in one table, for scanning or searching instead of rea
 | [When to fine-tune](#when-to-fine-tune) | [Patterns for Building LLM-based Systems & Products](https://eugeneyan.com/writing/llm-patterns/)<br>[PEFT documentation](https://huggingface.co/docs/peft/) |
 | [LoRA and adapters](#lora-and-adapters) | [LoRA: Low-Rank Adaptation of Large Language Models](https://arxiv.org/abs/2106.09685)<br>[PEFT: LoRA](https://huggingface.co/docs/peft/en/package_reference/lora)<br>[Practical Tips for Finetuning LLMs Using LoRA](https://magazine.sebastianraschka.com/p/practical-tips-for-finetuning-llms) |
 | [Data preparation](#data-preparation) | [TRL: Dataset formats and types](https://huggingface.co/docs/trl/en/dataset_formats)<br>[LIMA: Less Is More for Alignment](https://arxiv.org/abs/2305.11206) |
+| [Synthetic data and distillation](#synthetic-data-and-distillation) | [Self-Instruct: Aligning Language Models with Self-Generated Instructions](https://arxiv.org/abs/2212.10560)<br>[How to Generate and Use Synthetic Data for Finetuning](https://eugeneyan.com/writing/synthetic/)<br>[distilabel documentation](https://distilabel.argilla.io/latest/)<br>[MedAI #88: Distilling Step-by-Step! Outperforming LLMs with Smaller Model Sizes](https://www.youtube.com/watch?v=fnDUaDDrR4c) |
 | [Running a fine-tune](#running-a-fine-tune) | [Hugging Face LLM Course: Supervised Fine-Tuning](https://huggingface.co/learn/llm-course/chapter11/1)<br>[TRL: SFT Trainer](https://huggingface.co/docs/trl/en/sft_trainer)<br>[Unsloth](https://github.com/unslothai/unsloth) |
 | [Preference tuning (DPO)](#preference-tuning-dpo) | [Direct Preference Optimization: Your Language Model is Secretly a Reward Model](https://arxiv.org/abs/2305.18290)<br>[TRL: DPO Trainer](https://huggingface.co/docs/trl/en/dpo_trainer)<br>[Reinforcement Learning from Human Feedback](https://rlhfbook.com/)<br>[Direct Preference Optimization (DPO) and Friends \| Post-Training Course, Lecture 6](https://www.youtube.com/watch?v=6g6b4gvO-y0) |
 | [Open-model serving](#open-model-serving) | [vLLM documentation](https://docs.vllm.ai/en/latest/)<br>[Ollama documentation](https://docs.ollama.com/)<br>[llama.cpp](https://github.com/ggml-org/llama.cpp)<br>[The State of vLLM](https://www.youtube.com/watch?v=4HPRf9nDZ6Q) |
